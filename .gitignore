@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# Yarn and NPM files
+yarn-error.log
+package-lock.json
+
+# Template files
+.temp
+.DS_Store
+.eslintcache
+
+# Editor and IDE files
+.idea
+
+# Build outputs
+packages/uniubi-lib-mobile/lib/
+packages/**/dist/
+dist/
+
+# Docs outputs
+site/
+docs/h5/
+
+# Rollup visualizer file
+stats.html
+
+# Test files
+coverage

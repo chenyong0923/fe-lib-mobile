@@ -1,0 +1,26 @@
+{
+  "name": "uniubi-lib-mobile-demo",
+  "version": "0.0.1",
+  "description": "移动端组件库demo",
+  "author": "xuxiu <zhangming@uni-ubi.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/uniubi-lib-mobile-demo.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://npm.uniubi.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  },
+  "scripts": {
+    "prepublishOnly": "yarn"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "uniubi-lib-mobile",
+  "version": "0.0.1",
+  "description": "移动端组件库",
+  "module": "dist/index.esm.js",
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "sideEffects": [
+    "*.less",
+    "*.css"
+  ],
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "dev": "yarn run dev:lib",
+    "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
+    "build": "yarn run build:rollup && yarn run build:lib",
+    "build:lib": "tsc --project ./tsconfig.build.json",
+    "build:rollup": "rollup --config ./config/rollup.config.js",
+    "prepublishOnly": "yarn clean && yarn build",
+    "clean": "rimraf .temp dist lib coverage",
+    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}' --cache",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --cache --fix",
+    "prettier": "prettier --write 'src/**/*.{less,scss,css,md,json}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  },
+  "author": "xuxiu <zhangming@uni-ubi.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@tarojs/components": ">=3",
+    "@tarojs/react": ">=3",
+    "react": ">=16.13.0",
+    "react-dom": ">=16.13.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@tarojs/components": "^3.3.9",
+    "@tarojs/react": "^3.3.9",
+    "@tarojs/taro": "^3.3.9",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.58.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-visualizer": "^5.5.2"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "gitHooks": {
+    "pre-commit": "tsc --noEmit && lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "git add ."
+    ],
+    "*.{less,scss,css,md,json}": [
+      "npm run prettier",
+      "git add ."
+    ]
+  }
+}
