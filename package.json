@@ -1,7 +1,7 @@
 {
   "name": "uniubi-lib-mobile",
   "description": "移动端组件库",
-  "author": "xuxiu",
+  "author": "xuxiu <zhangming@uni-ubi.com>",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -13,6 +13,7 @@
     "build:component": "lerna run --scope uniubi-lib-mobile build",
     "clean": "lerna run clean",
     "clean:component": "lerna run --scope uniubi-lib-mobile clean",
+    "prepublishOnly": "lerna run prepublishOnly",
     "publish": "lerna publish"
   },
   "private": true,
