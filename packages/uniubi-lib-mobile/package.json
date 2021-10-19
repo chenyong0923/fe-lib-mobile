@@ -1,6 +1,6 @@
 {
   "name": "uniubi-lib-mobile",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "移动端组件库",
   "module": "dist/index.esm.js",
   "main": "dist/index.js",

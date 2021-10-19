@@ -1,0 +1,10 @@
+33 error Error: Command failed with exit code 1: git add -- packages/uniubi-lib-mobile/package.json packages/uniubi-lib-mobile/package-lock.json packages/uniubi-lib-mobile-docs/package.json packages/uniubi-lib-mobile-docs/package-lock.json packages/uniubi-lib-mobile-demo/package.json packages/uniubi-lib-mobile-demo/package-lock.json lerna.json
+33 error The following paths are ignored by one of your .gitignore files:
+33 error packages/uniubi-lib-mobile-demo/package-lock.json
+33 error packages/uniubi-lib-mobile-docs/package-lock.json
+33 error packages/uniubi-lib-mobile/package-lock.json
+33 error Use -f if you really want to add them.
+33 error     at makeError (/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/node_modules/execa/lib/error.js:60:11)
+33 error     at handlePromise (/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/node_modules/execa/index.js:118:26)
+33 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+33 error     at async Promise.all (index 0)
