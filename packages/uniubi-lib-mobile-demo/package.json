@@ -1,7 +1,6 @@
 {
   "name": "uniubi-lib-mobile-demo",
   "version": "0.0.3",
-  "private": true,
   "description": "移动端组件库 demo",
   "templateInfo": {
     "name": "default",
@@ -12,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  },
+  "publishConfig": {
+    "registry": "http://npm.uniubi.com/"
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
