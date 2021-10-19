@@ -22,7 +22,7 @@
     "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --cache --fix",
     "prettier": "prettier --write 'src/**/*.{less,scss,css,md,json}'"
   },
-  "homepage": "http://gitlab.uniubi.local/fe-team/common/uniubi-lib-mobile/tree/master/packages/uniubi-lib-mobile/README.md",
+  "homepage": "http://gitlab.uniubi.local/fe-team/common/uniubi-lib-mobile/tree/master/packages/uniubi-lib-mobile",
   "repository": {
     "type": "git",
     "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"

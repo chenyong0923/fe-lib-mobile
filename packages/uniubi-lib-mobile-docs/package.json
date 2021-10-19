@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "移动端组件库文档",
   "author": "xuxiu <zhangming@uni-ubi.com>",
-  "homepage": "http://gitlab.uniubi.local/fe-team/common/uniubi-lib-mobile/README.md",
+  "homepage": "http://gitlab.uniubi.local/fe-team/common/uniubi-lib-mobile/tree/master/packages/uniubi-lib-mobile-docs",
   "repository": {
     "type": "git",
     "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
