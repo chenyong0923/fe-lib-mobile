@@ -8,6 +8,11 @@
     "typescript": true,
     "css": "sass"
   },
+  "homepage": "http://gitlab.uniubi.local/fe-team/common/uniubi-lib-mobile/tree/master/packages/uniubi-lib-mobile-demo/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  },
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
