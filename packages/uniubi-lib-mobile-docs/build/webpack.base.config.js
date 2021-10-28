@@ -9,12 +9,17 @@ const siteRoot = path.join(projectRoot);
 
 module.exports = {
   entry: {
-    index: `${siteRoot}/app.jsx`,
+    index: `${siteRoot}/app.tsx`,
   },
   module: {
     rules: [
       {
         oneOf: [
+          {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'ts-loader',
+          },
           {
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/,
@@ -23,11 +28,6 @@ module.exports = {
               rootMode: 'upward',
             },
           },
-          // {
-          //   test: /\.tsx?$/,
-          //   exclude: /(node_modules|bower_components)/,
-          //   loader: 'ts-loader',
-          // },
           {
             test: /\.html$/,
             loader: 'html-withimg-loader',
@@ -116,8 +116,7 @@ module.exports = {
     ],
   },
   resolve: {
-    // extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@md': path.resolve(__dirname, '../markdown/'),
     },
