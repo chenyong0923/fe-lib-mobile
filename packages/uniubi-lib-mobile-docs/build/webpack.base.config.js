@@ -16,17 +16,30 @@ module.exports = {
       {
         oneOf: [
           {
-            test: /\.tsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'ts-loader',
-          },
-          {
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
             options: {
               rootMode: 'upward',
             },
+          },
+          {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  rootMode: 'upward',
+                },
+              },
+              {
+                loader: 'ts-loader',
+                options: {
+                  transpileOnly: true,
+                },
+              },
+            ],
           },
           {
             test: /\.html$/,
@@ -50,6 +63,12 @@ module.exports = {
           },
           {
             test: /\.(css|less)(\?.*)?$/,
+            include: [/node_modules/], // antd(node_modules文件)目录
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            test: /\.(css|less)(\?.*)?$/,
+            exclude: [/node_modules/],
             use: [
               'style-loader',
               {
@@ -121,6 +140,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@md': path.resolve(__dirname, '../markdown/'),
+      '@': path.resolve(__dirname, '../'),
     },
   },
   plugins: [
