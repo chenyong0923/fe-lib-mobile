@@ -64,7 +64,33 @@ module.exports = {
           {
             test: /\.(css|less)(\?.*)?$/,
             include: [/node_modules/], // antd(node_modules文件)目录
-            use: ['style-loader', 'css-loader'],
+            use: [
+              {
+                loader: 'style-loader',
+                options: {
+                  // 把 antd 样式插入 head 顶部，使 css modules 定义的样式能覆盖 antd 样式
+                  insert: function insertAtTop(element) {
+                    const parent = document.querySelector('head');
+                    const lastInsertedElement =
+                      window._lastElementInsertedByStyleLoader;
+
+                    if (!lastInsertedElement) {
+                      parent.insertBefore(element, parent.firstChild);
+                    } else if (lastInsertedElement.nextSibling) {
+                      parent.insertBefore(
+                        element,
+                        lastInsertedElement.nextSibling,
+                      );
+                    } else {
+                      parent.appendChild(element);
+                    }
+
+                    window._lastElementInsertedByStyleLoader = element;
+                  },
+                },
+              },
+              'css-loader',
+            ],
           },
           {
             test: /\.(css|less)(\?.*)?$/,
@@ -74,9 +100,9 @@ module.exports = {
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 1,
+                  importLoaders: 2,
                   modules: {
-                    localIdentName: '[local]_[hash:base64:5]',
+                    localIdentName: '[local]__[hash:base64:5]',
                   },
                 },
               },
