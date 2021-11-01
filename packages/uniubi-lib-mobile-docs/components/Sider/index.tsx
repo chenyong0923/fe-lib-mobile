@@ -11,6 +11,7 @@ export { navConfig };
 export interface NavType {
   title: string;
   name: string;
+  demo?: boolean;
   items?: NavType[];
 }
 
