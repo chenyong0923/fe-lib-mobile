@@ -1,7 +1,9 @@
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Index from './pages/index/index';
+
+import 'antd/dist/antd.css';
 
 const App = () => {
   return (
