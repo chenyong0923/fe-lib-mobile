@@ -12,10 +12,10 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ children, className, style }) => {
   return (
     <Layout.Content
-      className={classnames(styles.content, className)}
+      className={classnames(styles.wrapper, className)}
       style={style}
     >
-      {children}
+      <div className={styles.content}>{children}</div>
     </Layout.Content>
   );
 };

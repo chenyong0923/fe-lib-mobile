@@ -1,17 +1,21 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Index from './pages/index/index';
+import BasicLayout from '@/layouts/BasicLayout';
+import Docs from '@/pages/docs/index';
+import Index from '@/pages/index/index';
 
 import 'antd/dist/antd.css';
+import 'highlight.js/styles/atom-one-dark.css';
 
 const App = () => {
   return (
-    <div>
+    <BasicLayout>
       <Switch>
+        <Route path="/docs" component={Docs} />
         <Route path="/" exact component={Index} />
       </Switch>
-    </div>
+    </BasicLayout>
   );
 };
 

@@ -5,7 +5,7 @@ components:
       - title: 介绍
         name: Introduction
       - title: 更新日志
-        name: Changelog
+        name: ChangeLog
       - title: 常见问题
         name: Questions
   - title: 组件

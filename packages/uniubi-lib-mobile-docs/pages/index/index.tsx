@@ -1,11 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-import BasicLayout from '../../layouts/BasicLayout';
-
-// import styles from './index.less';
-
-const Index: React.FC = () => {
-  return <BasicLayout>index</BasicLayout>;
-};
+const Index: React.FC = () => <Redirect to="/docs/introduction" />;
 
 export default Index;
