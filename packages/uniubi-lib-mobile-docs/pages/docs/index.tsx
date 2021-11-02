@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 
@@ -6,8 +7,8 @@ import { navConfig, NavType } from '@/components/Sider';
 import styles from './index.less';
 
 const Docs: React.FC = () => {
-  // 是否展示 demo
-  const [hasDemo, setHasDemo] = useState<boolean>(false);
+  // demo 路径
+  const [curDemoPath, setCurDemoPath] = useState<string>();
   // 路由信息
   const { pathname } = useLocation();
 
@@ -30,11 +31,15 @@ const Docs: React.FC = () => {
   const setDemoState = (path: string) => {
     const componentName = path.split('/')[2];
     const comp = matchNav(componentName);
-    setHasDemo(!!comp?.demo);
+    setCurDemoPath(comp?.demo ? componentName : '');
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={classnames(styles.wrapper, {
+        [styles['with-demo']]: curDemoPath,
+      })}
+    >
       <Switch>
         {data.map((item) => {
           if (item.items) {
@@ -49,7 +54,18 @@ const Docs: React.FC = () => {
         })}
         <Redirect path="/docs/" to={{ pathname: '/docs/introduction' }} />
       </Switch>
-      {hasDemo && <div>111</div>}
+      {curDemoPath && (
+        <div className={styles.demo}>
+          {curDemoPath ? (
+            <iframe
+              src={`./h5/index.html#/pages/${curDemoPath}/index`}
+              frameBorder="0"
+            />
+          ) : (
+            <iframe src="./h5/index.html" frameBorder="0" />
+          )}
+        </div>
+      )}
     </div>
   );
 };
