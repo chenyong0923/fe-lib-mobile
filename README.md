@@ -38,6 +38,8 @@
 
 ### 发包
 
-1. 进入项目根目录，执行 `yarn build`，对 packages 目录下所有包进行构建
-2. 进入 `packages/uniubi-lib-mobile-docs` 目录执行 `yarn build`，把 `uniubi-lib-mobile-demo` 包构建产物 dist 文件夹复制到该包的 `dist/h5` 之下
-3. 执行 `yarn publish` 发版，修改版本号
+1. 进入 `packages/uniubi-lib-mobile-docs` 目录，执行 `yarn build`，使用 `npm version` 相关命令进行版本号更新，执行 `npm publish` 进行发布
+
+### 文档发布
+
+1. 提交代码至 gitlab 仓库 master 分支，使用 jenkins 自动发布（脚本暂未编写，不影响组件开发...）
