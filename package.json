@@ -16,7 +16,6 @@
     "prepublishOnly": "lerna run prepublishOnly",
     "publish": "lerna publish"
   },
-  "private": false,
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -28,6 +27,5 @@
     "typescript": "^4.4.3",
     "uniubi-lint": "^1.1.14",
     "yorkie": "^2.0.0"
-  },
-  "version": "0.0.5"
+  }
 }
