@@ -7,6 +7,7 @@ import Index from '@/pages/index/index';
 
 import 'antd/dist/antd.css';
 import 'highlight.js/styles/atom-one-dark.css';
+import './styles/markdown.less';
 
 const App = () => {
   return (
