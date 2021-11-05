@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "uniubi-lib-mobile",
   "description": "移动端组件库",
   "author": "xuxiu <zhangming@uni-ubi.com>",
@@ -14,7 +15,7 @@
     "clean": "lerna run clean",
     "clean:component": "lerna run --scope uniubi-lib-mobile clean",
     "prepublishOnly": "lerna run prepublishOnly",
-    "publish": "lerna publish"
+    "publish": "lerna publish from-git --yes"
   },
   "license": "MIT",
   "devDependencies": {
