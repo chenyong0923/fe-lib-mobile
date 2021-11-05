@@ -9,7 +9,7 @@ const siteRoot = path.join(projectRoot);
 
 module.exports = {
   entry: {
-    index: `${siteRoot}/app.jsx`,
+    index: `${siteRoot}/app.tsx`,
   },
   module: {
     rules: [
@@ -23,11 +23,24 @@ module.exports = {
               rootMode: 'upward',
             },
           },
-          // {
-          //   test: /\.tsx?$/,
-          //   exclude: /(node_modules|bower_components)/,
-          //   loader: 'ts-loader',
-          // },
+          {
+            test: /\.tsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  rootMode: 'upward',
+                },
+              },
+              {
+                loader: 'ts-loader',
+                options: {
+                  transpileOnly: true,
+                },
+              },
+            ],
+          },
           {
             test: /\.html$/,
             loader: 'html-withimg-loader',
@@ -50,13 +63,47 @@ module.exports = {
           },
           {
             test: /\.(css|less)(\?.*)?$/,
+            include: [/node_modules/], // antd(node_modules文件)目录
+            use: [
+              {
+                loader: 'style-loader',
+                options: {
+                  // 把 antd 样式插入 head 顶部，使 css modules 定义的样式能覆盖 antd 样式
+                  insert: function insertAtTop(element) {
+                    const parent = document.querySelector('head');
+                    const lastInsertedElement =
+                      window._lastElementInsertedByStyleLoader;
+
+                    if (!lastInsertedElement) {
+                      parent.insertBefore(element, parent.firstChild);
+                    } else if (lastInsertedElement.nextSibling) {
+                      parent.insertBefore(
+                        element,
+                        lastInsertedElement.nextSibling,
+                      );
+                    } else {
+                      parent.appendChild(element);
+                    }
+
+                    window._lastElementInsertedByStyleLoader = element;
+                  },
+                },
+              },
+              'css-loader',
+            ],
+          },
+          {
+            test: /\.(css|less)(\?.*)?$/,
+            exclude: [/node_modules/],
             use: [
               'style-loader',
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 1,
-                  // modules: true
+                  importLoaders: 2,
+                  modules: {
+                    localIdentName: '[local]__[hash:base64:5]',
+                  },
                 },
               },
               {
@@ -116,10 +163,10 @@ module.exports = {
     ],
   },
   resolve: {
-    // extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@md': path.resolve(__dirname, '../markdown/'),
+      '@': path.resolve(__dirname, '../'),
     },
   },
   plugins: [

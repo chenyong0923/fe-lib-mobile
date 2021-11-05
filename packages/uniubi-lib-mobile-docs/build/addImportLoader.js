@@ -6,7 +6,7 @@ const mdContainer = require('markdown-it-container');
 let md = require('markdown-it');
 
 const options = {
-  className: 'wrap',
+  className: 'docs-wrapper',
 };
 
 md = md({
@@ -92,10 +92,9 @@ const formatModule = (imports, js, jsx, state, method) => {
   return moduleText;
 };
 
-// TODO: 修改 className
 const formatOpening = () => `
-    <div className="at-component__container">
-      <div className="at-component__code">`;
+    <div className="uniubi-lib-mobile-container">
+      <div className="uniubi-lib-mobile-code">`;
 
 const formatClosing = () => `
       </div>
