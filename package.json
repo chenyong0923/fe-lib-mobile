@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --registry http://npm.uniubi.com",
     "build": "lerna run build",
     "build:component": "lerna run --scope uniubi-lib-mobile build",
     "clean": "lerna run clean",
