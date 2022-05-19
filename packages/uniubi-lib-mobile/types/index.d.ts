@@ -1,1 +1,1 @@
-export { default as UButton } from './button';
+export { default as Button } from './button';

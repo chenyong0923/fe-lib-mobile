@@ -1,12 +1,9 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "baseUrl": "./",
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ]
+    "typeRoots": ["node_modules/@types", "types"]
   }
 }

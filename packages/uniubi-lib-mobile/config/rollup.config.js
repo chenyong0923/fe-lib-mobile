@@ -24,12 +24,12 @@ export default {
     {
       file: resolveFile(Package.main),
       format: 'cjs',
-      sourceMap: false,
+      sourcemap: false,
     },
     {
       file: resolveFile(Package.module),
       format: 'es',
-      sourceMap: false,
+      sourcemap: false,
     },
   ],
   external: externalPackages,

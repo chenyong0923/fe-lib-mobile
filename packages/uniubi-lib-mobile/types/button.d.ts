@@ -1,8 +1,8 @@
-import { ButtonProps } from '@tarojs/components/types/Button';
-import { FunctionComponent } from 'react';
+import { ButtonProps } from '@tarojs/components';
+import { FC } from 'react';
 
 export type UButtonProps = ButtonProps;
 
-declare const UButton: FunctionComponent<UButtonProps>;
+declare const UButton: FC<UButtonProps>;
 
 export default UButton;
