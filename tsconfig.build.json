@@ -3,16 +3,18 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "jsx": "react",
-    "jsxFactory": "React.createElement",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strictNullChecks": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "strict": true,
+    "declaration": true
   },
   "compileOnSave": false,
   "exclude": ["node_modules/*", "packages/dist/*"]

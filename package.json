@@ -1,32 +1,22 @@
 {
-  "private": true,
   "name": "uniubi-lib-mobile",
-  "description": "移动端组件库",
-  "author": "xuxiu <zhangming@uni-ubi.com>",
+  "private": true,
   "workspaces": {
     "packages": [
       "packages/*"
     ]
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap --registry http://npm.uniubi.com",
-    "build": "lerna run build",
-    "build:component": "lerna run --scope uniubi-lib-mobile build",
-    "clean": "lerna run clean",
-    "clean:component": "lerna run --scope uniubi-lib-mobile clean",
-    "prepublishOnly": "lerna run prepublishOnly",
-    "publish": "lerna publish from-git --yes"
+    "bootstrap": "lerna bootstrap"
   },
-  "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "husky": "^7.0.2",
+    "eslint": "^8.15.0",
+    "husky": "^8.0.1",
     "lerna": "^4.0.0",
-    "lint-staged": "^11.2.3",
-    "prettier": "^2.4.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.4.3",
-    "uniubi-lint": "^1.1.14",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4",
+    "uniubi-lint": "^1.2.0",
     "yorkie": "^2.0.0"
   }
 }
