@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/index/index', '/pages/components/button/index'],
+  pages: ['pages/index/index', 'pages/components/button/index'],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "dist/",
   "projectname": "uniubi-mobile-template",
-  "description": "Trao 项目模版",
-  "appid": "touristappid",
+  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "appid": "wx23065a90b0dc3aec",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -39,8 +39,19 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true
   },
   "compileType": "miniprogram",
-  "condition": {}
+  "condition": {},
+  "libVersion": "2.23.2",
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }
