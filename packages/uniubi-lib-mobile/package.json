@@ -5,7 +5,7 @@
   "keywords": [
     "taro"
   ],
-  "author": "zhangming <qianzm2490@gmail.com>",
+  "author": "xuxiu <zhangming@uni-ubi.com>",
   "homepage": "",
   "license": "ISC",
   "module": "dist/index.esm.js",
@@ -54,5 +54,8 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-visualizer": "^5.6.0"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   }
 }

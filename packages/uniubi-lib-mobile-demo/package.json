@@ -1,0 +1,76 @@
+{
+  "name": "uniubi-lib-mobile-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "移动端组件库 demo 项目",
+  "templateInfo": {
+    "name": "default",
+    "typescript": true,
+    "css": "less"
+  },
+  "scripts": {
+    "dev:h5": "npm run build:h5 -- --watch",
+    "build:h5": "cross-env NODE_ENV=production CUSTOM_ENV=dev taro build --type h5",
+    "build:h5:test": "cross-env NODE_ENV=production CUSTOM_ENV=test taro build --type h5",
+    "build:h5:release": "cross-env NODE_ENV=production CUSTOM_ENV=release taro build --type h5",
+    "build:h5:pre": "cross-env NODE_ENV=production CUSTOM_ENV=pre taro build --type h5",
+    "build:h5:production": "cross-env NODE_ENV=production CUSTOM_ENV=production taro build --type h5",
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "build:weapp": "cross-env NODE_ENV=production CUSTOM_ENV=dev taro build --type weapp",
+    "build:weapp:test": "cross-env NODE_ENV=production CUSTOM_ENV=test taro build --type weapp",
+    "build:weapp:release": "cross-env NODE_ENV=production CUSTOM_ENV=release taro build --type weapp",
+    "build:weapp:pre": "cross-env NODE_ENV=production CUSTOM_ENV=pre taro build --type weapp",
+    "build:weapp:production": "cross-env NODE_ENV=production CUSTOM_ENV=production taro build --type weapp",
+    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --fix",
+    "lint:ts": "tsc --noEmit",
+    "prettier": "prettier --write 'src/**/*.{less,scss,css,md,json}'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.7",
+    "@tarojs/components": "3.4.0",
+    "@tarojs/helper": "3.4.0",
+    "@tarojs/react": "3.4.0",
+    "@tarojs/runtime": "3.4.0",
+    "@tarojs/taro": "3.4.0",
+    "@uniubi/icons-taro": "^1.4.0",
+    "classnames": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "uniubi-lib-mobile": "file:../uniubi-lib-mobile"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/helper-compilation-targets": "^7.12.5",
+    "@babel/helper-create-class-features-plugin": "^7.12.1",
+    "@babel/plugin-syntax-async-generators": "^7.8.4",
+    "@babel/plugin-syntax-decorators": "^7.12.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-syntax-json-strings": "^7.8.3",
+    "@babel/plugin-syntax-nullish-coalescing-operator": "^7.8.3",
+    "@babel/plugin-syntax-numeric-separator": "^7.10.4",
+    "@babel/plugin-syntax-optional-catch-binding": "^7.8.3",
+    "@babel/plugin-transform-typescript": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@tarojs/mini-runner": "3.4.0",
+    "@tarojs/plugin-less": "^2.2.18",
+    "@tarojs/webpack-runner": "3.4.0",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^17.0.2",
+    "@types/webpack-env": "^1.13.6",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-transform-jsx-stylesheet": "^1.0.0",
+    "babel-preset-taro": "3.4.0",
+    "cross-env": "^7.0.2"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Android >= 4.1",
+    "ios >= 8"
+  ],
+  "author": "xuxiu <zhangming@uni-ubi.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  }
+}
