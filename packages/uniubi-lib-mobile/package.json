@@ -27,10 +27,9 @@
   "scripts": {
     "dev": "yarn run dev:lib",
     "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
-    "build": "yarn build:rollup && yarn build:lib",
+    "build": "yarn clean && yarn build:rollup && yarn build:lib",
     "build:lib": "tsc --project ./tsconfig.build.json",
     "build:rollup": "rollup --config ./config/rollup.config.js",
-    "prepublishOnly": "yarn clean && yarn build",
     "clean": "rimraf .temp dist lib coverage"
   },
   "peerDependencies": {

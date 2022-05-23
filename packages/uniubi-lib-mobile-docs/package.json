@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "uniubi-lib-mobile-docs",
+  "version": "0.0.0",
+  "description": "移动端组件库文档",
+  "author": "xuxiu <zhangming@uni-ubi.com>",
+  "scripts": {
+    "start": "umi dev",
+    "build": "sh ./scripts/build.sh",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^6.38.2",
+    "antd": "^100.20.0",
+    "classnames": "^2.2.6",
+    "github-markdown-css": "^5.1.0",
+    "react-markdown": "^8.0.3",
+    "react-syntax-highlighter": "^15.5.0",
+    "rehype-raw": "^6.1.1",
+    "umi": "^3.5.23"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "@types/react-syntax-highlighter": "^15.5.1",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.0.16",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
+  }
+}

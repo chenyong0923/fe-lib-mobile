@@ -13,6 +13,8 @@ package-lock.json
 # Build outputs
 packages/uniubi-lib-mobile/lib/
 packages/**/dist/
+packages/uniubi-lib-mobile-docs/src/.umi
+packages/uniubi-lib-mobile-docs/src/.umi-production
 dist/
 
 # Docs outputs
