@@ -21,10 +21,9 @@
     "build:weapp:release": "cross-env NODE_ENV=production CUSTOM_ENV=release taro build --type weapp",
     "build:weapp:pre": "cross-env NODE_ENV=production CUSTOM_ENV=pre taro build --type weapp",
     "build:weapp:production": "cross-env NODE_ENV=production CUSTOM_ENV=production taro build --type weapp",
-    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}'",
-    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --fix",
-    "lint:ts": "tsc --noEmit",
-    "prettier": "prettier --write 'src/**/*.{less,scss,css,md,json}'"
+    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}' --quiet",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --fix --quiet",
+    "prettier": "prettier --write '**/*.{less,css,md,json}'"
   },
   "dependencies": {
     "@babel/runtime": "^7.7.7",

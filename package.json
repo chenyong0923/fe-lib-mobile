@@ -7,7 +7,8 @@
     ]
   },
   "scripts": {
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "lint": "lerna run lint"
   },
   "resolutions": {
     "@types/react": "^17.0.2",

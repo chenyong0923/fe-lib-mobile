@@ -31,7 +31,10 @@
     "build": "yarn clean && yarn build:rollup && yarn build:lib",
     "build:lib": "tsc --project ./tsconfig.build.json",
     "build:rollup": "rollup --config ./config/rollup.config.js",
-    "clean": "rimraf .temp dist lib coverage"
+    "clean": "rimraf .temp dist lib coverage",
+    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}' --quiet",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --fix --quiet",
+    "prettier": "prettier --write '**/*.{less,css,md,json}'"
   },
   "peerDependencies": {
     "@tarojs/components": ">=3",

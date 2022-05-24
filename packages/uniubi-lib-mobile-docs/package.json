@@ -8,7 +8,10 @@
     "start": "umi dev",
     "build": "sh ./scripts/build.sh",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}' --quiet",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,tsx,ts}' --fix --quiet",
+    "prettier": "prettier --write '**/*.{less,css,md,json}'"
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.38.2",

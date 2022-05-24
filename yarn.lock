@@ -3109,13 +3109,13 @@
     "@babel/runtime" "^7.14.5"
     "@tarojs/runtime" "3.4.0"
 
-"@tarojs/api@3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2fapi/-/api-3.4.9.tgz#52a38b173185133258b4a3d432a3b782bcd312ea"
-  integrity sha512-XCKI4aHduEKdoqtlEi7aQ7cOlXTkVik6i4sNA9c//AolXH/IXmcG4dfeKf99McIgTA30jiGuKLNDepvjDoxhXA==
+"@tarojs/api@3.4.10":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2fapi/-/api-3.4.10.tgz#bcb89c6acbefebf8d8f212a82980fa0af462096d"
+  integrity sha512-y2Apb0PPV5gTCgnH18xqSDO3dzZLc97jqyHVMADgfGMEqJado2O3+E9n0spHR9hub0yH+SYCwo+WLcyzmPtVFQ==
   dependencies:
     "@babel/runtime" "^7.14.5"
-    "@tarojs/runtime" "3.4.9"
+    "@tarojs/runtime" "3.4.10"
 
 "@tarojs/components-rn@3.4.0":
   version "3.4.0"
@@ -3154,12 +3154,12 @@
     weui "^1.1.2"
 
 "@tarojs/components@^3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2fcomponents/-/components-3.4.9.tgz#73af2680801c50611f36c93955900551b4c4b258"
-  integrity sha512-M4Kr4CuvbshJTIFlNIS3aDvXpBJtIyyBaUq1uF1z0iZ07s9x0KV9UVBk0x2EI3wUD0trmXV/ERlaCJXCdy98Aw==
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2fcomponents/-/components-3.4.10.tgz#b64bdab8c7c4c90e786111f8afff852a9ff9d2b5"
+  integrity sha512-kcqJNbjZLavzYu/OfF9bd6tB1znHuj7cgCyejX7PlyVdETGLeNz1NRygk8y/1j/I8GarKQ53Ve4k1Ibw48zX7Q==
   dependencies:
     "@stencil/core" "2.9.0"
-    "@tarojs/taro" "3.4.9"
+    "@tarojs/taro" "3.4.10"
     better-scroll "^1.14.1"
     classnames "^2.2.5"
     hls.js "^1.1.5"
@@ -3386,12 +3386,12 @@
     scheduler "^0.20.1"
 
 "@tarojs/react@^3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2freact/-/react-3.4.9.tgz#1d46745d4689a9afc8922e1c6a82c36f78f0785d"
-  integrity sha512-WIFfwpd+iRqAd2X32j9JFOURLBcYFkDNKqn3a5j3wSdsbxRctLnXUf++heDBgy5TXoDA2/yYA0FQ2AcwFfCaHA==
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2freact/-/react-3.4.10.tgz#faf6bc2c6f4dcbc2dc8345ef1ef1dfb587b70bfa"
+  integrity sha512-1WaX9VEGQpDtwx+Ul5XaZUZin36anzxcUH4F9sv0kJ3Fup+kkYiMOmufpY6y8lezvtj/WuMRxJsF0BTrNo+Wjw==
   dependencies:
-    "@tarojs/runtime" "3.4.9"
-    "@tarojs/shared" "3.4.9"
+    "@tarojs/runtime" "3.4.10"
+    "@tarojs/shared" "3.4.10"
     react-reconciler "0.26.1"
     scheduler "^0.20.1"
 
@@ -3423,13 +3423,13 @@
     universal-router "^8.3.0"
     url-parse "^1.4.7"
 
-"@tarojs/router@3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2frouter/-/router-3.4.9.tgz#922a08d4349fe143f128401bbade80bf5be28f78"
-  integrity sha512-RHQoMKpa3FmsNCkJ+CS1mHj5YPs1YrE8eQNUvRT2ouE+BUOFBtOQDMdqcBcsEvNVxbbHi2CP1gSwgBuzTlveFQ==
+"@tarojs/router@3.4.10":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2frouter/-/router-3.4.10.tgz#3ffb19bf320da1c4c75cc7ee99e7516d5bf3506d"
+  integrity sha512-WzoAYe3lZa31sLbuoTew2epmeKdOIUVZu4ZMGRHges4KJDpU/QC4H2eI5g178mwKt8m4gwD1NUoYmv4ytx04+Q==
   dependencies:
-    "@tarojs/runtime" "3.4.9"
-    "@tarojs/taro" "3.4.9"
+    "@tarojs/runtime" "3.4.10"
+    "@tarojs/taro" "3.4.10"
     history "^5.1.0"
     query-string "^7.1.1"
     universal-router "^8.3.0"
@@ -3467,12 +3467,12 @@
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
 
-"@tarojs/runtime@3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2fruntime/-/runtime-3.4.9.tgz#2a4e6b7e0e58c77df378444905e1a652bbba1a19"
-  integrity sha512-2MBXU6A+jCZMgSlwM/Ac77WNslBKPcJw1ww+zBc5c03PzI5eGqwwjuvFBkKy83cos7LN/myILoxEXT6MrGBkcg==
+"@tarojs/runtime@3.4.10":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2fruntime/-/runtime-3.4.10.tgz#e5dffb250f7f3c7229802080dcfec776c38a21b6"
+  integrity sha512-ZKCl/yXOxFszMpyujsqUGZYAlF9bSgl3VlFMSV3PPI+H++Ry8SDgAwaSktMsm88FgYoSrKtwXNqTli4Ea1y5aw==
   dependencies:
-    "@tarojs/shared" "3.4.9"
+    "@tarojs/shared" "3.4.10"
     inversify "5.1.1"
     lodash-es "4.17.15"
     reflect-metadata "^0.1.13"
@@ -3509,10 +3509,10 @@
   resolved "http://npm.uniubi.com/@tarojs%2fshared/-/shared-3.4.0.tgz#d966ae4aabbdcc676464ca60a5961868a428a6ec"
   integrity sha512-41wQ8QQuUAS3nyhtlLufBsn6QAGqVC7X64jdsYPEZVDANBbAt6taOSiyQtgNXz5t+dsyr+pp995kvCu9RFcK8A==
 
-"@tarojs/shared@3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2fshared/-/shared-3.4.9.tgz#2ca0a2575595b2ea9da917b41fed80e7189a5e9f"
-  integrity sha512-UfatG2w1tJSomoFgTkg4U8cdO4RzpXjs4SUOwyUShSyhI/IeursJYlXDWjc236GGmwQBlG7OWvbA8VIwR5ESdw==
+"@tarojs/shared@3.4.10":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2fshared/-/shared-3.4.10.tgz#5414859fa3b79c2f8417c31ed7cf2a03604961b1"
+  integrity sha512-YnnCgced35jftBzb9jen/M+ukAMVuOaCPJo7i+VShk3xKXzrwAWL26TZFkSLi8KM1wgjekZ49NsdY0bGt4rfYA==
 
 "@tarojs/taro-h5@3.4.0":
   version "3.4.0"
@@ -3528,15 +3528,15 @@
     mobile-detect "^1.4.2"
     whatwg-fetch "^3.4.0"
 
-"@tarojs/taro-h5@3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2ftaro-h5/-/taro-h5-3.4.9.tgz#d797df93362a91824293471410c68effcce17f45"
-  integrity sha512-Pk0pZ2kneY91RbEGgUXg8OkGPKI35O5Je7tF/I2L1FRSt+HB1DStk9clGMrpJ+ue7loWWrQuhhAJkdJdNtDq7w==
+"@tarojs/taro-h5@3.4.10":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2ftaro-h5/-/taro-h5-3.4.10.tgz#19e97bfe5e9b127b1c7d8e02c3d9a6d5bbf03beb"
+  integrity sha512-PurEc1SBjANr4zGY1/B0OgmPdu69BlqUjGplHjP6IsOrirb+bC0jmw1gNB0g4W1o+zx6hDMhhSAv6WhAMn6oaA==
   dependencies:
-    "@tarojs/api" "3.4.9"
-    "@tarojs/router" "3.4.9"
-    "@tarojs/runtime" "3.4.9"
-    "@tarojs/taro" "3.4.9"
+    "@tarojs/api" "3.4.10"
+    "@tarojs/router" "3.4.10"
+    "@tarojs/runtime" "3.4.10"
+    "@tarojs/taro" "3.4.10"
     base64-js "^1.3.0"
     jsonp-retry "^1.0.3"
     mobile-detect "^1.4.2"
@@ -3601,14 +3601,14 @@
     "@tarojs/runtime" "3.4.0"
     "@tarojs/taro-h5" "3.4.0"
 
-"@tarojs/taro@3.4.9", "@tarojs/taro@^3.4.9":
-  version "3.4.9"
-  resolved "http://npm.uniubi.com/@tarojs%2ftaro/-/taro-3.4.9.tgz#ad4eeffe32794252f9c24291ec85509d465ef87c"
-  integrity sha512-Sy0U7FdoEmKYDiSAu2QNjH0P9jM10tSSQsU50Wnbop3VdF0iHYXQVmSDfXofdOHag5AsAdhWgXMZPEvIb30AeA==
+"@tarojs/taro@3.4.10", "@tarojs/taro@^3.4.9":
+  version "3.4.10"
+  resolved "http://npm.uniubi.com/@tarojs%2ftaro/-/taro-3.4.10.tgz#64c6ffbbd3937184e2ae423b2d975868a59aa2ac"
+  integrity sha512-tukgYlD8OAN+tskNc52Gh2ugnBM6rhsPcrplisufKbEnjl7Qy8K2vS4zcl2eBqd9YMrmFmTWCmVxHS4SMpw2Zg==
   dependencies:
-    "@tarojs/api" "3.4.9"
-    "@tarojs/runtime" "3.4.9"
-    "@tarojs/taro-h5" "3.4.9"
+    "@tarojs/api" "3.4.10"
+    "@tarojs/runtime" "3.4.10"
+    "@tarojs/taro-h5" "3.4.10"
 
 "@tarojs/utils@2.2.18":
   version "2.2.18"
@@ -4065,13 +4065,13 @@
     "@types/yargs-parser" "*"
 
 "@typescript-eslint/eslint-plugin@^5.20.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2feslint-plugin/-/eslint-plugin-5.25.0.tgz#e8ce050990e4d36cc200f2de71ca0d3eb5e77a31"
-  integrity sha512-icYrFnUzvm+LhW0QeJNKkezBu6tJs9p/53dpPLFH8zoM9w1tfaKzVurkPotEpAqQ8Vf8uaFyL5jHd0Vs6Z0ZQg==
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2feslint-plugin/-/eslint-plugin-5.26.0.tgz#c1f98ccba9d345e38992975d3ca56ed6260643c2"
+  integrity sha512-oGCmo0PqnRZZndr+KwvvAUvD3kNE4AfyoGCwOZpoCncSh4MVD06JTE8XQa2u9u+NX5CsyZMBTEc2C72zx38eYA==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.25.0"
-    "@typescript-eslint/type-utils" "5.25.0"
-    "@typescript-eslint/utils" "5.25.0"
+    "@typescript-eslint/scope-manager" "5.26.0"
+    "@typescript-eslint/type-utils" "5.26.0"
+    "@typescript-eslint/utils" "5.26.0"
     debug "^4.3.4"
     functional-red-black-tree "^1.0.1"
     ignore "^5.2.0"
@@ -4080,68 +4080,68 @@
     tsutils "^3.21.0"
 
 "@typescript-eslint/parser@^5.20.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2fparser/-/parser-5.25.0.tgz#fb533487147b4b9efd999a4d2da0b6c263b64f7f"
-  integrity sha512-r3hwrOWYbNKP1nTcIw/aZoH+8bBnh/Lh1iDHoFpyG4DnCpvEdctrSl6LOo19fZbzypjQMHdajolxs6VpYoChgA==
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2fparser/-/parser-5.26.0.tgz#a61b14205fe2ab7533deb4d35e604add9a4ceee2"
+  integrity sha512-n/IzU87ttzIdnAH5vQ4BBDnLPly7rC5VnjN3m0xBG82HK6rhRxnCb3w/GyWbNDghPd+NktJqB/wl6+YkzZ5T5Q==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.25.0"
-    "@typescript-eslint/types" "5.25.0"
-    "@typescript-eslint/typescript-estree" "5.25.0"
+    "@typescript-eslint/scope-manager" "5.26.0"
+    "@typescript-eslint/types" "5.26.0"
+    "@typescript-eslint/typescript-estree" "5.26.0"
     debug "^4.3.4"
 
-"@typescript-eslint/scope-manager@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2fscope-manager/-/scope-manager-5.25.0.tgz#e78f1484bca7e484c48782075219c82c6b77a09f"
-  integrity sha512-p4SKTFWj+2VpreUZ5xMQsBMDdQ9XdRvODKXN4EksyBjFp2YvQdLkyHqOffakYZPuWJUDNu3jVXtHALDyTv3cww==
+"@typescript-eslint/scope-manager@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2fscope-manager/-/scope-manager-5.26.0.tgz#44209c7f649d1a120f0717e0e82da856e9871339"
+  integrity sha512-gVzTJUESuTwiju/7NiTb4c5oqod8xt5GhMbExKsCTp6adU3mya6AGJ4Pl9xC7x2DX9UYFsjImC0mA62BCY22Iw==
   dependencies:
-    "@typescript-eslint/types" "5.25.0"
-    "@typescript-eslint/visitor-keys" "5.25.0"
+    "@typescript-eslint/types" "5.26.0"
+    "@typescript-eslint/visitor-keys" "5.26.0"
 
-"@typescript-eslint/type-utils@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2ftype-utils/-/type-utils-5.25.0.tgz#5750d26a5db4c4d68d511611e0ada04e56f613bc"
-  integrity sha512-B6nb3GK3Gv1Rsb2pqalebe/RyQoyG/WDy9yhj8EE0Ikds4Xa8RR28nHz+wlt4tMZk5bnAr0f3oC8TuDAd5CPrw==
+"@typescript-eslint/type-utils@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2ftype-utils/-/type-utils-5.26.0.tgz#937dee97702361744a3815c58991acf078230013"
+  integrity sha512-7ccbUVWGLmcRDSA1+ADkDBl5fP87EJt0fnijsMFTVHXKGduYMgienC/i3QwoVhDADUAPoytgjbZbCOMj4TY55A==
   dependencies:
-    "@typescript-eslint/utils" "5.25.0"
+    "@typescript-eslint/utils" "5.26.0"
     debug "^4.3.4"
     tsutils "^3.21.0"
 
-"@typescript-eslint/types@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2ftypes/-/types-5.25.0.tgz#dee51b1855788b24a2eceeae54e4adb89b088dd8"
-  integrity sha512-7fWqfxr0KNHj75PFqlGX24gWjdV/FDBABXL5dyvBOWHpACGyveok8Uj4ipPX/1fGU63fBkzSIycEje4XsOxUFA==
+"@typescript-eslint/types@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2ftypes/-/types-5.26.0.tgz#cb204bb154d3c103d9cc4d225f311b08219469f3"
+  integrity sha512-8794JZFE1RN4XaExLWLI2oSXsVImNkl79PzTOOWt9h0UHROwJedNOD2IJyfL0NbddFllcktGIO2aOu10avQQyA==
 
-"@typescript-eslint/typescript-estree@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2ftypescript-estree/-/typescript-estree-5.25.0.tgz#a7ab40d32eb944e3fb5b4e3646e81b1bcdd63e00"
-  integrity sha512-MrPODKDych/oWs/71LCnuO7NyR681HuBly2uLnX3r5i4ME7q/yBqC4hW33kmxtuauLTM0OuBOhhkFaxCCOjEEw==
+"@typescript-eslint/typescript-estree@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2ftypescript-estree/-/typescript-estree-5.26.0.tgz#16cbceedb0011c2ed4f607255f3ee1e6e43b88c3"
+  integrity sha512-EyGpw6eQDsfD6jIqmXP3rU5oHScZ51tL/cZgFbFBvWuCwrIptl+oueUZzSmLtxFuSOQ9vDcJIs+279gnJkfd1w==
   dependencies:
-    "@typescript-eslint/types" "5.25.0"
-    "@typescript-eslint/visitor-keys" "5.25.0"
+    "@typescript-eslint/types" "5.26.0"
+    "@typescript-eslint/visitor-keys" "5.26.0"
     debug "^4.3.4"
     globby "^11.1.0"
     is-glob "^4.0.3"
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2futils/-/utils-5.25.0.tgz#272751fd737733294b4ab95e16c7f2d4a75c2049"
-  integrity sha512-qNC9bhnz/n9Kba3yI6HQgQdBLuxDoMgdjzdhSInZh6NaDnFpTUlwNGxplUFWfY260Ya0TRPvkg9dd57qxrJI9g==
+"@typescript-eslint/utils@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2futils/-/utils-5.26.0.tgz#896b8480eb124096e99c8b240460bb4298afcfb4"
+  integrity sha512-PJFwcTq2Pt4AMOKfe3zQOdez6InIDOjUJJD3v3LyEtxHGVVRK3Vo7Dd923t/4M9hSH2q2CLvcTdxlLPjcIk3eg==
   dependencies:
     "@types/json-schema" "^7.0.9"
-    "@typescript-eslint/scope-manager" "5.25.0"
-    "@typescript-eslint/types" "5.25.0"
-    "@typescript-eslint/typescript-estree" "5.25.0"
+    "@typescript-eslint/scope-manager" "5.26.0"
+    "@typescript-eslint/types" "5.26.0"
+    "@typescript-eslint/typescript-estree" "5.26.0"
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
 
-"@typescript-eslint/visitor-keys@5.25.0":
-  version "5.25.0"
-  resolved "http://npm.uniubi.com/@typescript-eslint%2fvisitor-keys/-/visitor-keys-5.25.0.tgz#33aa5fdcc5cedb9f4c8828c6a019d58548d4474b"
-  integrity sha512-yd26vFgMsC4h2dgX4+LR+GeicSKIfUvZREFLf3DDjZPtqgLx5AJZr6TetMNwFP9hcKreTTeztQYBTNbNoOycwA==
+"@typescript-eslint/visitor-keys@5.26.0":
+  version "5.26.0"
+  resolved "http://npm.uniubi.com/@typescript-eslint%2fvisitor-keys/-/visitor-keys-5.26.0.tgz#7195f756e367f789c0e83035297c45b417b57f57"
+  integrity sha512-wei+ffqHanYDOQgg/fS6Hcar6wAWv0CUPQ3TZzOWd2BLfgP539rb49bwua8WRAs7R6kOSLn82rfEu2ro6Llt8Q==
   dependencies:
-    "@typescript-eslint/types" "5.25.0"
+    "@typescript-eslint/types" "5.26.0"
     eslint-visitor-keys "^3.3.0"
 
 "@umijs/ast@3.5.24":
@@ -4498,9 +4498,9 @@
     invariant "^2.2.4"
 
 "@uniubi/icons-taro@^1.4.0":
-  version "1.14.0"
-  resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-1.14.0.tgz#52f0c3b1f26e326afc0d7f519602c99b94c847ee"
-  integrity sha512-xmaf/zRuXDj0BEDzikUbhLbth8pE6GL+Z4FkKO3I/3JGHGRz5OTjAXzDVLzo+RxjNcl+Pda4/RRO3eSIk+/aRQ==
+  version "1.15.0"
+  resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-1.15.0.tgz#cf7e8e056f57c72bd687b185a0c57c0da7c20c7a"
+  integrity sha512-XQWzb5o8P3EVteWAqkKq51C7wmQlYhr5eTrISrlxujI0ojyOh7gTGO9FqJurGkIsMo3PdQIeZNoeVIBqAnlJsg==
   dependencies:
     fs "^0.0.1-security"
     iconfont-parser "^1.0.0"
@@ -10316,9 +10316,9 @@ immutable@^3.8.1:
   integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
 
 immutable@^4.0.0:
-  version "4.0.0"
-  resolved "http://npm.uniubi.com/immutable/-/immutable-4.0.0.tgz#b86f78de6adef3608395efb269a91462797e2c23"
-  integrity sha1-uG943mre82CDle+yaakUYnl+LCM=
+  version "4.1.0"
+  resolved "http://npm.uniubi.com/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+  integrity sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -13507,9 +13507,9 @@ nth-check@^1.0.2:
     boolbase "~1.0.0"
 
 nth-check@^2.0.1:
-  version "2.1.0"
-  resolved "http://npm.uniubi.com/nth-check/-/nth-check-2.1.0.tgz#0cd91c5c08967b58b409fa76282e13851a33fa47"
-  integrity sha512-/sJnahgHzXT7OGgQeAPJ5WDcxs7teA2FU1wo6fEoYqjoHBU+AQi3Qz5hecKPlnOr1YjnSYwJTlBXADbEsaBMLg==
+  version "2.1.1"
+  resolved "http://npm.uniubi.com/nth-check/-/nth-check-2.1.1.tgz#c9eab428effce36cd6b92c924bdb000ef1f1ed1d"
+  integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
 
@@ -15194,9 +15194,9 @@ rc-dropdown@~3.5.0:
     rc-util "^5.17.0"
 
 rc-field-form@~1.26.1:
-  version "1.26.4"
-  resolved "http://npm.uniubi.com/rc-field-form/-/rc-field-form-1.26.4.tgz#78553e0f317f0ed7ceea70b1b89d43865dddeb83"
-  integrity sha512-eCCyiNNaN0NTYTyoziQHD4Fj6mUED21lWkw66vg+kttg0eDw+miD6LsaJbTD5c2bzKjUJTf10AitPG+f5zT4+A==
+  version "1.26.5"
+  resolved "http://npm.uniubi.com/rc-field-form/-/rc-field-form-1.26.5.tgz#603eddaf90a3329efc6a61f9a9c5e36d7097e605"
+  integrity sha512-JeZM7tF8V1A4l8eT1GUoanYTNXtGxIw+Qvwkc8k+9PnogKPXZxw2PGMKyo0RBUknR90omT2BhA9AaDEmVXDZLA==
   dependencies:
     "@babel/runtime" "^7.8.4"
     async-validator "^4.1.0"

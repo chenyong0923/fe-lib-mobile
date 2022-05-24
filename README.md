@@ -8,6 +8,10 @@
 
 ## 开发流程
 
+### 分支管理
+
+开发成员开发时从 `dev` 分支拉取组件分支，如：`feature/button`，每个组件独立分支管理，开发完成后通过 merge request 向 `dev` 分支进行合并，并 @虚宿 进行 Code Review
+
 ### 安装依赖
 
 项目通过 `lerna` 进行管理，在项目根目录执行 `yarn bootstrap` 为所有包安装依赖
@@ -22,3 +26,5 @@
 6. 启动完成后修改各项目代码即可热更新预览
 
 ## 项目发布
+
+进入项目根目录，执行 `lerna publish`，根据修改情况确定版本号，版本号需严格遵循 [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/) 语义化版本规范
