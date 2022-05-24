@@ -1,11 +1,3 @@
-# `uniubi-lib-mobile`
+# uniubi-lib-mobile
 
-> TODO: description
-
-## Usage
-
-```
-const uniubiLibMobile = require('uniubi-lib-mobile');
-
-// TODO: DEMONSTRATE API
-```
+移动端组件库仓库

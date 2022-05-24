@@ -25,8 +25,9 @@
     "url": "git@gitlab.uniubi.com:fe-team/common/uniubi-lib-mobile.git"
   },
   "scripts": {
-    "dev": "yarn run dev:lib",
+    "dev": "yarn run dev:rollup",
     "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
+    "dev:rollup": "rollup --config ./config/rollup.config.js --watch",
     "build": "yarn clean && yarn build:rollup && yarn build:lib",
     "build:lib": "tsc --project ./tsconfig.build.json",
     "build:rollup": "rollup --config ./config/rollup.config.js",
