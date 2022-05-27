@@ -1,5 +1,76 @@
-@import "../var.less";
+@import "../themes/default.less";
+@import "./mixin.less";
 
 .@{prefix}-button {
-  color: #000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  height: 96px;
+  line-height: 96px;
+  padding: 0 32px;
+  .button-color(@text-color; transparent; @border-color);
+
+  &[loading]::before {
+    content: none; // 去掉自带的loding，自己实现
+  }
+
+  // type
+  &-primary {
+    .button-color(@white; @color-primary; @color-primary);
+  }
+
+  &-secondary {
+    .button-color(@color-primary; transparent; @color-primary);
+  }
+
+  &-link {
+    .button-color(@color-primary; transparent; transparent);
+  }
+
+  &-text {
+    .button-color(@text-color; transparent; transparent);
+  }
+
+  // size
+  &-small {
+    height: 64px;
+    line-height: 64px;
+  }
+
+  // danger
+  &-danger {
+    .button-color(@color-danger; transparent; @color-danger);
+  }
+
+  &-danger&-primary {
+    .button-color(@white; @color-danger; @color-danger);
+  }
+
+  &-danger&-secondary {
+    .button-color(@color-danger; transparent; @color-danger);
+  }
+
+  &-danger&-link {
+    .button-color(@color-danger; transparent; transparent);
+  }
+
+  &-danger&-text {
+    .button-color(@color-danger; transparent; transparent);
+  }
+
+  // disabled
+  &-disabled {
+    cursor: not-allowed;
+  }
+
+  // block
+  &-block {
+    display: flex;
+  }
+
+  // 图标样式
+  &-icon {
+    margin-right: @spacing-h-sm;
+  }
 }

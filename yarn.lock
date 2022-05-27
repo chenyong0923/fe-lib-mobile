@@ -4497,6 +4497,16 @@
     expo-modules-autolinking "^0.0.3"
     invariant "^2.2.4"
 
+"@uniubi/icons-taro@^1.16.0":
+  version "1.16.0"
+  resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-1.16.0.tgz#d969fabfe1e07acaa8072d1ae0a1883aa6f73510"
+  integrity sha512-ldGsXKGr983kLO6ASGICzA4S+Lz7W1mIu95MTG8bgukRl+axD/o4LW9wtDbycJncDApa3RBiyDda47Vj9hpvMw==
+  dependencies:
+    fs "^0.0.1-security"
+    iconfont-parser "^1.0.0"
+    mkdirp "^1.0.4"
+    ts-node "^10.4.0"
+
 "@uniubi/icons-taro@^1.4.0":
   version "1.15.0"
   resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-1.15.0.tgz#cf7e8e056f57c72bd687b185a0c57c0da7c20c7a"
@@ -18544,6 +18554,12 @@ unist-util-visit@^4.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
     unist-util-visit-parents "^5.0.0"
+
+"uniubi-lib-mobile@file:packages/uniubi-lib-mobile":
+  version "0.1.0"
+  dependencies:
+    "@uniubi/icons-taro" "^1.16.0"
+    classnames "^2.3.1"
 
 uniubi-lint@^1.2.0:
   version "1.2.0"

@@ -1,0 +1,63 @@
+@import "../themes/default.less";
+
+.button-color(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+
+  &::after {
+    border-color: @border;
+  }
+
+  &:hover,
+  &:active {
+    color: fade(@color, 80%);
+
+    & when (@background = transparent) {
+      background-color: transparent;
+    }
+
+    & when not (@background = transparent) {
+      background-color: fade(@background, 80%);
+    }
+
+    &::after {
+      & when (@border = transparent) {
+        border-color: transparent;
+      }
+
+      & when not (@border = transparent) {
+        border-color: fade(@border, 80%);
+      }
+    }
+  }
+
+  .button-disabled(@color; @background; @border);
+}
+
+.button-disabled(@color; @background; @border) {
+  &[disabled] {
+    &,
+    &:hover,
+    &:active {
+      color: fade(@color, 50%);
+
+      & when (@background = transparent) {
+        background-color: transparent;
+      }
+
+      & when not (@background = transparent) {
+        background-color: fade(@background, 50%);
+      }
+
+      &::after {
+        & when (@border = transparent) {
+          border-color: transparent;
+        }
+
+        & when not (@border = transparent) {
+          border-color: fade(@border, 50%);
+        }
+      }
+    }
+  }
+}
