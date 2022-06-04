@@ -1,7 +1,8 @@
 import { Button, ITouchEvent, Text, View } from '@tarojs/components';
-import * as iconMaps from '@uniubi/icons-taro';
 import classnames from 'classnames';
 import React from 'react';
+
+import { Loading } from '@/index';
 
 import { UButtonProps } from '../../../types/button';
 
@@ -25,17 +26,6 @@ const UButton: React.FC<UButtonProps> = ({
     onClick?.(e);
   };
 
-  // 按钮图标
-  const renderIcon = () => {
-    // 如果状态为 Loading，即使 icon 存在也渲染 loading icon
-    const Loading = iconMaps.RotateOutlined;
-    if (loading) return <Loading />;
-    // icon 存在才渲染
-    if (!icon) return null;
-    const Icon = iconMaps[icon];
-    return Icon ? <Icon size={32} /> : null;
-  };
-
   return (
     <Button
       className={classnames(
@@ -57,14 +47,10 @@ const UButton: React.FC<UButtonProps> = ({
       onClick={handleClick}
       {...rest}
     >
-      <View className={`${prefix}-icon`}>{renderIcon()}</View>
+      <View className={`${prefix}-icon`}>{loading ? <Loading /> : icon}</View>
       <Text className={`${prefix}-content`}>{children}</Text>
     </Button>
   );
 };
 
 export default UButton;
-
-// TODO:
-// 1. Icon 组件重构，不能用 props 来控制颜色，需要用 class
-// 2. Icon 在不同类型按钮下的样式

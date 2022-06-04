@@ -1,3 +1,4 @@
+import { AlarmclockOutlined } from '@uniubi/icons-taro';
 import React from 'react';
 import { Button } from 'uniubi-lib-mobile';
 
@@ -44,17 +45,17 @@ const Page = () => {
           text
         </Button>
         <Button type="primary" danger disabled>
-          danger
+          primary danger
         </Button>
         <Button type="text" danger disabled>
-          danger
+          text danger
         </Button>
       </Section>
       <Section title="按钮大小">
         <Button>default</Button>
         <Button size="small">small</Button>
       </Section>
-      <Section title="Block">
+      <Section title="Block 按钮">
         <Button block>default</Button>
       </Section>
       <Section title="Loading">
@@ -64,16 +65,7 @@ const Page = () => {
         </Button>
       </Section>
       <Section title="带图标的按钮">
-        <Button icon="AlarmclockOutlined">AlarmclockOutlined</Button>
-        <Button icon="AlarmclockOutlined" type="primary">
-          AlarmclockOutlined
-        </Button>
-        <Button icon="AlarmclockOutlined" type="secondary">
-          AlarmclockOutlined
-        </Button>
-        <Button icon="AlarmclockOutlined" type="primary" danger>
-          AlarmclockOutlined
-        </Button>
+        <Button icon={<AlarmclockOutlined />}>Button</Button>
       </Section>
     </BasicLayout>
   );

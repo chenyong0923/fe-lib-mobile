@@ -1,4 +1,4 @@
-@import "../themes/default.less";
+@import "../../themes/default.less";
 
 .button-color(@color; @background; @border) {
   color: @color;
@@ -31,7 +31,10 @@
     }
   }
 
+  // 禁用状态样式
   .button-disabled(@color; @background; @border);
+  // loading 状态样式
+  .button-loading-color(@color);
 }
 
 .button-disabled(@color; @background; @border) {
@@ -40,6 +43,7 @@
     &:hover,
     &:active {
       color: fade(@color, 50%);
+      cursor: not-allowed;
 
       & when (@background = transparent) {
         background-color: transparent;
@@ -59,5 +63,11 @@
         }
       }
     }
+  }
+}
+
+.button-loading-color(@loading-color) {
+  .@{prefix}-loading-spin-item::before {
+    background-color: @loading-color;
   }
 }

@@ -3,7 +3,12 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"]
 }

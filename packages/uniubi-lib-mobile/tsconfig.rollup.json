@@ -4,8 +4,12 @@
     "target": "es5",
     "module": "es6",
     "downlevelIteration": true,
-    "baseUrl": ".",
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"]
 }

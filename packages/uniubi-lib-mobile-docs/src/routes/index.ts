@@ -9,6 +9,11 @@ export default [
         component: '@/pages/components/button',
         name: 'Button 按钮',
       },
+      {
+        path: '/loading',
+        component: '@/pages/components/loading',
+        name: 'Loading 加载',
+      },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-@import "../themes/default.less";
+@import "../../themes/default.less";
 @import "./mixin.less";
 
 .@{prefix}-button {
@@ -7,12 +7,14 @@
   align-items: center;
   min-width: 120px;
   height: 96px;
-  line-height: 96px;
+  line-height: 1em;
   padding: 0 32px;
+  font-size: @font-size-base;
   .button-color(@text-color; transparent; @border-color);
 
-  &[loading]::before {
-    content: none; // 去掉自带的loding，自己实现
+  // size
+  &-small {
+    height: 64px;
   }
 
   // type
@@ -30,12 +32,6 @@
 
   &-text {
     .button-color(@text-color; transparent; transparent);
-  }
-
-  // size
-  &-small {
-    height: 64px;
-    line-height: 64px;
   }
 
   // danger
@@ -72,5 +68,15 @@
   // 图标样式
   &-icon {
     margin-right: @spacing-h-sm;
+  }
+
+  // laading
+  &[loading]::before {
+    content: none; // 去掉自带的loding，自己实现
+  }
+
+  .@{prefix}-loading-spin {
+    width: 36px;
+    height: 36px;
   }
 }

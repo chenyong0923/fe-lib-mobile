@@ -1,3 +1,4 @@
+import alias from '@rollup/plugin-alias';
 import RollupCommonjs from '@rollup/plugin-commonjs';
 import RollupJson from '@rollup/plugin-json';
 import RollupNodeResolve from '@rollup/plugin-node-resolve';
@@ -8,6 +9,7 @@ import RollupTypescript from 'rollup-plugin-typescript2';
 import Package from '../package.json';
 
 const resolveFile = (path) => NodePath.resolve(__dirname, '..', path);
+const projectRootDir = NodePath.resolve(__dirname);
 
 const externalPackages = [
   'react',
@@ -34,6 +36,12 @@ export default {
   ],
   external: externalPackages,
   plugins: [
+    alias({
+      entries: [
+        { find: '~', replacement: NodePath.resolve('/') },
+        { find: '@', replacement: NodePath.resolve('src') },
+      ],
+    }),
     RollupNodeResolve({
       customResolveOptions: {
         moduleDirectory: 'node_modules',

@@ -1,0 +1,98 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+@import "./mixin.less";
+
+.@{prefix}-loading-nest {
+  position: relative;
+
+  .@{prefix}-loading-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+
+    .@{prefix}-loading {
+      .position-absolute-center();
+    }
+  }
+
+  .@{prefix}-loading-container {
+    .transition(opacity);
+
+    &-blur {
+      opacity: 0.5;
+    }
+  }
+}
+
+.@{prefix}-loading {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-primary {
+    .@{prefix}-loading-spin {
+      &-item {
+        &::before {
+          background-color: @background-color-primary;
+        }
+      }
+    }
+
+    .@{prefix}-loading-text {
+      color: @text-color-primary;
+    }
+  }
+
+  &-spin {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    animation: loading-rotate 2s linear infinite;
+
+    &-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &::before {
+        display: block;
+        width: 4px;
+        height: 25%;
+        margin: 0 auto;
+        background-color: @background-color-default;
+        border-radius: 40%;
+        content: " ";
+      }
+      // 循环12个 item 样式
+      .loop(12);
+    }
+  }
+
+  &-text {
+    font-size: @font-size-sm;
+    line-height: @font-size-sm + 16px;
+    color: @text-color-secondary;
+    margin-top: @spacing-v-sm;
+  }
+}
+
+.loop(@n, @i: 1) when (@i =< @n) {
+  .loading-item(@i);
+  .loop(@n, (@i + 1));
+}
+
+@keyframes loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

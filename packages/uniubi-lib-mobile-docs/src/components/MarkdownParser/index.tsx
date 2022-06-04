@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 import styles from './index.less';
 
@@ -20,6 +21,7 @@ const MarkdownParser: React.FC<MarkdownParserProps> = ({
     <ReactMarkdown
       className={classnames('markdown-body', styles.container)}
       rehypePlugins={[rehypeRaw]}
+      remarkPlugins={[remarkGfm]}
       components={{
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');

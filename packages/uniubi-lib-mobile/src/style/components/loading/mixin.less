@@ -1,0 +1,8 @@
+@import "../../themes/default.less";
+
+.loading-item(@n) {
+  &:nth-of-type(@{n}) {
+    transform: rotate(30deg * @n);
+    opacity: 1 - 0.0625 * (@n - 1);
+  }
+}
