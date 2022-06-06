@@ -61,16 +61,7 @@ const config = {
         },
       },
     },
-    esnextModules: ['taro-ui'],
     devServer: {
-      proxy: {
-        '/api': {
-          target: 'http://mock.uniubi.com',
-          pathRewrite: {
-            '^/api': '',
-          },
-        },
-      },
       open: false,
     },
   },
