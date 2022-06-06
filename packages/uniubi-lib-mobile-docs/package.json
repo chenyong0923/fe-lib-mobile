@@ -7,6 +7,7 @@
   "scripts": {
     "start": "umi dev",
     "build": "sh ./scripts/build.sh",
+    "build:docs": "umi build",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
     "lint": "eslint 'src/**/*.{js,jsx,tsx,ts}' --quiet",

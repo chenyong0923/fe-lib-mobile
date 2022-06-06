@@ -1,8 +1,10 @@
 echo 'build start'
 
+cd ../uniubi-lib-mobile
+npm run build
 cd ../uniubi-lib-mobile-demo
-yarn build:h5:production
+npm run build:h5:production
 cd ../uniubi-lib-mobile-docs
-umi build
+npm run build:docs
 mkdir dist/h5
 cp -r ../uniubi-lib-mobile-demo/dist/* ./dist/h5
