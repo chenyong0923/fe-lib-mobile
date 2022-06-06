@@ -8,7 +8,7 @@ export interface UButtonProps extends ButtonProps {
   block?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: string;
+  icon?: React.ReactNode;
 }
 
 declare const UButton: FC<UButtonProps>;
