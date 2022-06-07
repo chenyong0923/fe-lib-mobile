@@ -9,6 +9,7 @@
   }
 
   &:hover,
+  &:focus,
   &:active {
     color: fade(@color, 80%);
 
@@ -41,6 +42,7 @@
   &[disabled] {
     &,
     &:hover,
+    &:focus,
     &:active {
       color: fade(@color, 50%);
       cursor: not-allowed;
