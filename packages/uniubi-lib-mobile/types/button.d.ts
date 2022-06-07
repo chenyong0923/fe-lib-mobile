@@ -6,6 +6,7 @@ export interface UButtonProps extends ButtonProps {
   size?: 'default' | 'small';
   danger?: boolean;
   block?: boolean;
+  round?: boolean;
   disabled?: boolean;
   loading?: boolean;
   icon?: React.ReactNode;

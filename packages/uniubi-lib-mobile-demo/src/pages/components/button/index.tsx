@@ -11,7 +11,7 @@ const Page = () => {
       <Section title="按钮类型">
         <Button>default</Button>
         <Button type="primary">primary</Button>
-        <Button type="secondary">border</Button>
+        <Button type="secondary">secondary</Button>
         <Button type="link">link</Button>
         <Button type="text">text</Button>
       </Section>
@@ -21,7 +21,7 @@ const Page = () => {
           primary
         </Button>
         <Button type="secondary" danger>
-          border
+          secondary
         </Button>
         <Button type="link" danger>
           link
@@ -36,7 +36,7 @@ const Page = () => {
           primary
         </Button>
         <Button type="secondary" disabled>
-          border
+          secondary
         </Button>
         <Button type="link" disabled>
           link
@@ -57,6 +57,14 @@ const Page = () => {
       </Section>
       <Section title="Block 按钮">
         <Button block>default</Button>
+      </Section>
+      <Section title="按钮形状">
+        <Button type="primary" round>
+          round
+        </Button>
+        <Button type="primary" round size="small">
+          round
+        </Button>
       </Section>
       <Section title="Loading">
         <Button loading>loading</Button>

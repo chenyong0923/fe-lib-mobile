@@ -53,6 +53,13 @@ import { Button } from "uniubi-lib-mobile";
 <Button block>default</Button>
 ```
 
+### 按钮形状
+
+```tsx
+<Button type="primary" round>round</Button>
+<Button type="primary" round size="small">small</Button>
+```
+
 ### Loading
 
 ```tsx
@@ -80,6 +87,7 @@ const App = () => {
 | size     | 按钮大小     | N    | `'default' \| 'small'`                       | `'default'` |      |
 | danger   | 危险按钮     | N    | `boolean`                                    | `false`     |      |
 | block    | Block 按钮   | N    | `boolean`                                    | `false`     |      |
+| round    | 按钮形状圆形 | N    | `boolean`                                    | `false`     |      |
 | disabled | 禁用按钮     | N    | `boolean`                                    | `false`     |      |
 | loading  | 加载中       | N    | `boolean`                                    | `false`     |      |
 | icon     | 按钮前的图标 | N    | `React.ReactNode`                            |             |      |

@@ -15,8 +15,9 @@ const UButton: React.FC<UButtonProps> = ({
   type = 'default',
   danger,
   block,
-  disabled,
-  loading,
+  round = false,
+  disabled = false,
+  loading = false,
   icon,
   onClick,
   ...rest
@@ -39,6 +40,7 @@ const UButton: React.FC<UButtonProps> = ({
         },
         { [`${prefix}-danger`]: danger },
         { [`${prefix}-block`]: block },
+        { [`${prefix}-round`]: round },
         { [`${prefix}-loading`]: loading },
         className,
       )}

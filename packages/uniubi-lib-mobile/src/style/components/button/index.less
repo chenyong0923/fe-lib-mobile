@@ -11,6 +11,7 @@
   line-height: 1em;
   padding: 0 32px;
   font-size: @font-size-base;
+  cursor: pointer;
   .button-color(@text-color; transparent; @border-color);
 
   // size
@@ -64,6 +65,11 @@
   // block
   &-block {
     display: flex;
+  }
+
+  // round
+  &-round {
+    border-radius: @border-radius-max;
   }
 
   // 图标样式
