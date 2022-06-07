@@ -13,7 +13,7 @@ const DemoContainer: React.FC = () => {
     const path = pathname === '/' ? '/index' : `/components${pathname}`;
 
     return `${prefix}/#/pages${path}/index`;
-  }, []);
+  }, [pathname]);
 
   return (
     <iframe src={url} title="demo" frameBorder="0" width="100%" height="100%" />
