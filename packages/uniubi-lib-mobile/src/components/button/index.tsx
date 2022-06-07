@@ -2,9 +2,8 @@ import { Button, ITouchEvent, Text, View } from '@tarojs/components';
 import classnames from 'classnames';
 import React from 'react';
 
-import { Loading } from '@/index';
-
 import { UButtonProps } from '../../../types/button';
+import Loading from '../loading';
 
 const prefix = 'ulm-button';
 
