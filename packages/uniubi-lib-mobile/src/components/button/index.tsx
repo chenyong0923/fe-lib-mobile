@@ -43,7 +43,6 @@ const UButton: React.FC<UButtonProps> = ({
         className,
       )}
       disabled={disabled}
-      loading={loading}
       onClick={handleClick}
       {...rest}
     >
