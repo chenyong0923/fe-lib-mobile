@@ -22,6 +22,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/popup/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/overlay/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

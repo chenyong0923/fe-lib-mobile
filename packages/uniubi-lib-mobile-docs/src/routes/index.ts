@@ -14,6 +14,11 @@ export default [
         component: '@/pages/components/loading',
         name: 'Loading 加载',
       },
+      {
+        path: '/overlay',
+        component: '@/pages/components/overlay',
+        name: 'Overlay 遮照',
+      },
     ],
   },
 ];

@@ -3,6 +3,8 @@ export default {
     'pages/index/index',
     'pages/components/button/index',
     'pages/components/loading/index',
+    'pages/components/overlay/index',
+    'pages/components/popup/index',
   ],
   window: {
     backgroundTextStyle: 'light',
