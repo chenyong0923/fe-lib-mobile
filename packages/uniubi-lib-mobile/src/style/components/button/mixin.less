@@ -9,8 +9,7 @@
   }
 
   &:hover,
-  &:focus,
-  &:active {
+  &:not([disabled]):active {
     color: fade(@color, 80%);
 
     & when (@background = transparent) {
@@ -42,7 +41,6 @@
   &[disabled] {
     &,
     &:hover,
-    &:focus,
     &:active {
       color: fade(@color, 50%);
       cursor: not-allowed;
