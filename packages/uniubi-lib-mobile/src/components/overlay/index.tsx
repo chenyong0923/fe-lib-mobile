@@ -1,10 +1,10 @@
+import { View } from '@tarojs/components';
 import classnames from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { PREFIX } from '@/constants';
+import useTransition from '@/utils/useTransition';
 import { UOverlayProps } from '~/types/overlay';
-
-import Transition from '../transition';
 
 const prefix = `${PREFIX}-overlay`;
 
@@ -13,17 +13,25 @@ const Overlay: React.FC<UOverlayProps> = ({
   style,
   visible = false,
   onClick,
+  onClosed,
   children,
   ...rest
 }) => {
   // 内部显示状态，决定组件是否存在，当 show 为 false 时组件销毁
   const [show, setShow] = useState(false);
 
+  const { classes, transitionStyles } = useTransition({
+    visible,
+    onAfterLeave: () => {
+      setShow(false);
+      onClosed?.();
+    },
+  });
+
   useEffect(() => {
     if (visible) {
       setShow(true);
     }
-    return () => {};
   }, [visible]);
 
   // 阻止事件穿透
@@ -33,19 +41,19 @@ const Overlay: React.FC<UOverlayProps> = ({
   }, []);
 
   return show ? (
-    <Transition
-      className={classnames(prefix, className)}
-      style={style}
-      onTouchMove={_noop}
-      visible={visible} // Transition 组件的显示，决定动画的起止
-      onClick={onClick}
-      onAfterLeave={() => {
-        setShow(false);
+    <View
+      className={classnames(prefix, classes, className)}
+      style={{
+        ...transitionStyles,
+        ...style,
       }}
+      onTouchMove={_noop}
+      onClick={onClick}
       {...rest}
+      catchMove
     >
       {children}
-    </Transition>
+    </View>
   ) : null;
 };
 
