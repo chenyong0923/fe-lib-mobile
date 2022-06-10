@@ -12,9 +12,9 @@ const Box = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 100,
-        height: 100,
-        backgroundColor: '#fff',
+        width: '100px',
+        height: '100px',
+        backgroundColor: '#c9c9c9',
       }}
     >
       Box
@@ -35,6 +35,10 @@ const Page = () => {
     setPosition(p);
     setVisible2(true);
   };
+
+  const [visible3, setVisible3] = useState<boolean>(false);
+
+  const [visible4, setVisible4] = useState<boolean>(false);
 
   return (
     <BasicLayout>
@@ -89,6 +93,36 @@ const Page = () => {
           position={position}
           onClose={() => {
             setVisible2(false);
+          }}
+        >
+          <Box />
+        </Popup>
+      </Section>
+      <Section title="不需要遮照">
+        <Button
+          onClick={() => {
+            setVisible3(true);
+          }}
+        >
+          打开弹出层
+        </Button>
+        <Popup visible={visible3} overlay={false}>
+          <Box />
+        </Popup>
+      </Section>
+      <Section title="点击遮照不关闭">
+        <Button
+          onClick={() => {
+            setVisible4(true);
+          }}
+        >
+          打开弹出层
+        </Button>
+        <Popup
+          visible={visible4}
+          closeOnClickOverlay={false}
+          onClose={() => {
+            setVisible4(false);
           }}
         >
           <Box />

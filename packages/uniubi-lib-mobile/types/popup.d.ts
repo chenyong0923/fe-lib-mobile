@@ -4,15 +4,11 @@ export interface UPopupProps {
   className?: string;
   style?: React.CSSProperties;
   visible?: boolean;
-  onClose?: () => void;
   position?: 'top' | 'bottom' | 'left' | 'right' | 'center';
+  overlay?: boolean;
+  onClickOverlay?: (e: ITouchEvent) => void;
+  onClose?: () => void;
   closeOnClickOverlay?: boolean;
-  onBeforeEnter?: () => void;
-  onBeforeLeave?: () => void;
-  onAfterEnter?: () => void;
-  onAfterLeave?: () => void;
-  onEnter?: () => void;
-  onLeave?: () => void;
 }
 
 declare const UPopup: FC<UPopupProps>;

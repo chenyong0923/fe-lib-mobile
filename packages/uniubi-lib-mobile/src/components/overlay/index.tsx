@@ -1,8 +1,9 @@
 import { View } from '@tarojs/components';
 import classnames from 'classnames';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { PREFIX } from '@/constants';
+import { noop } from '@/utils/common';
 import useTransition from '@/utils/useTransition';
 import { UOverlayProps } from '~/types/overlay';
 
@@ -34,12 +35,6 @@ const Overlay: React.FC<UOverlayProps> = ({
     }
   }, [visible]);
 
-  // 阻止事件穿透
-  const _noop = useCallback((event) => {
-    event.stopPropagation();
-    event.preventDefault();
-  }, []);
-
   return show ? (
     <View
       className={classnames(prefix, classes, className)}
@@ -47,7 +42,7 @@ const Overlay: React.FC<UOverlayProps> = ({
         ...transitionStyles,
         ...style,
       }}
-      onTouchMove={_noop}
+      onTouchMove={noop} // 阻止事件穿透
       onClick={onClick}
       {...rest}
       catchMove

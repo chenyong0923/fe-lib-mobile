@@ -19,6 +19,11 @@ export default [
         component: '@/pages/components/overlay',
         name: 'Overlay 遮照',
       },
+      {
+        path: '/popup',
+        component: '@/pages/components/popup',
+        name: 'Popup 弹出层',
+      },
     ],
   },
 ];

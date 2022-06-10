@@ -9,7 +9,6 @@ import RollupTypescript from 'rollup-plugin-typescript2';
 import Package from '../package.json';
 
 const resolveFile = (path) => NodePath.resolve(__dirname, '..', path);
-const projectRootDir = NodePath.resolve(__dirname);
 
 const externalPackages = [
   'react',
