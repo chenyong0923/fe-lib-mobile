@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export interface UPopupProps {
+export interface PopupProps {
   className?: string;
   style?: React.CSSProperties;
   visible?: boolean;
@@ -11,6 +11,6 @@ export interface UPopupProps {
   closeOnClickOverlay?: boolean;
 }
 
-declare const UPopup: FC<UPopupProps>;
+declare const Popup: FC<PopupProps>;
 
-export default UPopup;
+export default Popup;

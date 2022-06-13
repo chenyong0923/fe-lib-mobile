@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import React from 'react';
 
 import { PREFIX } from '@/constants';
-import { ULoadingProps } from '~/types/loading';
+import { LoadingProps } from '~/types/loading';
 
 const prefix = `${PREFIX}-loading`;
 
-const Loading: React.FC<ULoadingProps> = ({
+const Loading: React.FC<LoadingProps> = ({
   className,
   style,
   children,

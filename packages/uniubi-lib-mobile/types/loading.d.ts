@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export interface ULoadingProps {
+export interface LoadingProps {
   className?: string;
   style?: React.CSSProperties;
   type?: 'default' | 'primary';
@@ -11,6 +11,6 @@ export interface ULoadingProps {
   icon?: React.ReactNode;
 }
 
-declare const UButton: FC<ULoadingProps>;
+declare const Loading: FC<LoadingProps>;
 
-export default UButton;
+export default Loading;

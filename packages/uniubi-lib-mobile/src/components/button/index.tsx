@@ -1,13 +1,18 @@
-import { Button, ITouchEvent, Text, View } from '@tarojs/components';
+import {
+  Button as TaroButton,
+  ITouchEvent,
+  Text,
+  View,
+} from '@tarojs/components';
 import classnames from 'classnames';
 import React from 'react';
 
-import { UButtonProps } from '../../../types/button';
+import { ButtonProps } from '../../../types/button';
 import Loading from '../loading';
 
 const prefix = 'ulm-button';
 
-const UButton: React.FC<UButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   className,
   children,
   size = 'default',
@@ -27,7 +32,7 @@ const UButton: React.FC<UButtonProps> = ({
   };
 
   return (
-    <Button
+    <TaroButton
       className={classnames(
         prefix,
         { [`${prefix}-small`]: size === 'small' },
@@ -49,8 +54,8 @@ const UButton: React.FC<UButtonProps> = ({
     >
       <View className={`${prefix}-icon`}>{loading ? <Loading /> : icon}</View>
       <Text className={`${prefix}-content`}>{children}</Text>
-    </Button>
+    </TaroButton>
   );
 };
 
-export default UButton;
+export default Button;

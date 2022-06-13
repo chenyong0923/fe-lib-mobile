@@ -1,7 +1,7 @@
 import { StandardProps } from '@tarojs/components';
 import { FC, ReactNode } from 'react';
 
-export interface UTransitionProps extends StandardProps {
+export interface TransitionProps extends StandardProps {
   visible?: boolean;
   duration?:
     | string
@@ -23,6 +23,6 @@ export interface UTransitionProps extends StandardProps {
   children?: ReactNode;
 }
 
-declare const UTransition: FC<UTransitionProps>;
+declare const Transition: FC<TransitionProps>;
 
-export default UTransition;
+export default Transition;

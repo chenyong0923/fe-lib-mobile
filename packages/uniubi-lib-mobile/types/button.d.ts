@@ -1,7 +1,7 @@
-import { ButtonProps } from '@tarojs/components';
+import { ButtonProps as TaroButtonProps } from '@tarojs/components';
 import { FC } from 'react';
 
-export interface UButtonProps extends ButtonProps {
+export interface ButtonProps extends TaroButtonProps {
   type?: 'default' | 'primary' | 'secondary' | 'link' | 'text';
   size?: 'default' | 'small';
   danger?: boolean;
@@ -12,6 +12,6 @@ export interface UButtonProps extends ButtonProps {
   icon?: React.ReactNode;
 }
 
-declare const UButton: FC<UButtonProps>;
+declare const Button: FC<ButtonProps>;
 
-export default UButton;
+export default Button;

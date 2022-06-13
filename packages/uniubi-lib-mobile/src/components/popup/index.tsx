@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react';
 import { PREFIX } from '@/constants';
 import { noop } from '@/utils/common';
 import useTransition from '@/utils/useTransition';
-import { UPopupProps } from '~/types/popup';
+import { PopupProps } from '~/types/popup';
 
 import Overlay from '../overlay';
 
 const prefix = `${PREFIX}-popup`;
 
-const Popup: React.FC<UPopupProps> = ({
+const Popup: React.FC<PopupProps> = ({
   className,
   style,
   children,

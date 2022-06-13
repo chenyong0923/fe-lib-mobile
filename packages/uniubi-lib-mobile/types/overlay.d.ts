@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export interface UOverlayProps {
+export interface OverlayProps {
   className?: string;
   style?: React.CSSProperties;
   visible?: boolean;
@@ -8,6 +8,6 @@ export interface UOverlayProps {
   onClosed?: () => void;
 }
 
-declare const UOverlay: FC<UOverlayProps>;
+declare const Overlay: FC<OverlayProps>;
 
-export default UOverlay;
+export default Overlay;

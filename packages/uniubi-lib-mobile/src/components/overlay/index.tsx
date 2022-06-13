@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react';
 import { PREFIX } from '@/constants';
 import { noop } from '@/utils/common';
 import useTransition from '@/utils/useTransition';
-import { UOverlayProps } from '~/types/overlay';
+import { OverlayProps } from '~/types/overlay';
 
 const prefix = `${PREFIX}-overlay`;
 
-const Overlay: React.FC<UOverlayProps> = ({
+const Overlay: React.FC<OverlayProps> = ({
   className,
   style,
   visible = false,
