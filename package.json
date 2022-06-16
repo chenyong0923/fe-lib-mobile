@@ -8,8 +8,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "lint": "lerna run lint",
-    "pub": "lerna publish"
+    "lint": "lerna run lint"
   },
   "resolutions": {
     "@types/react": "^17.0.2",
