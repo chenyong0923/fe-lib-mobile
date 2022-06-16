@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+import '@uniubi/icons-taro/dist/style/index.css';
 import 'uniubi-lib-mobile/dist/style/index.less';
 
 class App extends Component {
