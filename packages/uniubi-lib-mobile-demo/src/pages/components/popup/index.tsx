@@ -5,9 +5,10 @@ import { Button, Popup } from 'uniubi-lib-mobile';
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
 
-const Box = () => {
+const Box = ({ ...props }) => {
   return (
     <View
+      {...props}
       style={{
         display: 'flex',
         justifyContent: 'center',
@@ -107,7 +108,11 @@ const Page = () => {
           打开弹出层
         </Button>
         <Popup visible={visible3} overlay={false}>
-          <Box />
+          <Box
+            onClick={() => {
+              setVisible3(false);
+            }}
+          />
         </Popup>
       </Section>
       <Section title="点击遮照不关闭">
@@ -125,7 +130,11 @@ const Page = () => {
             setVisible4(false);
           }}
         >
-          <Box />
+          <Box
+            onClick={() => {
+              setVisible4(false);
+            }}
+          />
         </Popup>
       </Section>
     </BasicLayout>

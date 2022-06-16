@@ -1,3 +1,4 @@
+export { default as ActionSheet } from './action-sheet';
 export { default as Button } from './button';
 export { default as Loading } from './loading';
 export { default as Overlay } from './overlay';

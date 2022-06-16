@@ -36,6 +36,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/action-sheet/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

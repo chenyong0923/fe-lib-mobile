@@ -1,0 +1,42 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-action-sheet {
+  width: 100%;
+
+  &-content {
+    background-color: @background-color-default;
+
+    &-item {
+      & + & {
+        margin-top: 2px;
+      }
+
+      &.@{prefix}-button-text {
+        height: 120px;
+        background-color: @white;
+        font-size: @font-size-lg;
+        color: @text-color-major;
+        border-radius: 0;
+
+        &.@{prefix}-button-text[disabled],
+        &.@{prefix}-button-danger {
+          background-color: @white;
+        }
+      }
+
+      &:last-of-type {
+        .safe-area-inset-bottom;
+        box-sizing: content-box;
+      }
+    }
+
+    &-item&-item-cancel {
+      margin-top: 8px;
+
+      &.@{prefix}-button {
+        color: @text-color;
+      }
+    }
+  }
+}

@@ -5,6 +5,11 @@ export default [
     routes: [
       { path: '/', component: '@/pages/index', exact: true, name: '快速使用' },
       {
+        path: '/action-sheet',
+        component: '@/pages/components/action-sheet',
+        name: 'ActionSheet 动作面板',
+      },
+      {
         path: '/button',
         component: '@/pages/components/button',
         name: 'Button 按钮',

@@ -1,6 +1,7 @@
 export default {
   pages: [
     'pages/index/index',
+    'pages/components/action-sheet/index',
     'pages/components/button/index',
     'pages/components/loading/index',
     'pages/components/overlay/index',

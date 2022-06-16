@@ -38,6 +38,8 @@ const useTransition = ({
   // display 显示状态
   const [display, setDisplay] = useState<boolean>(false);
 
+  // 动画实例
+  const animationRef = useRef<any>();
   // 当前过渡状态
   const status = useRef<'enter' | 'leave'>();
   // 过渡动画是否已经结束
@@ -63,7 +65,7 @@ const useTransition = ({
   const handleEnter = useCallback(() => {
     status.current = 'enter';
     onBeforeEnter?.();
-    requestAnimationFrame(() => {
+    animationRef.current = requestAnimationFrame(() => {
       if (status.current !== 'enter') {
         return;
       }
@@ -71,7 +73,7 @@ const useTransition = ({
       transitionEnded.current = false;
       setDisplay(true);
       setClasses(classNames.enter);
-      requestAnimationFrame(() => {
+      animationRef.current = requestAnimationFrame(() => {
         if (status.current !== 'enter') {
           return;
         }
@@ -88,14 +90,14 @@ const useTransition = ({
     }
     status.current = 'leave';
     onBeforeLeave?.();
-    requestAnimationFrame(() => {
+    animationRef.current = requestAnimationFrame(() => {
       if (status.current !== 'leave') {
         return;
       }
       onLeave?.();
       transitionEnded.current = false;
       setClasses(classNames.leave);
-      requestAnimationFrame(() => {
+      animationRef.current = requestAnimationFrame(() => {
         if (status.current !== 'leave') {
           return;
         }
@@ -112,6 +114,10 @@ const useTransition = ({
     if (!visible) {
       handleLeave();
     }
+
+    return () => {
+      cancelAnimationFrame(animationRef.current);
+    };
   }, [visible]);
 
   const formatStyles = () => {
