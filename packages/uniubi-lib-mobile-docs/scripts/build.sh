@@ -4,7 +4,7 @@ cd ../uniubi-lib-mobile
 npm run build
 cd ../uniubi-lib-mobile-demo
 rm -rf yarn.lock node_modules
-npm install
+npm install --registry=http://npm.uniubi.com
 npm run build:h5:production
 cd ../uniubi-lib-mobile-docs
 npm run build:docs
