@@ -3,7 +3,7 @@
 ## 引入
 
 ```tsx
-import { ActionSheet } from "uniubi-lib-mobile";
+import { NavHeader } from "uniubi-lib-mobile";
 ```
 
 ## 使用指南
@@ -11,43 +11,130 @@ import { ActionSheet } from "uniubi-lib-mobile";
 ### 基本使用
 
 ```tsx
-import { View } from "@tarojs/components";
-import React, { useState } from "react";
-import { Button, ActionSheet } from "uniubi-lib-mobile";
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
 
 const App = () => {
-  const [visible, setVisible] = useState<boolean>(false);
-
-  return (
-    <View>
-      <Button
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        打开动作面板
-      </Button>
-      <ActionSheet
-        visible={visible}
-        actions={[{ name: "选项1" }, { name: "选项2" }]}
-        onClose={() => {
-          setVisible(false);
-        }}
-      />
-    </View>
-  );
+    return (
+        <NavHeader title="默认标题" backTip="返回" statusBarHeight={20} />
+    );
 };
+
+export default App;
 ```
 
+### 标题超长
+
+```tsx
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader title="标题超长标题超长标题超长标题超长" />
+    );
+};
+
+export default App;
+```
+### 背景颜色
+
+```tsx
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader
+            title="默认标题"
+            backgroundColor={'#2228e0'}
+            fontColor={'#ffffff'}
+        />
+    );
+};
+
+export default App;
+```
+
+### 标题居左
+
+```tsx
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader title="标题居左" titlePosition="left" />
+    );
+};
+
+export default App;
+```
+
+### 仅有一个页面时返回首页
+
+```tsx
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader title="返回首页" homePath="/pages/index/index" />
+    );
+};
+
+export default App;
+```
+
+### 不显示返回按钮
+
+```tsx
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader title="不显示返回按钮" hiddenBack />
+    );
+};
+
+export default App;
+```
+
+### 返回按钮修改
+
+```tsx
+import { HomeOutlined } from '@uniubi/icons-taro';
+import React from 'react';
+import { NavHeader } from 'uniubi-lib-mobile';
+
+const App = () => {
+    return (
+        <NavHeader
+            title="返回按钮修改"
+            backIcon={<HomeOutlined style={{ fontSize: '22px' }} />}
+            onBack={() => {
+                alert('111');
+            }}
+        />
+    );
+};
+
+export default App;
+```
 
 ## API
 
 | 参数名              | 说明                     | 必填 | 类型         | 默认值  | 备注               |
 | ------------------- | ------------------------ | ---- | ------------ | ------- | ------------------ |
-| visible             | 是否显示                 | N    | `boolean`    | `false` |                    |
-| onCancel            | 点击取消回调事件         | N    | `() => void` |         | 传了才出现取消按钮 |
-| onClose             | 关闭动作面板回调事件     | N    | `() => void` |         |                    |
-| actions             | 操作项                   | N    | `IAction[]`  |         |                    |
-| closeOnClickAction  | 点击操作按钮是否关闭面板 | N    | `boolean`    | `true`  |                    |
-| onClickOverlay      | 点击遮照层回调事件       | N    | `() => void` |         |                    |
-| closeOnClickOverlay | 点击遮照层是否关闭面板   | N    | `boolean`    | `true`  |                    |
+| title             | 标题                 | N    | `string` 或 `React.ReactNode` |                    |
+| titlePosition            | 标题位置         | N    | `left` 或 `center`  |  `center`       |  |
+| backgroundColor             | 背景颜色     | N    | `string` |     `#ffffff`     |                   |
+| fontColor             | 图标及字体颜色                   | N    | `string`  |     `#000000`    |                    |
+| onBack  | 重写返回方法 | N    | `() => void`    |   |                    |
+| backIcon      | 返回图标       | N    | `React.ReactNode` |         |                    |
+| backTip | 返回tip   | N    | `string`    |   |                    |
+| hiddenBack | 是否隐藏back图标和tip   | N    | `boolean`    | `false`  |                    |
+| isBottomBorder | 是否有下划线   | N    | `boolean`    | `false`  |                    |
+| homePath | 在唯一页面时返回首页地址，为空时返回按钮不显示   | N    | `string`    |   |                    |
+| statusBarHeight | 顶部statusBar高度——一般在layout传入   | N    | `number`    |   |                    |

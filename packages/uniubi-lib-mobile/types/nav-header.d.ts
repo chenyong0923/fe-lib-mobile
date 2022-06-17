@@ -32,7 +32,7 @@ export interface NavHeaderProps {
    */
   backIcon?: React.ReactNode;
   /**
-   * 返回图标样式
+   * 返回tip
    */
   backTip?: string;
   /**
