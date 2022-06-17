@@ -43,6 +43,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/image/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

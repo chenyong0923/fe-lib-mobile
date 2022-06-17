@@ -3,6 +3,7 @@ export default {
     'pages/index/index',
     'pages/components/action-sheet/index',
     'pages/components/button/index',
+    'pages/components/image/index',
     'pages/components/loading/index',
     'pages/components/overlay/index',
     'pages/components/popup/index',
