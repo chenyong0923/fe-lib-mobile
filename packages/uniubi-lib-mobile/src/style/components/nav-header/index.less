@@ -8,8 +8,9 @@
   width: 100%;
   background-color: @white;
   position: relative;
-  border-bottom-color: @border-color;
-  border-bottom-style: solid;
+  &-border {
+    border-bottom: 1px @border-color solid;
+  }
   & &-content {
     width: 100%;
     height: @nav-header-height;
