@@ -50,18 +50,17 @@
         left: calc(@spacing-h-lg + @nav-back-width);
         top: 0;
         .flex-center();
-
-      }
-      &-center &-text {
-        text-align: center;
+        .@{prefix}-nav-header-content-title-text {
+          text-align: center;
+        }
       }
       &-left {
         display: flex;
         align-items: center;
         width: calc(100vw - @spacing-h-lg*2 - @nav-back-width*2);
-      }
-      &-left &-text {
-        text-align: left;
+        .@{prefix}-nav-header-content-title-text {
+          text-align: left;
+        }
       }
     }
   }
