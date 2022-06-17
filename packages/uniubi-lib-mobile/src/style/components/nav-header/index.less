@@ -1,0 +1,68 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+@nav-back-width: 120px;
+@nav-back-icon-size: 44px;
+
+.@{prefix}-nav-header {
+  width: 100%;
+  background-color: @white;
+  position: relative;
+  border-bottom-color: @border-color;
+  border-bottom-style: solid;
+  & &-content {
+    width: 100%;
+    height: @nav-header-height;
+    padding: 0 @spacing-h-lg;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    &-back {
+      max-width: @nav-back-width;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      &-icon {
+        font-size: @nav-back-icon-size;
+        line-height: @nav-back-icon-size;
+        margin-right: 4px;
+      }
+      &-tip {
+        font-size: @font-size-base;
+        .text-ellipsis;
+      }
+    }
+    &-title {
+
+      height: 100%;
+      box-sizing: border-box;
+      &-text {
+        width: 100%;
+        .text-ellipsis;
+        font-size: 34px;
+        font-weight: 500;
+      }
+
+      &-center {
+        width: calc(100% - @spacing-h-lg*2 - @nav-back-width*2);
+        position: absolute;
+        left: calc(@spacing-h-lg + @nav-back-width);
+        top: 0;
+        .flex-center();
+
+      }
+      &-center &-text {
+        text-align: center;
+      }
+      &-left {
+        display: flex;
+        align-items: center;
+        width: calc(100vw - @spacing-h-lg*2 - @nav-back-width*2);
+      }
+      &-left &-text {
+        text-align: left;
+      }
+    }
+  }
+}

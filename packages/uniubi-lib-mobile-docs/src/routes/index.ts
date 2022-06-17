@@ -25,6 +25,11 @@ export default [
         name: 'Loading 加载',
       },
       {
+        path: '/nav-header',
+        component: '@/pages/components/nav-header',
+        name: 'NavHeader 头部导航',
+      },
+      {
         path: '/overlay',
         component: '@/pages/components/overlay',
         name: 'Overlay 遮照',
