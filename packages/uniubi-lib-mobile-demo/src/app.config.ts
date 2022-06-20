@@ -5,6 +5,7 @@ export default {
     'pages/components/button/index',
     'pages/components/image/index',
     'pages/components/loading/index',
+    'pages/components/nav-header/index',
     'pages/components/overlay/index',
     'pages/components/popup/index',
   ],

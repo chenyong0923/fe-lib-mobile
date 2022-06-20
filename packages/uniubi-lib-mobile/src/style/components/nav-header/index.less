@@ -1,0 +1,68 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+@nav-back-width: 126px;
+@nav-back-icon-size: 44px;
+
+.@{prefix}-nav-header {
+  width: 100%;
+  background-color: @white;
+  position: relative;
+  &-border {
+    border-bottom: 1px @border-color solid;
+  }
+  & &-content {
+    width: 100%;
+    height: @nav-header-height;
+    padding: 0 @spacing-h-lg;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    &-back {
+      max-width: @nav-back-width;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      &-icon {
+        font-size: @nav-back-icon-size;
+        line-height: 1em;
+        margin-right: 4px;
+        flex-shrink: 0;
+      }
+      &-tip {
+        font-size: @font-size-base;
+        .text-ellipsis;
+      }
+    }
+    &-title {
+      width: calc(100% - @spacing-h-lg*2 - @nav-back-width*2);
+      height: 100%;
+      box-sizing: border-box;
+      &-text {
+        width: 100%;
+        .text-ellipsis;
+        font-size: 34px;
+        font-weight: 500;
+      }
+
+      &-center {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        .flex-center();
+        .@{prefix}-nav-header-content-title-text {
+          text-align: center;
+        }
+      }
+      &-left {
+        display: flex;
+        align-items: center;
+        .@{prefix}-nav-header-content-title-text {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
