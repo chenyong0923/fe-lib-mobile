@@ -126,6 +126,6 @@ export default App;
 | backIcon        | 返回图标                                       | N    | `React.ReactNode`             |           |      |
 | backTip         | 返回 tip                                       | N    | `string`                      |           |      |
 | hiddenBack      | 是否隐藏 back 图标和 tip                       | N    | `boolean`                     | `false`   |      |
-| isBottomBorder  | 是否有下划线                                   | N    | `boolean`                     | `false`   |      |
+| isBottomBorder  | 是否有下划线                                   | N    | `boolean`                     | `true`    |      |
 | homePath        | 在唯一页面时返回首页地址，为空时返回按钮不显示 | N    | `string`                      |           |      |
 | statusBarHeight | 顶部 statusBar 高度——一般在 layout 传入        | N    | `number`                      |           |      |
