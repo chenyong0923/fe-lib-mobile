@@ -2666,6 +2666,14 @@
     magic-string "^0.25.7"
     resolve "^1.17.0"
 
+"@rollup/plugin-image@^2.1.1":
+  version "2.1.1"
+  resolved "http://npm.uniubi.com/@rollup%2fplugin-image/-/plugin-image-2.1.1.tgz#898d6b59ac0025d7971ef45640ab330cb0663b0c"
+  integrity sha1-iY1rWawAJdeXHvRWQKszDLBmOww=
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    mini-svg-data-uri "^1.2.3"
+
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
   resolved "http://npm.uniubi.com/@rollup%2fplugin-json/-/plugin-json-4.1.0.tgz#54e09867ae6963c593844d8bd7a9c718294496f3"
@@ -11961,6 +11969,11 @@ mini-css-extract-plugin@0.9.0:
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
 
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "http://npm.uniubi.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz#8ab0aabcdf8c29ad5693ca595af19dd2ead09939"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
+
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
   resolved "http://npm.uniubi.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
@@ -17737,7 +17750,7 @@ unist-util-visit@^4.0.0:
     unist-util-visit-parents "^5.0.0"
 
 "uniubi-lib-mobile@file:packages/uniubi-lib-mobile":
-  version "0.3.1"
+  version "0.3.2"
   dependencies:
     "@uniubi/icons-taro" "^3.0.0"
     classnames "^2.3.1"

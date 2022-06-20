@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import React, { useState } from 'react';
 
 import { PREFIX } from '@/constants';
+import { rpxToPx } from '@/utils/common';
 import { ImageProps } from '~/types/image';
 
 const prefix = `${PREFIX}-image`;
@@ -17,8 +18,8 @@ const Image: React.FC<ImageProps> = ({
   className,
   style,
   src,
-  width,
-  height,
+  width = 160,
+  height = 160,
   preview = false,
   round = false,
   fallback,
@@ -48,13 +49,28 @@ const Image: React.FC<ImageProps> = ({
   };
 
   const renderImage = () => {
-    if (fail) return <View className={`${prefix}-fallback`}>{fallback}</View>;
+    // 加载失败
+    if (fail)
+      return (
+        <View className={`${prefix}-fallback`}>
+          {fallback ?? (
+            <TaroImage
+              className={`${prefix}-fallback-image`}
+              src="https://fe-cloud.uni-ubi.com/image/1655705985072-image_error.png?x-oss-process=img/q/80"
+              mode="aspectFit"
+            />
+          )}
+        </View>
+      );
 
     return (
       <TaroImage
         className={`${prefix}-img`}
         src={src}
         onClick={handlePreview}
+        onLoad={() => {
+          setFail(false);
+        }}
         onError={handleLoadError}
         {...rest}
       />
@@ -69,9 +85,9 @@ const Image: React.FC<ImageProps> = ({
         className,
       )}
       style={{
-        width,
-        height,
         ...(style as React.CSSProperties),
+        width: rpxToPx(width),
+        height: rpxToPx(height),
       }}
     >
       {renderImage()}

@@ -3,10 +3,10 @@ import Taro from '@tarojs/taro';
 import { FC } from 'react';
 
 export interface ImageProps extends TaroImageProps {
+  width?: number;
+  height?: number;
   preview?: boolean | Taro.previewImage.Option;
   round?: boolean;
-  width?: number | string;
-  height?: number | string;
   fallback?: React.ReactNode;
 }
 

@@ -15,6 +15,11 @@ export default [
         name: 'Button 按钮',
       },
       {
+        path: '/image',
+        component: '@/pages/components/image',
+        name: 'Image 图片',
+      },
+      {
         path: '/loading',
         component: '@/pages/components/loading',
         name: 'Loading 加载',
