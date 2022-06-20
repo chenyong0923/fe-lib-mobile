@@ -2,9 +2,10 @@ import { Text, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import { LeftOutlined } from '@uniubi/icons-taro';
 import classnames from 'classnames';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { PREFIX } from '@/constants';
+import { getSystemInfoSync } from '@/utils/common';
 import { NavHeaderProps } from '~/types/nav-header';
 
 const prefix = `${PREFIX}-nav-header`;
@@ -18,11 +19,10 @@ const NavHeader: React.FC<NavHeaderProps> = (props) => {
     backIcon,
     backTip,
     hiddenBack,
-    title = '',
+    title,
     homePath,
     onBack,
-    isBottomBorder = true,
-    statusBarHeight,
+    needBottomBorder = true,
     titlePosition = 'center',
   } = props;
 
@@ -41,15 +41,17 @@ const NavHeader: React.FC<NavHeaderProps> = (props) => {
     });
   };
 
+  const { statusBarHeight } = useMemo(() => getSystemInfoSync(), []);
+
   return (
     <View
       className={classnames(prefix, className, {
-        [`${prefix}-border`]: isBottomBorder,
+        [`${prefix}-border`]: needBottomBorder,
       })}
       style={{
-        ...style,
         backgroundColor,
         paddingTop: `${statusBarHeight}px`,
+        ...style,
       }}
     >
       <View className={`${prefix}-content`}>

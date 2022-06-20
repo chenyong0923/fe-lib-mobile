@@ -29,3 +29,5 @@ coverage
 
 # lerna
 lerna-debug.log
+
+.idea

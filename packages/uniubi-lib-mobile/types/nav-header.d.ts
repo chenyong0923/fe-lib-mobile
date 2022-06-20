@@ -42,15 +42,11 @@ export interface NavHeaderProps {
   /**
    * 是否有下划线
    */
-  isBottomBorder?: boolean;
+  needBottomBorder?: boolean;
   /**
    * 在唯一页面时返回首页地址，为空时返回按钮不显示
    */
   homePath?: string;
-  /**
-   * 顶部statusBar高度——一般在layout传入
-   */
-  statusBarHeight?: number;
 }
 
 declare const NavHeader: FC<NavHeaderProps>;

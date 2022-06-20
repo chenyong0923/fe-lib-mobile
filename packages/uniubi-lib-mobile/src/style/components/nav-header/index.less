@@ -1,7 +1,7 @@
 @import "../../themes/default.less";
 @import "../../mixins/index.less";
 
-@nav-back-width: 120px;
+@nav-back-width: 126px;
 @nav-back-icon-size: 44px;
 
 .@{prefix}-nav-header {
@@ -26,8 +26,9 @@
       align-items: center;
       &-icon {
         font-size: @nav-back-icon-size;
-        line-height: @nav-back-icon-size;
+        line-height: 1em;
         margin-right: 4px;
+        flex-shrink: 0;
       }
       &-tip {
         font-size: @font-size-base;
@@ -35,6 +36,7 @@
       }
     }
     &-title {
+      width: calc(100% - @spacing-h-lg*2 - @nav-back-width*2);
       height: 100%;
       box-sizing: border-box;
       &-text {
@@ -45,10 +47,10 @@
       }
 
       &-center {
-        width: calc(100% - @spacing-h-lg*2 - @nav-back-width*2);
         position: absolute;
-        left: calc(@spacing-h-lg + @nav-back-width);
         top: 0;
+        left: 50%;
+        transform: translateX(-50%);
         .flex-center();
         .@{prefix}-nav-header-content-title-text {
           text-align: center;
@@ -57,7 +59,6 @@
       &-left {
         display: flex;
         align-items: center;
-        width: calc(100vw - @spacing-h-lg*2 - @nav-back-width*2);
         .@{prefix}-nav-header-content-title-text {
           text-align: left;
         }

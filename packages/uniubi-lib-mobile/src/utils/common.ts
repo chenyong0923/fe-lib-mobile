@@ -18,7 +18,7 @@ let systemInfo: Taro.getSystemInfoSync.Result;
  * @returns 系统信息
  */
 export function getSystemInfoSync() {
-  if (systemInfo == null) {
+  if (!systemInfo) {
     systemInfo = Taro.getSystemInfoSync();
   }
   return systemInfo;

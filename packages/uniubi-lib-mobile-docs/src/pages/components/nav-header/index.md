@@ -15,7 +15,7 @@ import React from "react";
 import { NavHeader } from "uniubi-lib-mobile";
 
 const App = () => {
-  return <NavHeader title="默认标题" backTip="返回" statusBarHeight={20} />;
+  return <NavHeader title="默认标题" backTip="返回" />;
 };
 
 export default App;
@@ -46,6 +46,7 @@ const App = () => {
       title="默认标题"
       backgroundColor={"#2228e0"}
       fontColor={"#ffffff"}
+      needBottomBorder={false}
     />
   );
 };
@@ -118,14 +119,13 @@ export default App;
 
 | 参数名          | 说明                                           | 必填 | 类型                          | 默认值    | 备注 |
 | --------------- | ---------------------------------------------- | ---- | ----------------------------- | --------- | ---- |
-| title           | 标题                                           | N    | `string` 或 `React.ReactNode` |           |
-| titlePosition   | 标题位置                                       | N    | `left` 或 `center`            | `center`  |      |
+| title           | 标题                                           | N    | `string` \| `React.ReactNode` |           |
+| titlePosition   | 标题位置                                       | N    | `left` \| `center`            | `center`  |      |
 | backgroundColor | 背景颜色                                       | N    | `string`                      | `#ffffff` |      |
 | fontColor       | 图标及字体颜色                                 | N    | `string`                      | `#000000` |      |
 | onBack          | 重写返回方法                                   | N    | `() => void`                  |           |      |
 | backIcon        | 返回图标                                       | N    | `React.ReactNode`             |           |      |
 | backTip         | 返回 tip                                       | N    | `string`                      |           |      |
 | hiddenBack      | 是否隐藏 back 图标和 tip                       | N    | `boolean`                     | `false`   |      |
-| isBottomBorder  | 是否有下划线                                   | N    | `boolean`                     | `true`    |      |
+| needBottomBorder  | 是否有下划线                                   | N    | `boolean`                     | `true`    |      |
 | homePath        | 在唯一页面时返回首页地址，为空时返回按钮不显示 | N    | `string`                      |           |      |
-| statusBarHeight | 顶部 statusBar 高度——一般在 layout 传入        | N    | `number`                      |           |      |

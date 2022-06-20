@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro';
 import { HomeOutlined } from '@uniubi/icons-taro';
 import React from 'react';
 import { NavHeader } from 'uniubi-lib-mobile';
@@ -9,7 +10,7 @@ const Page = () => {
   return (
     <BasicLayout>
       <Section title="基础使用">
-        <NavHeader title="默认标题" backTip="返回" statusBarHeight={20} />
+        <NavHeader title="默认标题" backTip="返回" />
       </Section>
       <Section title="标题超长">
         <NavHeader title="标题超长标题超长标题超长标题超长" />
@@ -19,6 +20,7 @@ const Page = () => {
           title="默认标题"
           backgroundColor={'#2228e0'}
           fontColor={'#ffffff'}
+          needBottomBorder={false}
         />
       </Section>
       <Section title="标题居左">
@@ -33,7 +35,7 @@ const Page = () => {
       <Section title="返回按钮修改">
         <NavHeader
           title="默认标题"
-          backIcon={<HomeOutlined style={{ fontSize: '22px' }} />}
+          backIcon={<HomeOutlined style={{ fontSize: Taro.pxTransform(44) }} />}
           onBack={() => {
             alert?.('111');
           }}
