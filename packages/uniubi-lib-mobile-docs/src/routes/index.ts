@@ -15,6 +15,11 @@ export default [
         name: 'Button 按钮',
       },
       {
+        path: '/grid',
+        component: '@/pages/components/grid',
+        name: 'Grid 栅格',
+      },
+      {
         path: '/image',
         component: '@/pages/components/image',
         name: 'Image 图片',
