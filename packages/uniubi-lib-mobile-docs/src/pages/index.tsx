@@ -1,9 +1,11 @@
-import styles from './index.less';
+import React from 'react';
 
-export default () => {
-  return (
-    <div>
-      <h1 className={styles.title}>title</h1>
-    </div>
-  );
+import MarkdownParser from '@/components/MarkdownParser';
+
+import Doc from './index.md';
+
+const Page: React.FC = () => {
+  return <MarkdownParser>{Doc}</MarkdownParser>;
 };
+
+export default Page;
