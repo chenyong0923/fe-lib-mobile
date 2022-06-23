@@ -6,3 +6,4 @@ export { default as Loading } from './components/loading';
 export { default as NavHeader } from './components/nav-header';
 export { default as Overlay } from './components/overlay';
 export { default as Popup } from './components/popup';
+export { default as Toast } from './components/toast';

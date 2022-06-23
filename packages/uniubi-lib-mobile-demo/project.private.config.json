@@ -57,6 +57,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/toast/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

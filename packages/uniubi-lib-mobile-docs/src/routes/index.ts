@@ -44,6 +44,11 @@ export default [
         component: '@/pages/components/popup',
         name: 'Popup 弹出层',
       },
+      {
+        path: '/toast',
+        component: '@/pages/components/toast',
+        name: 'Toast 轻提示',
+      },
     ],
   },
 ];

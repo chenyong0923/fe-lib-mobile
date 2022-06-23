@@ -9,6 +9,7 @@ export default {
     'pages/components/nav-header/index',
     'pages/components/overlay/index',
     'pages/components/popup/index',
+    'pages/components/toast/index',
   ],
   window: {
     backgroundTextStyle: 'light',
