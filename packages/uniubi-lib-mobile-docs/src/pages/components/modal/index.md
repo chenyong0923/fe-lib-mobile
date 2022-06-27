@@ -77,7 +77,7 @@ const App = () => {
 };
 ```
 
-### 图片放大预览
+### 自定义 footer
 
 ```tsx
 import { View } from "@tarojs/components";
