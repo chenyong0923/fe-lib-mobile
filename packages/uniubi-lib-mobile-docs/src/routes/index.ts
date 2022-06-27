@@ -30,6 +30,11 @@ export default [
         name: 'Loading 加载',
       },
       {
+        path: '/modal',
+        component: '@/pages/components/modal',
+        name: 'Modal 弹框',
+      },
+      {
         path: '/nav-header',
         component: '@/pages/components/nav-header',
         name: 'NavHeader 头部导航',

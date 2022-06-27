@@ -64,6 +64,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/modal/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
