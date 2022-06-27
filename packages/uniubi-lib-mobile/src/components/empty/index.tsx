@@ -16,7 +16,7 @@ const Empty: React.FC<EmptyProps> = ({
   width = 282,
   height = 280,
   paddingTop = 200,
-  tip,
+  tip = '暂无数据',
   ...rest
 }) => {
   return (
