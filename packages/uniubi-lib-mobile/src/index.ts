@@ -1,5 +1,6 @@
 export { default as ActionSheet } from './components/action-sheet';
 export { default as Button } from './components/button';
+export { default as Form } from './components/form';
 export { Col, Row } from './components/grid';
 export { default as Image } from './components/image';
 export { default as Loading } from './components/loading';

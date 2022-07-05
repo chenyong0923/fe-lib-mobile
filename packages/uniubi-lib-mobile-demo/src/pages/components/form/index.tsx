@@ -22,9 +22,9 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
-          {/* <Form.Item label="性别" name="sex">
+          <Form.Item label="性别" name="sex">
             <Picker mode="selector" range={['男', '女']} onChange={() => {}} />
-          </Form.Item> */}
+          </Form.Item>
           <Form.Item>
             <Button
               onClick={() => {
