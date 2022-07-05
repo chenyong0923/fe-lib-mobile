@@ -1,0 +1,38 @@
+@import "../../themes/default.less";
+
+.@{prefix}-form {
+  position: relative;
+  max-width: 100%;
+}
+
+.@{prefix}-form-item {
+  display: flex;
+
+  &-horizontal {
+    align-items: center;
+
+    .@{prefix}-form-item-label {
+      flex-shrink: 0;
+      width: 110px;
+    }
+  }
+
+  &-vertical {
+    flex-direction: column;
+  }
+
+  &-label {
+    color: @text-color-secondary;
+    font-size: @font-size-lg;
+
+    &-required::before {
+      content: "*";
+      color: @text-color-danger;
+      margin-right: @spacing-h-sm;
+    }
+  }
+
+  &-context {
+    flex: 1;
+  }
+}
