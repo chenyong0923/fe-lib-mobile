@@ -1,15 +1,6 @@
-import { FieldEntity, FormInstance, Store } from '~/types/form/store';
+import { FieldEntity, FormInstance, Rule, Store } from '~/types/form/store';
 
-import { set } from './utils';
-
-const formInstanceApi = [
-  'getFieldValue',
-  'getFieldsValue',
-  'setFieldValue',
-  'setFieldsValue',
-  'registerField',
-  'dispatch',
-];
+import { ValidateResult } from './constants';
 
 class FormStore {
   private store: Store;
@@ -21,11 +12,15 @@ class FormStore {
   }
 
   getForm = (): FormInstance => ({
+    getFieldStore: this.getFieldStore,
     getFieldValue: this.getFieldValue,
     getFieldsValue: this.getFieldsValue,
     setFieldValue: this.setFieldValue,
     setFieldsValue: this.setFieldsValue,
     registerField: this.registerField,
+    validateField: this.validateField,
+    validateFields: this.validateFields,
+    resetFields: this.resetFields,
     notifyChange: this.notifyChange,
     dispatch: this.dispatch,
   });
@@ -33,9 +28,28 @@ class FormStore {
   private dispatch = (action: { type: string }, ...arg: any[]) => {
     if (!action && typeof action !== 'object') return null;
     const { type } = action;
-    if (formInstanceApi.includes(type)) {
+    const formInstanceApi = this.getForm();
+    if (Object.keys(formInstanceApi).includes(type)) {
       return this[type](...arg);
     }
+  };
+
+  /**
+   * 获取字段在 store 中的信息（值、校验状态、错误提示语）
+   * @param {String} name 字段名
+   * @returns 字段信息
+   */
+  private getFieldStore = (name: string) => {
+    return { ...this.store[name] };
+  };
+
+  /**
+   * 获取字段信息
+   * @param {String} name 字段名
+   * @returns 字段信息
+   */
+  private getField = (name: string) => {
+    return this.fieldEntities.find((item) => item.name === name);
   };
 
   /**
@@ -46,7 +60,12 @@ class FormStore {
     this.fieldEntities.push(entity);
     const { name, initialValue } = entity;
     if (!name) return;
-    this.updateStore(set(this.store, name, initialValue));
+    this.store[name] = {
+      value: initialValue,
+      status: ValidateResult.Resolved,
+      errorMessage: undefined,
+    };
+    this.validateField(name);
   };
 
   /**
@@ -55,7 +74,7 @@ class FormStore {
    * @returns 字段的值
    */
   private getFieldValue = (name: string) => {
-    return this.store[name];
+    return this.store[name]?.value;
   };
 
   /**
@@ -63,7 +82,11 @@ class FormStore {
    * @returns 表单键值对
    */
   private getFieldsValue = () => {
-    return { ...this.store };
+    const ret = {};
+    Object.keys(this.store).forEach((field) => {
+      ret[field] = this.store[field].value;
+    });
+    return ret;
   };
 
   /**
@@ -73,34 +96,118 @@ class FormStore {
    */
   private setFieldValue = (name: string, value: any) => {
     if (name in this.store) {
-      this.store[name] = value;
-      this.notifyChange(name);
+      this.store[name].value = value;
+      this.validateField(name);
     }
   };
 
   /**
    * 修改 store 所有值
-   * @param {Store} store
+   * @param {Record<string, any>} values 键值对
    * @returns
    */
-  private setFieldsValue = (store: Store) => {
-    Object.keys(store).forEach((key) => {
-      this.setFieldValue(key, store[key]);
+  private setFieldsValue = (values: Record<string, any>) => {
+    Object.keys(values).forEach((key) => {
+      this.setFieldValue(key, values[key]);
     });
   };
 
-  private notifyChange(name: string) {
-    const field = this.fieldEntities.find((item) => item.name === name);
+  /**
+   * 通知 FormItem 组件更新
+   * @param {String} name 字段名
+   */
+  private notifyChange = (name: string) => {
+    const field = this.getField(name);
     if (field) field.controller?.changeValue();
-  }
+  };
 
   /**
-   * 更新 store
-   * @param {Store} nextStore 新 store
+   * 校验字段是否通过所有规则
+   * @param {String} name 字段名
    */
-  private updateStore = (nextStore: Store) => {
-    this.store = nextStore;
+  private validateField = (name: string) => {
+    const field = this.getField(name);
+    if (field?.rules) {
+      const result = field.rules.every((rule) => {
+        const ret = this.validate(rule, this.store[name].value);
+        // 当校验不通过时，把当前规则的提示信息存入 store
+        if (!ret) {
+          this.store[name].errorMessage = rule.message;
+        }
+        return ret;
+      });
+      if (result) {
+        this.store[name].status = ValidateResult.Resolved;
+        this.store[name].errorMessage = undefined;
+      } else {
+        this.store[name].status = ValidateResult.Reject;
+      }
+    }
+    this.notifyChange(name);
   };
+
+  /**
+   * 校验所有字段
+   * @returns 如果校验通过，返回所有字段的键值对，否则返回校验失败的字段名数组
+   */
+  private validateFields = async () => {
+    Object.keys(this.store).forEach((field) => {
+      this.validateField(field);
+    });
+    const errorFields = Object.entries(this.store)
+      .filter((item) => item[1].status === ValidateResult.Reject)
+      .map((item) => item[0]);
+    if (errorFields.length) {
+      return Promise.reject(errorFields);
+    } else {
+      return Promise.resolve(this.getFieldsValue());
+    }
+  };
+
+  /**
+   * 将所有字段重置到初始值
+   */
+  private resetFields = () => {
+    this.fieldEntities.forEach((item) => {
+      this.setFieldValue(item.name, item.initialValue);
+    });
+  };
+
+  /**
+   * 校验值是否符合规则
+   * @param {Rule} rule 规则对象
+   * @param {any} value 需要校验的值
+   * @returns 是否通过校验
+   */
+  private validate(rule: Rule, value: any) {
+    const { min, max, required, pattern } = rule;
+    // 校验必填
+    if (required) {
+      if (typeof value === 'string') return value !== '';
+      return !(value === null || value === undefined);
+    }
+    // 校验最大值或最大长度
+    if (max) {
+      if (typeof value === 'number') {
+        return value <= max;
+      } else {
+        return value.length <= max;
+      }
+    }
+    // 校验最小值或最小长度
+    if (min) {
+      if (typeof value === 'number') {
+        return value >= min;
+      } else {
+        return value.length >= min;
+      }
+    }
+    // 校验正则
+    if (pattern) {
+      return pattern.test(value);
+    }
+    return true;
+  }
 }
 
 export default FormStore;

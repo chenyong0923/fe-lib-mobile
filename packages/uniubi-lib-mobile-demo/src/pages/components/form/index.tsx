@@ -16,14 +16,20 @@ const Page = () => {
             label="姓名"
             name="name"
             initialValue="123"
-            required
             trigger="onInput"
+            validateTrigger="onInput"
             valueFormat={(e) => e.detail.value}
+            rules={[
+              { required: true, message: '请输入姓名' },
+              { max: 4, message: '最多4个字符' },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item label="性别" name="sex">
-            <Picker mode="selector" range={['男', '女']} onChange={() => {}} />
+            <Picker mode="selector" range={['男', '女']} onChange={() => {}}>
+              选中
+            </Picker>
           </Form.Item>
           <Form.Item>
             <Button
@@ -39,6 +45,21 @@ const Page = () => {
               }}
             >
               setFieldsValue
+            </Button>
+            <Button
+              onClick={async () => {
+                const fields = await form.validateFields();
+                console.log('fields', fields);
+              }}
+            >
+              validateFields
+            </Button>
+            <Button
+              onClick={() => {
+                form.resetFields();
+              }}
+            >
+              resetFields
             </Button>
           </Form.Item>
         </Form>

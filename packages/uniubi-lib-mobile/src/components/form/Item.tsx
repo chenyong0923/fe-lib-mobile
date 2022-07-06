@@ -29,11 +29,11 @@ const Item: React.FC<FormItemProps> = ({
   required,
   valueKey = 'value',
   trigger = 'onChange',
-  // validateTrigger = 'onChange',
+  validateTrigger = 'onChange',
   valueFormat,
 }) => {
   const { layout: formLayout, instance } = useContext(FormContext);
-  const { registerField, dispatch } = instance as FormInstance;
+  const { dispatch } = instance as FormInstance;
   const [, forceUpdate] = useState({});
 
   const onStoreChange = useMemo(() => {
@@ -67,15 +67,18 @@ const Item: React.FC<FormItemProps> = ({
     if (required) {
       const requiredRuleExisted = rules.some((rule) => rule.required);
       if (!requiredRuleExisted) {
-        innerRules.unshift({ required: true });
+        innerRules.unshift({ required: true, message: `${label}必需` });
       }
     }
-    registerField({
-      name,
-      initialValue,
-      rules: innerRules,
-      controller: onStoreChange,
-    });
+    dispatch(
+      { type: 'registerField' },
+      {
+        name,
+        initialValue,
+        rules: innerRules,
+        controller: onStoreChange,
+      },
+    );
   };
 
   // 使组件受控
@@ -96,17 +99,16 @@ const Item: React.FC<FormItemProps> = ({
     };
     props[trigger] = handleChange;
     // 进行校验
-    // if (required || rules) {
-    //   props[validateTrigger] = async (e: any) => {
-    //     if (validateTrigger === trigger) {
-    //       await handleChange(e);
-    //     }
+    if (required || rules) {
+      props[validateTrigger] = async (e: any) => {
+        if (validateTrigger === trigger) {
+          await handleChange(e);
+        }
 
-    //     dispatch({ type: 'validateFieldValue' }, name);
-    //   };
-    // }
+        dispatch({ type: 'validateField' }, name);
+      };
+    }
     props[valueKey] = dispatch({ type: 'getFieldValue' }, name);
-    console.log('valueKey', valueKey, props[valueKey]);
 
     return props;
   };
@@ -114,6 +116,8 @@ const Item: React.FC<FormItemProps> = ({
   const renderChildren = isValidElement(children)
     ? cloneElement(children, getControlled(children))
     : children;
+
+  console.log(dispatch({ type: 'getFieldStore' }, name));
 
   return (
     <View
@@ -131,7 +135,10 @@ const Item: React.FC<FormItemProps> = ({
       >
         {label}
       </View>
-      <View className={`${prefix}-content`}>{renderChildren}</View>
+      <View className={`${prefix}-content`}>
+        <View>{renderChildren}</View>
+        <View>{dispatch({ type: 'getFieldStore' }, name)?.errorMessage}</View>
+      </View>
     </View>
   );
 };
