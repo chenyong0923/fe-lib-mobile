@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 
 import { LayoutType } from './common';
 import { FormInstance, Rule } from './store';
@@ -7,7 +7,7 @@ export interface FormItemProps {
   className?: string;
   style?: CSSProperties;
   name?: string;
-  label?: string;
+  label?: ReactNode;
   labelWidth?: number;
   layout?: LayoutType;
   border?: boolean;
