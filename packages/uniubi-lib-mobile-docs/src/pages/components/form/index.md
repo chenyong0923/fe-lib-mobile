@@ -144,14 +144,14 @@ const App = () => {
 
 ### FormInstance
 
-| 参数名         | 说明             | 类型                                    |
-| -------------- | ---------------- | --------------------------------------- |
-| getFieldValue  | 获取某一字段的值 | `(name: string) => any`                 |
-| getFieldsValue | 获取所有字段的值 | `() => Values`                          |
-| setFieldValue  | 设置某一字段的值 | `(name: string, value: any) => void`    |
-| setFieldsValue | 批量设置字段的值 | `(values: Record<string, any>) => void` |
-| validateFields | 校验字段         | `() => Promise<Record<string, any>>`    |
-| resetFields    | 重置字段至初始值 | `() => void`                            |
+| 参数名         | 说明                                 | 类型                                              |
+| -------------- | ------------------------------------ | ------------------------------------------------- |
+| getFieldValue  | 获取某一字段的值                     | `(name: string) => any`                           |
+| getFieldsValue | 获取所有字段的值                     | `() => Values`                                    |
+| setFieldValue  | 设置某一字段的值                     | `(name: string, value: any) => void`              |
+| setFieldsValue | 批量设置字段的值                     | `(values: Record<string, any>) => void`           |
+| validateFields | 校验字段，默认定位到第一个错误的字段 | `(pos?: boolean) => Promise<Record<string, any>>` |
+| resetFields    | 重置字段至初始值                     | `() => void`                                      |
 
 ### Rule
 

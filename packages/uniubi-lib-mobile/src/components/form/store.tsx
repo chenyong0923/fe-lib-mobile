@@ -1,3 +1,5 @@
+import Taro from '@tarojs/taro';
+
 import { isInvalid } from '@/utils/common';
 import {
   FieldEntity,
@@ -24,13 +26,13 @@ class FormStore {
     getFieldsValue: this.getFieldsValue,
     setFieldValue: this.setFieldValue,
     setFieldsValue: this.setFieldsValue,
-    registerField: this.registerField,
     validateFields: this.validateFields,
     resetFields: this.resetFields,
     dispatch: this.dispatch,
   });
 
   getInnerHooks = (): FormInnerHooks => ({
+    registerField: this.registerField,
     getFieldStore: this.getFieldStore,
     notifyChange: this.notifyChange,
     validate: this.validate,
@@ -160,9 +162,10 @@ class FormStore {
 
   /**
    * 校验所有字段
+   * @param {Boolean} pos 是否定位到错误位置
    * @returns 如果校验通过，返回所有字段的键值对，否则返回校验失败的字段名数组
    */
-  private validateFields = async () => {
+  private validateFields = async (pos = true) => {
     Object.keys(this.store).forEach((field) => {
       this.validateField(field);
     });
@@ -170,6 +173,10 @@ class FormStore {
       .filter((item) => item[1].status === ValidateResult.Reject)
       .map((item) => item[0]);
     if (errorFields.length) {
+      if (pos) {
+        const firstField = errorFields[0];
+        Taro.pageScrollTo({ selector: `#${firstField}`, offsetTop: -120 });
+      }
       return Promise.reject(errorFields);
     } else {
       return Promise.resolve(this.getFieldsValue());
@@ -248,7 +255,6 @@ class FormStore {
     if (pattern) {
       rules.push({ pattern, message: '输入格式不正确' });
     }
-    console.log('createRules', rules);
     return rules;
   };
 }

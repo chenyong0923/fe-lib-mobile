@@ -32,13 +32,13 @@ export interface FormInstance<Values = any> {
   getFieldsValue: () => Values;
   setFieldValue: (name: string, value: any) => void;
   setFieldsValue: (values: Record<string, any>) => void;
-  registerField: (entity: FieldEntity) => void;
-  validateFields: () => Promise<Record<string, any>>;
+  validateFields: (pos?: boolean) => Promise<Record<string, any>>;
   resetFields: () => void;
   dispatch: (params: { type: string }, ...arg: any[]) => any;
 }
 
 export interface FormInnerHooks {
+  registerField: (entity: FieldEntity) => void;
   getFieldStore: (name: string) => StoreField;
   notifyChange: (name: string) => void;
   validate: (rule: Rule, value: any) => boolean;

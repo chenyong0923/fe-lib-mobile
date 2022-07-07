@@ -91,7 +91,6 @@ const Item: React.FC<FormItemProps> = ({
         innerRules.unshift({ required: true, message: `请输入${label}` });
       }
     }
-    console.log('rules', rules, innerRules);
     dispatch(
       { type: 'registerField' },
       {
@@ -148,6 +147,7 @@ const Item: React.FC<FormItemProps> = ({
         className,
       )}
       style={style}
+      id={name}
     >
       <View
         className={classnames(`${prefix}-inner`, {
