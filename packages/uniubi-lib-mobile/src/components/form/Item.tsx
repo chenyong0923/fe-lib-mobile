@@ -11,8 +11,9 @@ import React, {
 
 import { PREFIX } from '@/constants';
 import { rpxToPx } from '@/utils/common';
+import { isObj } from '@/utils/validator';
 import { FormItemProps } from '~/types/form/item';
-import { FormInstance } from '~/types/form/store';
+import { FormInstance, Rule, RuleOption } from '~/types/form/store';
 
 import FormContext from './context';
 
@@ -65,26 +66,37 @@ const Item: React.FC<FormItemProps> = ({
 
   // 字段是否必需，如果存在 required 字段以 required 为准，如果不存在就看 rules 里面有没有必填规则
   const isRequired = useMemo(() => {
-    return required !== undefined
-      ? required
-      : rules.some((rule) => rule.required);
+    if (required !== undefined) return required;
+    if (isObj(rules)) return (rules as RuleOption).required;
+    if (Array.isArray(rules)) return rules.some((rule) => rule.required);
+    return false;
   }, [required, rules]);
 
   // 将 Item 信息注册到 store 中
   const handleFieldRegister = () => {
     if (!name) return;
-    const innerRules = [...rules];
+
+    let innerRules: Rule[] = [];
+    if (isObj(rules)) {
+      innerRules = dispatch({ type: 'createRules' }, label, rules);
+    } else if (Array.isArray(rules)) {
+      innerRules = [...rules];
+    }
     // 补充必填校验
     if (required) {
-      const requiredRuleExisted = rules.some((rule) => rule.required);
+      const requiredRuleExisted =
+        (isObj(rules) && (rules as RuleOption).required) ||
+        (Array.isArray(rules) && rules.some((rule) => rule.required));
       if (!requiredRuleExisted) {
-        innerRules.unshift({ required: true, message: `${label}必需` });
+        innerRules.unshift({ required: true, message: `请输入${label}` });
       }
     }
+    console.log('rules', rules, innerRules);
     dispatch(
       { type: 'registerField' },
       {
         name,
+        label,
         initialValue,
         rules: innerRules,
         controller: onStoreChange,

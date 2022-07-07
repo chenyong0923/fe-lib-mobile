@@ -6,16 +6,20 @@ export interface StoreField {
 
 export type Store = Record<string, StoreField>;
 
-export interface Rule {
+export interface RuleOption {
   min?: number;
   max?: number;
   required?: boolean;
   pattern?: RegExp;
+}
+
+export interface Rule extends RuleOption {
   message?: string;
 }
 
 export interface FieldEntity {
   name: string;
+  label?: string;
   rules?: Rule[];
   initialValue?: any;
   controller?: {
@@ -24,15 +28,19 @@ export interface FieldEntity {
 }
 
 export interface FormInstance<Values = any> {
-  getFieldStore: (name: string) => StoreField;
   getFieldValue: (name: string) => any;
   getFieldsValue: () => Values;
   setFieldValue: (name: string, value: any) => void;
   setFieldsValue: (values: Record<string, any>) => void;
   registerField: (entity: FieldEntity) => void;
-  validateField: (name: string) => void;
   validateFields: () => Promise<Record<string, any>>;
   resetFields: () => void;
-  notifyChange: (name: string) => void;
   dispatch: (params: { type: string }, ...arg: any[]) => any;
+}
+
+export interface FormInnerHooks {
+  getFieldStore: (name: string) => StoreField;
+  notifyChange: (name: string) => void;
+  validate: (rule: Rule, value: any) => boolean;
+  createRules: (label: string, rule: RuleOption) => Rule[];
 }

@@ -1,4 +1,12 @@
-import { FieldEntity, FormInstance, Rule, Store } from '~/types/form/store';
+import { isInvalid } from '@/utils/common';
+import {
+  FieldEntity,
+  FormInnerHooks,
+  FormInstance,
+  Rule,
+  RuleOption,
+  Store,
+} from '~/types/form/store';
 
 import { ValidateResult } from './constants';
 
@@ -12,24 +20,28 @@ class FormStore {
   }
 
   getForm = (): FormInstance => ({
-    getFieldStore: this.getFieldStore,
     getFieldValue: this.getFieldValue,
     getFieldsValue: this.getFieldsValue,
     setFieldValue: this.setFieldValue,
     setFieldsValue: this.setFieldsValue,
     registerField: this.registerField,
-    validateField: this.validateField,
     validateFields: this.validateFields,
     resetFields: this.resetFields,
-    notifyChange: this.notifyChange,
     dispatch: this.dispatch,
+  });
+
+  getInnerHooks = (): FormInnerHooks => ({
+    getFieldStore: this.getFieldStore,
+    notifyChange: this.notifyChange,
+    validate: this.validate,
+    createRules: this.createRules,
   });
 
   private dispatch = (action: { type: string }, ...arg: any[]) => {
     if (!action && typeof action !== 'object') return null;
     const { type } = action;
-    const formInstanceApi = this.getForm();
-    if (Object.keys(formInstanceApi).includes(type)) {
+    const formApi = { ...this.getForm(), ...this.getInnerHooks() };
+    if (Object.keys(formApi).includes(type)) {
       return this[type](...arg);
     }
   };
@@ -179,27 +191,22 @@ class FormStore {
    * @param {any} value 需要校验的值
    * @returns 是否通过校验
    */
-  private validate(rule: Rule, value: any) {
+  private validate = (rule: Rule, value: any) => {
     const { min, max, required, pattern } = rule;
     // 校验必填
     if (required) {
       if (typeof value === 'string') return value !== '';
-      return !(value === null || value === undefined);
+      return !isInvalid(value);
     }
-    // 校验最大值或最大长度
-    if (max) {
-      if (typeof value === 'number') {
-        return value <= max;
-      } else {
-        return value.length <= max;
-      }
-    }
-    // 校验最小值或最小长度
-    if (min) {
-      if (typeof value === 'number') {
-        return value >= min;
-      } else {
-        return value.length >= min;
+    // 校验长度或大小
+    if (max || min) {
+      const val = typeof value === 'number' ? value : value.length;
+      if (max && min) {
+        return val >= min && val <= max;
+      } else if (max && isInvalid(min)) {
+        return val <= max;
+      } else if (min && isInvalid(max)) {
+        return val >= min;
       }
     }
     // 校验正则
@@ -207,7 +214,43 @@ class FormStore {
       return pattern.test(value);
     }
     return true;
-  }
+  };
+
+  /**
+   * 生成校验规则
+   * @param {String} label 标签
+   * @param {RuleOption} rule 规则对象
+   * @returns 规则数组
+   */
+  private createRules = (label: string, rule: RuleOption) => {
+    const { required, min, max, pattern } = rule;
+    const rules: Rule[] = [];
+    if (required) {
+      rules.push({ required: true, message: `请输入${label}` });
+    }
+    if (min || max) {
+      if (max && min) {
+        if (max === min) {
+          rules.push({ min, max, message: `请输入${max}位${label}` });
+        } else {
+          rules.push({
+            min,
+            max,
+            message: `请输入${min}-${max}位${label}`,
+          });
+        }
+      } else if (max && isInvalid(min)) {
+        rules.push({ max, message: `请输入不超过${max}位${label}` });
+      } else if (min && isInvalid(max)) {
+        rules.push({ max, message: `请输入不少于${max}位${label}` });
+      }
+    }
+    if (pattern) {
+      rules.push({ pattern, message: '输入格式不正确' });
+    }
+    console.log('createRules', rules);
+    return rules;
+  };
 }
 
 export default FormStore;

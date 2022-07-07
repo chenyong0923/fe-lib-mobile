@@ -7,6 +7,7 @@ import BasicLayout from '@/layouts/BasicLayout';
 
 const Page = () => {
   const [form] = Form.useForm();
+  const [form2] = Form.useForm();
 
   return (
     <BasicLayout>
@@ -15,13 +16,13 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            initialValue="123"
+            initialValue="12345"
             trigger="onInput"
             validateTrigger="onInput"
             valueFormat={(e) => e.detail.value}
             rules={[
               { required: true, message: '请输入姓名' },
-              { max: 4, message: '最多4个字符' },
+              { min: 4, max: 10, message: '请输入4-10个字符' },
             ]}
           >
             <Input />
@@ -66,6 +67,25 @@ const Page = () => {
             >
               resetFields
             </Button>
+          </Form.Item>
+        </Form>
+      </Section>
+      <Section title="快速生成校验规则">
+        <Form form={form2}>
+          <Form.Item
+            label="姓名"
+            name="name"
+            initialValue="12345"
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            rules={{
+              required: true,
+              min: 4,
+              max: 10,
+            }}
+          >
+            <Input />
           </Form.Item>
         </Form>
       </Section>

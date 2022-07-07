@@ -1,7 +1,7 @@
 import { CSSProperties, FC, ReactNode } from 'react';
 
 import { LayoutType } from './common';
-import { FormInstance, Rule } from './store';
+import { FormInstance, Rule, RuleOption } from './store';
 
 export interface FormItemProps {
   className?: string;
@@ -12,7 +12,7 @@ export interface FormItemProps {
   layout?: LayoutType;
   border?: boolean;
   initialValue?: any;
-  rules?: Rule[];
+  rules?: Rule[] | RuleOption;
   required?: boolean;
   valueKey?: string;
   trigger?: string;
