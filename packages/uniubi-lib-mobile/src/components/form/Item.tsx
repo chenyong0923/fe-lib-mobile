@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 
 import { PREFIX } from '@/constants';
+import { rpxToPx } from '@/utils/common';
 import { FormItemProps } from '~/types/form/item';
 import { FormInstance } from '~/types/form/store';
 
@@ -23,7 +24,9 @@ const Item: React.FC<FormItemProps> = ({
   children,
   name,
   label,
+  labelWidth = 110,
   layout,
+  border = true,
   initialValue,
   rules = [],
   required,
@@ -36,6 +39,9 @@ const Item: React.FC<FormItemProps> = ({
   const { dispatch } = instance as FormInstance;
   const [, forceUpdate] = useState({});
 
+  // 字段信息仓库，包含字段的值、校验状态、错误提示文字
+  const store = dispatch({ type: 'getFieldStore' }, name);
+
   const onStoreChange = useMemo(() => {
     const _onStoreChange = {
       changeValue() {
@@ -47,6 +53,11 @@ const Item: React.FC<FormItemProps> = ({
 
   // 布局方式
   const formItemLayout = layout ?? formLayout;
+
+  // label 宽度
+  const formItemLabelWidth = useMemo(() => {
+    return formItemLayout === 'horizontal' ? rpxToPx(labelWidth) : 'auto';
+  }, [formItemLayout, labelWidth]);
 
   useEffect(() => {
     handleFieldRegister();
@@ -117,8 +128,6 @@ const Item: React.FC<FormItemProps> = ({
     ? cloneElement(children, getControlled(children))
     : children;
 
-  console.log(dispatch({ type: 'getFieldStore' }, name));
-
   return (
     <View
       className={classnames(
@@ -129,16 +138,23 @@ const Item: React.FC<FormItemProps> = ({
       style={style}
     >
       <View
-        className={classnames(`${prefix}-label`, {
-          [`${prefix}-label-required`]: isRequired,
+        className={classnames(`${prefix}-inner`, {
+          [`${prefix}-inner-border`]: border,
         })}
       >
-        {label}
+        <View
+          className={classnames(`${prefix}-label`, {
+            [`${prefix}-label-required`]: isRequired,
+          })}
+          style={{ width: formItemLabelWidth }}
+        >
+          {label}
+        </View>
+        <View className={`${prefix}-content`}>
+          <View>{renderChildren}</View>
+        </View>
       </View>
-      <View className={`${prefix}-content`}>
-        <View>{renderChildren}</View>
-        <View>{dispatch({ type: 'getFieldStore' }, name)?.errorMessage}</View>
-      </View>
+      <View className={`${prefix}-error`}>{store?.errorMessage}</View>
     </View>
   );
 };

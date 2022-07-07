@@ -1,4 +1,4 @@
-import { Input, Picker } from '@tarojs/components';
+import { Input } from '@tarojs/components';
 import React from 'react';
 import { Button, Form } from 'uniubi-lib-mobile';
 
@@ -26,12 +26,17 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item label="性别" name="sex">
-            <Picker mode="selector" range={['男', '女']} onChange={() => {}}>
-              选中
-            </Picker>
+          <Form.Item
+            label="花名"
+            name="nickname"
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            layout="vertical"
+          >
+            <Input />
           </Form.Item>
-          <Form.Item>
+          <Form.Item border={false}>
             <Button
               onClick={() => {
                 console.log(form.getFieldsValue());

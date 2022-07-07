@@ -8,7 +8,9 @@ export interface FormItemProps {
   style?: CSSProperties;
   name?: string;
   label?: string;
+  labelWidth?: number;
   layout?: LayoutType;
+  border?: boolean;
   initialValue?: any;
   rules?: Rule[];
   required?: boolean;
