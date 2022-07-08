@@ -1,6 +1,8 @@
 import Taro from '@tarojs/taro';
 
 import { isInvalid } from '@/utils/common';
+import { isObj } from '@/utils/validator';
+import { NamePathType } from '~/types/form/common';
 import {
   FieldEntity,
   FormInnerHooks,
@@ -37,6 +39,7 @@ class FormStore {
     notifyChange: this.notifyChange,
     validate: this.validate,
     createRules: this.createRules,
+    getName: this.getName,
   });
 
   private dispatch = (action: { type: string }, ...arg: any[]) => {
@@ -79,15 +82,16 @@ class FormStore {
       status: ValidateResult.Resolved,
       errorMessage: undefined,
     };
-    this.validateField(name);
+    this.notifyChange(name);
   };
 
   /**
    * 获取某个字段的值
-   * @param {String} name 字段名
+   * @param {NamePathType} namePath 字段名
    * @returns 字段的值
    */
-  private getFieldValue = (name: string) => {
+  private getFieldValue = (namePath: NamePathType) => {
+    const name = this.getName(namePath);
     return this.store[name]?.value;
   };
 
@@ -96,19 +100,31 @@ class FormStore {
    * @returns 表单键值对
    */
   private getFieldsValue = () => {
-    const ret = {};
+    let ret = {};
     Object.keys(this.store).forEach((field) => {
-      ret[field] = this.store[field].value;
+      const { value } = this.store[field];
+      if (field.includes('.')) {
+        const fieldPath = field.split('.');
+        const val = fieldPath.reverse().reduce((prev, cur) => {
+          const obj = {};
+          obj[`${cur}`] = prev;
+          return obj;
+        }, value);
+        ret = { ...ret, ...val };
+      } else {
+        ret[field] = value;
+      }
     });
     return ret;
   };
 
   /**
    * 修改 store 中字段的值
-   * @param {String} name
+   * @param {NamePathType} namePath
    * @returns
    */
-  private setFieldValue = (name: string, value: any) => {
+  private setFieldValue = (namePath: NamePathType, value: any) => {
+    const name = this.getName(namePath);
     if (name in this.store) {
       this.store[name].value = value;
       this.validateField(name);
@@ -121,9 +137,19 @@ class FormStore {
    * @returns
    */
   private setFieldsValue = (values: Record<string, any>) => {
-    Object.keys(values).forEach((key) => {
-      this.setFieldValue(key, values[key]);
-    });
+    const path: string[] = [];
+    const setRecursively = (obj: Record<string, any>) => {
+      Object.keys(obj).forEach((key) => {
+        path.push(key);
+        if (isObj(obj[key])) {
+          setRecursively(obj[key]);
+        } else {
+          this.setFieldValue(path.join('.'), obj[key]);
+        }
+        path.pop();
+      });
+    };
+    setRecursively(values);
   };
 
   /**
@@ -177,7 +203,11 @@ class FormStore {
         const firstField = errorFields[0];
         Taro.pageScrollTo({ selector: `#${firstField}`, offsetTop: -120 });
       }
-      return Promise.reject(errorFields);
+      return Promise.reject(
+        errorFields.map((item) =>
+          item.includes('.') ? item.split('.') : item,
+        ),
+      );
     } else {
       return Promise.resolve(this.getFieldsValue());
     }
@@ -187,8 +217,10 @@ class FormStore {
    * 将所有字段重置到初始值
    */
   private resetFields = () => {
-    this.fieldEntities.forEach((item) => {
-      this.setFieldValue(item.name, item.initialValue);
+    const entries = [...this.fieldEntities];
+    this.fieldEntities = [];
+    entries.forEach((entity) => {
+      this.registerField(entity);
     });
   };
 
@@ -256,6 +288,16 @@ class FormStore {
       rules.push({ pattern, message: '输入格式不正确' });
     }
     return rules;
+  };
+
+  /**
+   * 根据字段路径返回格式化后字段名
+   * @param {NamePathType} name 字段路径
+   * @returns 字段名
+   */
+  private getName = (namePath: NamePathType) => {
+    if (Array.isArray(namePath)) return namePath.join('.');
+    return namePath;
   };
 }
 

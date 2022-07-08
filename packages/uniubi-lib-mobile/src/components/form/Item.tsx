@@ -13,7 +13,7 @@ import { PREFIX } from '@/constants';
 import { rpxToPx } from '@/utils/common';
 import { isObj } from '@/utils/validator';
 import { FormItemProps } from '~/types/form/item';
-import { FormInstance, Rule, RuleOption } from '~/types/form/store';
+import { FormInstance, Rule, RuleOption, StoreField } from '~/types/form/store';
 
 import FormContext from './context';
 
@@ -40,8 +40,11 @@ const Item: React.FC<FormItemProps> = ({
   const { dispatch } = instance as FormInstance;
   const [, forceUpdate] = useState({});
 
+  // 字段完整路径
+  const namePath: string = dispatch({ type: 'getName' }, name);
+
   // 字段信息仓库，包含字段的值、校验状态、错误提示文字
-  const store = dispatch({ type: 'getFieldStore' }, name);
+  const store: StoreField = dispatch({ type: 'getFieldStore' }, namePath);
 
   const onStoreChange = useMemo(() => {
     const _onStoreChange = {
@@ -74,7 +77,7 @@ const Item: React.FC<FormItemProps> = ({
 
   // 将 Item 信息注册到 store 中
   const handleFieldRegister = () => {
-    if (!name) return;
+    if (!namePath) return;
 
     let innerRules: Rule[] = [];
     if (isObj(rules)) {
@@ -94,7 +97,7 @@ const Item: React.FC<FormItemProps> = ({
     dispatch(
       { type: 'registerField' },
       {
-        name,
+        name: namePath,
         label,
         initialValue,
         rules: innerRules,
@@ -106,17 +109,17 @@ const Item: React.FC<FormItemProps> = ({
   // 使组件受控
   const getControlled = (child: any) => {
     const props = { ...child.props };
-    if (!name) return props;
+    if (!namePath) return props;
     // 处理组件值改变的事件
     const _trigger = props[trigger];
     const handleChange = async (e: any) => {
       let value = null;
       if (valueFormat) {
-        value = await valueFormat(e, name, instance as FormInstance);
+        value = await valueFormat(e, namePath, instance as FormInstance);
       } else {
         value = e.detail;
       }
-      dispatch({ type: 'setFieldValue' }, name, value);
+      dispatch({ type: 'setFieldValue' }, namePath, value);
       if (_trigger) _trigger(e);
     };
     props[trigger] = handleChange;
@@ -127,10 +130,10 @@ const Item: React.FC<FormItemProps> = ({
           await handleChange(e);
         }
 
-        dispatch({ type: 'validateField' }, name);
+        dispatch({ type: 'validateField' }, namePath);
       };
     }
-    props[valueKey] = dispatch({ type: 'getFieldValue' }, name);
+    props[valueKey] = dispatch({ type: 'getFieldValue' }, namePath);
 
     return props;
   };
@@ -147,7 +150,7 @@ const Item: React.FC<FormItemProps> = ({
         className,
       )}
       style={style}
-      id={name}
+      id={namePath}
     >
       <View
         className={classnames(`${prefix}-inner`, {

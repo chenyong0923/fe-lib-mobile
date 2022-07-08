@@ -1,3 +1,5 @@
+import { NamePathType } from './common';
+
 export interface StoreField {
   value?: any;
   status?: 'resolved' | 'reject';
@@ -28,9 +30,9 @@ export interface FieldEntity {
 }
 
 export interface FormInstance<Values = any> {
-  getFieldValue: (name: string) => any;
+  getFieldValue: (namePath: NamePathType) => any;
   getFieldsValue: () => Values;
-  setFieldValue: (name: string, value: any) => void;
+  setFieldValue: (name: NamePathType, value: any) => void;
   setFieldsValue: (values: Record<string, any>) => void;
   validateFields: (pos?: boolean) => Promise<Record<string, any>>;
   resetFields: () => void;
@@ -43,4 +45,5 @@ export interface FormInnerHooks {
   notifyChange: (name: string) => void;
   validate: (rule: Rule, value: any) => boolean;
   createRules: (label: string, rule: RuleOption) => Rule[];
+  getName: (name: NamePathType) => string;
 }

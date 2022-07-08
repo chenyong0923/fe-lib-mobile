@@ -8,6 +8,7 @@ import BasicLayout from '@/layouts/BasicLayout';
 const Page = () => {
   const [form] = Form.useForm();
   const [form2] = Form.useForm();
+  const [form3] = Form.useForm();
 
   return (
     <BasicLayout>
@@ -27,16 +28,6 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item
-            label="花名"
-            name="nickname"
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
-            layout="vertical"
-          >
-            <Input />
-          </Form.Item>
           <Form.Item border={false}>
             <Button
               onClick={() => {
@@ -47,7 +38,7 @@ const Page = () => {
             </Button>
             <Button
               onClick={() => {
-                form.setFieldsValue({ name: 'Hello' });
+                form.setFieldsValue({ name: 'name' });
               }}
             >
               setFieldsValue
@@ -75,7 +66,6 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            initialValue="12345"
             trigger="onInput"
             validateTrigger="onInput"
             valueFormat={(e) => e.detail.value}
@@ -86,6 +76,68 @@ const Page = () => {
             }}
           >
             <Input />
+          </Form.Item>
+        </Form>
+      </Section>
+      <Section title="多级字段">
+        <Form form={form3}>
+          <Form.Item
+            label="姓名"
+            name="name"
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            rules={[
+              { required: true, message: '请输入姓名' },
+              { max: 4, message: '最多4个字符' },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="昵称"
+            name={['profile', 'nickname']}
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            rules={[
+              { required: true, message: '请输入昵称' },
+              { min: 4, max: 10, message: '请输入4-10个字符' },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="花名"
+            name={['profile', 'flowername']}
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            rules={[
+              { required: true, message: '请输入花名' },
+              { min: 4, max: 10, message: '请输入4-10个字符' },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item border={false}>
+            <Button
+              onClick={() => {
+                form3.setFieldsValue({
+                  name: 'name',
+                  profile: { nickname: 'nickname', flowername: 'flowername' },
+                });
+              }}
+            >
+              setFieldsValue
+            </Button>
+            <Button
+              onClick={() => {
+                form3.resetFields();
+              }}
+            >
+              resetFields
+            </Button>
           </Form.Item>
         </Form>
       </Section>

@@ -24,7 +24,7 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="name"
-          initialValue="123"
+          initialValue="12345"
           trigger="onInput"
           validateTrigger="onInput"
           valueFormat={(e) => e.detail.value}
@@ -32,16 +32,6 @@ const App = () => {
             { required: true, message: "请输入姓名" },
             { max: 4, message: "最多4个字符" },
           ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="花名"
-          name="nickname"
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
-          layout="vertical"
         >
           <Input />
         </Form.Item>
@@ -98,7 +88,6 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="name"
-          initialValue="12345"
           trigger="onInput"
           validateTrigger="onInput"
           valueFormat={(e) => e.detail.value}
@@ -109,6 +98,83 @@ const App = () => {
           }}
         >
           <Input />
+        </Form.Item>
+      </Form>
+    </View>
+  );
+};
+```
+
+### 多级字段
+
+```tsx
+import { View, Input } from "@tarojs/components";
+import React, { useState } from "react";
+import { Form, Button } from "uniubi-lib-mobile";
+
+const App = () => {
+  const [form] = Form.useForm();
+
+  return (
+    <View>
+      <Form form={form}>
+        <Form.Item
+          label="姓名"
+          name="name"
+          trigger="onInput"
+          validateTrigger="onInput"
+          valueFormat={(e) => e.detail.value}
+          rules={[
+            { required: true, message: "请输入姓名" },
+            { max: 4, message: "最多4个字符" },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="昵称"
+          name={["profile", "nickname"]}
+          trigger="onInput"
+          validateTrigger="onInput"
+          valueFormat={(e) => e.detail.value}
+          rules={[
+            { required: true, message: "请输入昵称" },
+            { min: 4, max: 10, message: "请输入4-10个字符" },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="花名"
+          name={["profile", "flowername"]}
+          trigger="onInput"
+          validateTrigger="onInput"
+          valueFormat={(e) => e.detail.value}
+          rules={[
+            { required: true, message: "请输入花名" },
+            { min: 4, max: 10, message: "请输入4-10个字符" },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item border={false}>
+          <Button
+            onClick={() => {
+              form.setFieldsValue({
+                name: "name",
+                profile: { nickname: "nickname", flowername: "flowername" },
+              });
+            }}
+          >
+            setFieldsValue
+          </Button>
+          <Button
+            onClick={() => {
+              form.resetFields();
+            }}
+          >
+            resetFields
+          </Button>
         </Form.Item>
       </Form>
     </View>
@@ -129,7 +195,7 @@ const App = () => {
 
 | 参数名          | 说明                        | 必填 | 类型                                                            | 默认值                 | 备注                                                                                   |
 | --------------- | --------------------------- | ---- | --------------------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
-| name            | 字段名                      | N    | `string`                                                        |                        |                                                                                        |
+| name            | 字段名                      | N    | `NamePathType`                                                  |                        | `type NamePathType = string \| string[]`                                               |
 | label           | 标签文本                    | N    | `ReactNode`                                                     |                        |                                                                                        |
 | labelWidth      | 标签宽度                    | N    | `number`                                                        | `110`                  | 单位 rpx                                                                               |
 | layout          | 布局                        | N    | `'horizontal' \| 'vertical'`                                    | `'horizontal'`         |                                                                                        |
@@ -146,9 +212,9 @@ const App = () => {
 
 | 参数名         | 说明                                 | 类型                                              |
 | -------------- | ------------------------------------ | ------------------------------------------------- |
-| getFieldValue  | 获取某一字段的值                     | `(name: string) => any`                           |
+| getFieldValue  | 获取某一字段的值                     | `(name: NamePathType) => any`                     |
 | getFieldsValue | 获取所有字段的值                     | `() => Values`                                    |
-| setFieldValue  | 设置某一字段的值                     | `(name: string, value: any) => void`              |
+| setFieldValue  | 设置某一字段的值                     | `(name: NamePathType, value: any) => void`        |
 | setFieldsValue | 批量设置字段的值                     | `(values: Record<string, any>) => void`           |
 | validateFields | 校验字段，默认定位到第一个错误的字段 | `(pos?: boolean) => Promise<Record<string, any>>` |
 | resetFields    | 重置字段至初始值                     | `() => void`                                      |
