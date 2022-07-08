@@ -1,4 +1,3 @@
-export function isObj(x: any) {
-  const type = typeof x;
-  return x !== null && (type === 'object' || type === 'function');
+export function isObj(obj: any) {
+  return Object.prototype.toString.call(obj) === '[object Object]';
 }

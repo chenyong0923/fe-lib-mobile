@@ -15,6 +15,11 @@ export default [
         name: 'Button 按钮',
       },
       {
+        path: '/form',
+        component: '@/pages/components/form',
+        name: 'Form 表单',
+      },
+      {
         path: '/grid',
         component: '@/pages/components/grid',
         name: 'Grid 栅格',
