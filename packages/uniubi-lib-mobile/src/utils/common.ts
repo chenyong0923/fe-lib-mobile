@@ -33,3 +33,10 @@ export const rpxToPx = (size: number) => {
   const { windowWidth } = getSystemInfoSync();
   return `${size * (windowWidth / 750)}px`;
 };
+
+/**
+ * 是否为无效值
+ * @param {any} val 输入值
+ * @returns 是否无效
+ */
+export const isInvalid = (val: any) => val === null || val === undefined;

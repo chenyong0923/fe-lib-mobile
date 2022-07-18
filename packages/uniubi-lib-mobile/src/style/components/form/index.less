@@ -1,0 +1,70 @@
+@import "../../themes/default.less";
+
+.@{prefix}-form {
+  position: relative;
+  max-width: 100%;
+}
+
+.@{prefix}-form-item {
+  display: flex;
+  flex-direction: column;
+
+  & + & {
+    margin-top: @spacing-v-sm;
+  }
+
+  &-horizontal {
+    .@{prefix}-form-item-inner {
+      align-items: center;
+    }
+
+    .@{prefix}-form-item-label {
+      flex-shrink: 0;
+    }
+  }
+
+  &-vertical {
+    .@{prefix}-form-item-inner {
+      flex-direction: column;
+    }
+
+    .@{prefix}-form-item-label {
+      margin-bottom: @spacing-v-sm;
+    }
+  }
+
+  &-inner {
+    display: flex;
+    padding: @spacing-v-sm @spacing-h-lg;
+
+    &-border {
+      border-bottom: 1px solid @divider-color;
+    }
+  }
+
+  &-label {
+    position: relative;
+    color: @text-color-secondary;
+    font-size: @font-size-lg;
+
+    &-required::before {
+      content: "*";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+      color: @text-color-danger;
+      margin-right: @spacing-h-sm;
+    }
+  }
+
+  &-content {
+    flex: 1;
+  }
+
+  &-error {
+    padding: 0 @spacing-h-lg;
+    font-size: @font-size-sm;
+    color: @text-color-danger;
+  }
+}

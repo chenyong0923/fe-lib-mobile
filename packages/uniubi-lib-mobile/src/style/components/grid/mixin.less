@@ -1,0 +1,21 @@
+@import "../../themes/default.less";
+
+@grid-columns: 24;
+
+.loop-grid-columns(@index) when (@index > 0) {
+  .@{prefix}-col-@{index} {
+    display: block;
+    flex: 0 0 percentage((@index / @grid-columns));
+    max-width: percentage((@index / @grid-columns));
+  }
+
+  .@{prefix}-col-offset-@{index} {
+    margin-left: percentage((@index / @grid-columns));
+  }
+
+  .loop-grid-columns((@index - 1));
+}
+
+.make-grid() {
+  .loop-grid-columns(@grid-columns);
+}

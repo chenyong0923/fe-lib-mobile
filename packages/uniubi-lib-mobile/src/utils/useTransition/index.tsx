@@ -71,17 +71,12 @@ const useTransition = ({
       }
       onEnter?.();
       transitionEnded.current = false;
-      setDisplay(true);
       setClasses(classNames.enter);
       animationRef.current = requestAnimationFrame(() => {
-        if (status.current !== 'enter') {
-          return;
-        }
-        setTimeout(() => onTransitionEnd(), duration);
-        setClasses(classNames['enter-to']);
+        setDisplay(true);
       });
     });
-  }, [onBeforeEnter, onEnter, classNames, onTransitionEnd, duration]);
+  }, [onBeforeEnter, onEnter, classNames]);
 
   // 开始执行退出动画
   const handleLeave = useCallback(() => {
@@ -97,15 +92,30 @@ const useTransition = ({
       onLeave?.();
       transitionEnded.current = false;
       setClasses(classNames.leave);
-      animationRef.current = requestAnimationFrame(() => {
-        if (status.current !== 'leave') {
-          return;
-        }
+    });
+  }, [display, onBeforeLeave, onLeave, classNames]);
+
+  useEffect(() => {
+    if (classes === classNames.enter && display) {
+      if (status.current !== 'enter') {
+        return;
+      }
+      requestAnimationFrame(() => {
+        setTimeout(() => onTransitionEnd(), duration);
+        setClasses(classNames['enter-to']);
+      });
+    }
+
+    if (classes === classNames.leave && display) {
+      if (status.current !== 'leave') {
+        return;
+      }
+      requestAnimationFrame(() => {
         setTimeout(() => onTransitionEnd(), duration);
         setClasses(classNames['leave-to']);
       });
-    });
-  }, [display, onBeforeLeave, onLeave, classNames, onTransitionEnd, duration]);
+    }
+  }, [classes, display, classNames, duration, onTransitionEnd]);
 
   useEffect(() => {
     if (visible) {
