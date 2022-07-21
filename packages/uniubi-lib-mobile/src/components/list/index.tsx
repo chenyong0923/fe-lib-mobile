@@ -1,42 +1,29 @@
-import { View } from '@tarojs/components';
+import { ScrollView, View } from '@tarojs/components';
 import classnames from 'classnames';
 import React from 'react';
 
-import Image from '@/components/image';
-import { DEFAULT_EMPTY_URL, PREFIX } from '@/constants';
-import { rpxToPx } from '@/utils/common';
-import { EmptyProps } from '~/types/empty';
+import { PREFIX } from '@/constants';
+import { ListProps } from '~/types/list';
 
 const prefix = `${PREFIX}-empty`;
 
-const Empty: React.FC<EmptyProps> = ({
-  className,
-  style,
-  src = DEFAULT_EMPTY_URL,
-  width = 282,
-  height = 280,
-  paddingTop = 200,
-  tip = '暂无数据',
-  ...rest
-}) => {
+const List: React.FC<ListProps> = (props) => {
+  const { className, style, lastTip, enableLastTip } = props;
   return (
-    <View
+    <ScrollView
       className={classnames(prefix, className)}
-      style={{
-        ...(style as React.CSSProperties),
-        paddingTop: rpxToPx(paddingTop),
-      }}
+      style={style}
+      scrollY
+      refresherEnabled
+      refresherDefaultStyle={'none'}
+      refresherBackground={'#f8f8f8'}
+      enhanced
+      // @ts-ignore
+      refresher={<View style={{ height: 80 }}>refresh</View>}
     >
-      <Image
-        className={`${prefix}-image`}
-        src={src}
-        width={width}
-        height={height}
-        {...rest}
-      />
-      <View className={`${prefix}-tip`}>{tip}</View>
-    </View>
+      {enableLastTip && <View>—— {lastTip || '到底啦'} ——</View>}
+    </ScrollView>
   );
 };
 
-export default Empty;
+export default List;
