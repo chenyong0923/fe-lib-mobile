@@ -27,6 +27,17 @@ const List: React.FC<ListProps> = (props) => {
   } = props;
   const isEnd = list?.length >= total;
   const [refreshing, setRefreshing] = useState<boolean>(false);
+  const renderRefresh = () => (
+    <View
+      className={classnames(
+        `${prefix}-tip`,
+        `${prefix}-refresh`,
+        `${prefix}-refresh-${refreshing}`,
+      )}
+    >
+      刷新中...
+    </View>
+  );
   return (
     <ScrollView
       className={classnames(prefix, `${prefix}-${taroEnv}`, className)}
@@ -47,7 +58,16 @@ const List: React.FC<ListProps> = (props) => {
       }}
       onScrollToLower={onLoadMore}
       enableBackToTop={enableBackToTop}
+      onScrollToUpper={() => {
+        if (taroEnv === 'h5' && !refreshing) {
+          setRefreshing(true);
+          onRefresh?.()?.finally(() => {
+            setRefreshing(false);
+          });
+        }
+      }}
     >
+      {taroEnv === 'h5' && enablePullRefresh && renderRefresh()}
       {renderHeader}
       <View className={classnames(`${prefix}-content`)}>
         {list?.map((item, index) => renderItem(item, index))}
