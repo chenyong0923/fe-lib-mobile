@@ -11,4 +11,5 @@ export { default as NavHeader } from './nav-header';
 export { default as Overlay } from './overlay';
 export { default as Popup } from './popup';
 export { default as Row } from './row';
+export { default as ScrollWrapper } from './scroll-wrapper';
 export { default as Toast } from './toast';

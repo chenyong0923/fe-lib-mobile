@@ -1,7 +1,10 @@
-import { ScrollView, View } from '@tarojs/components';
+import { View } from '@tarojs/components';
+import Taro, { usePullDownRefresh, useReachBottom } from '@tarojs/taro';
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 
+import Empty from '@/components/empty';
+import ScrollWrapper from '@/components/scroll-wrapper';
 import { PREFIX } from '@/constants';
 import { ListProps } from '~/types/list';
 
@@ -10,74 +13,81 @@ const taroEnv = process.env.TARO_ENV;
 
 const List: React.FC<ListProps> = (props) => {
   const {
-    className,
-    style,
-    endTip,
-    enableEndTip = true,
+    emptyProps,
+    renderItem,
     list,
     total = list?.length,
-    renderItem,
     renderHeader,
     renderFooter,
-    onRefresh,
-    onLoadMore,
-    lowerThreshold,
-    enablePullRefresh,
-    enableBackToTop,
+    full,
+    className,
+    ...rest
   } = props;
-  const isEnd = list?.length >= total;
-  const [refreshing, setRefreshing] = useState<boolean>(false);
-  const renderRefresh = () => (
-    <View
-      className={classnames(
-        `${prefix}-tip`,
-        `${prefix}-refresh`,
-        `${prefix}-refresh-${refreshing}`,
-      )}
-    >
-      刷新中...
-    </View>
-  );
-  return (
-    <ScrollView
-      className={classnames(prefix, `${prefix}-${taroEnv}`, className)}
-      style={style}
-      scrollY
-      lowerThreshold={lowerThreshold}
-      refresherEnabled={!!onRefresh && enablePullRefresh}
-      refresherDefaultStyle={'black'}
-      refresherTriggered={refreshing}
-      enhanced
-      onRefresherPulling={() => {
-        setRefreshing(true);
-      }}
-      onRefresherRefresh={() => {
-        onRefresh?.()?.finally(() => {
-          setRefreshing(false);
+  const { style, onRefresh, onLoadMore, enablePullRefresh, enableLoadMore } =
+    rest;
+  const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
+  const loadFinished = list?.length >= total;
+
+  // 加载更多
+  useReachBottom(() => {
+    if (isAlibaba && full && enableLoadMore && !loadFinished) {
+      onLoadMore?.();
+    }
+  });
+  // 下拉刷新
+  usePullDownRefresh(() => {
+    if (isAlibaba && full && enablePullRefresh) {
+      onRefresh?.()
+        .then(() => {
+          Taro.stopPullDownRefresh();
+        })
+        .catch(() => {
+          Taro.stopPullDownRefresh();
         });
-      }}
-      onScrollToLower={onLoadMore}
-      enableBackToTop={enableBackToTop}
-      onScrollToUpper={() => {
-        if (taroEnv === 'h5' && !refreshing) {
-          setRefreshing(true);
-          onRefresh?.()?.finally(() => {
-            setRefreshing(false);
-          });
-        }
-      }}
-    >
-      {taroEnv === 'h5' && enablePullRefresh && renderRefresh()}
+    }
+  });
+  const renderContent = () => (
+    <View>
       {renderHeader}
       <View className={classnames(`${prefix}-content`)}>
-        {list?.map((item, index) => renderItem(item, index))}
+        {list?.length ? (
+          list?.map((item, index) => renderItem(item, index))
+        ) : (
+          <Empty {...emptyProps} />
+        )}
       </View>
       {renderFooter}
-      {enableEndTip && isEnd && (
-        <View className={`${prefix}-tip`}>—— {endTip || '到底啦'} ——</View>
+    </View>
+  );
+
+  if (isAlibaba && full) {
+    return (
+      <View
+        className={classnames(
+          prefix,
+          `${prefix}-${taroEnv}`,
+          `${prefix}-view-full`,
+          className,
+        )}
+        style={style}
+      >
+        {renderContent()}
+      </View>
+    );
+  }
+  return (
+    <ScrollWrapper
+      loadFinished={loadFinished}
+      className={classnames(
+        prefix,
+        `${prefix}-${taroEnv}`,
+        { [`${prefix}-scroll-full`]: full },
+        className,
       )}
-      {!isEnd && <View className={`${prefix}-tip`}>加载中...</View>}
-    </ScrollView>
+      {...rest}
+    >
+      {renderContent()}
+    </ScrollWrapper>
   );
 };
 
