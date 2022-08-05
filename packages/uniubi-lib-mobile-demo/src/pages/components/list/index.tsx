@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import React, { useState } from 'react';
-import { List } from 'uniubi-lib-mobile';
+import { Button, List } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -13,9 +13,14 @@ const data = [
   { id: 4, name: '1-4' },
   { id: 5, name: '1-5' },
   { id: 6, name: '1-6' },
+  { id: 7, name: '1-7' },
+  { id: 8, name: '1-8' },
+  { id: 9, name: '1-9' },
+  { id: 10, name: '1-10' },
 ];
 const Page = () => {
   const [list, setList] = useState<any[]>(data);
+  const [full, setFull] = useState<boolean>(false);
   const refresh = async () => {
     await new Promise((resolve) => {
       setTimeout(() => {
@@ -30,7 +35,7 @@ const Page = () => {
         setList([
           ...data,
           ...data?.map((item) => ({
-            id: item.id + 6,
+            id: item.id + 10,
             name: `2-${item.name?.split('-')?.[1]}`,
           })),
         ]);
@@ -70,6 +75,31 @@ const Page = () => {
           onLoadMore={loadMore}
           list={list}
           total={12}
+          renderItem={(item) => (
+            <View key={item.id} style={{ height: Taro.pxTransform(160) }}>
+              {item.name}
+            </View>
+          )}
+        />
+      </Section>
+      <Section title="全屏">
+        <List
+          full={full ? { customNavHeader: false } : undefined}
+          enablePullRefresh
+          onRefresh={refresh}
+          enableEndTip
+          onLoadMore={loadMore}
+          list={list}
+          total={12}
+          renderHeader={
+            <Button
+              onClick={() => {
+                setFull(!full);
+              }}
+            >
+              {full ? '关闭全屏' : '开启全屏'}
+            </Button>
+          }
           renderItem={(item) => (
             <View key={item.id} style={{ height: Taro.pxTransform(160) }}>
               {item.name}

@@ -1,11 +1,12 @@
 import { View } from '@tarojs/components';
 import Taro, { usePullDownRefresh, useReachBottom } from '@tarojs/taro';
 import classnames from 'classnames';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import Empty from '@/components/empty';
 import ScrollWrapper from '@/components/scroll-wrapper';
 import { PREFIX } from '@/constants';
+import { getSystemInfoSync, rpxToPx } from '@/utils/common';
 import { ListProps } from '~/types/list';
 
 const prefix = `${PREFIX}-list`;
@@ -21,10 +22,11 @@ const List: React.FC<ListProps> = (props) => {
     renderFooter,
     full,
     className,
+    style = {},
     ...rest
   } = props;
-  const { style, onRefresh, onLoadMore, enablePullRefresh, enableLoadMore } =
-    rest;
+
+  const { onRefresh, onLoadMore, enablePullRefresh, enableLoadMore } = rest;
   const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
   const loadFinished = list?.length >= total;
 
@@ -34,6 +36,7 @@ const List: React.FC<ListProps> = (props) => {
       onLoadMore?.();
     }
   });
+
   // 下拉刷新
   usePullDownRefresh(() => {
     if (isAlibaba && full && enablePullRefresh) {
@@ -46,6 +49,7 @@ const List: React.FC<ListProps> = (props) => {
         });
     }
   });
+
   const renderContent = () => (
     <View>
       {renderHeader}
@@ -60,30 +64,48 @@ const List: React.FC<ListProps> = (props) => {
     </View>
   );
 
+  const { customNavHeader } = full || {};
+
+  const { statusBarHeight = 0 } = useMemo(() => getSystemInfoSync(), []);
+
+  const resetStyle = (isScroll: boolean) => {
+    if (customNavHeader) {
+      const navHeaderHeight =
+        Number(rpxToPx(96)?.split('px')?.[0]) + statusBarHeight;
+      const scrollStyle: React.CSSProperties = {
+        height: `calc(100vh - ${navHeaderHeight}px)`,
+        top: `${navHeaderHeight}px`,
+      };
+      const viewStyle: React.CSSProperties = {
+        minHeight: `calc(100vh - ${navHeaderHeight}px)`,
+      };
+      return Object.assign(isScroll ? scrollStyle : viewStyle, style);
+    } else {
+      return style;
+    }
+  };
+
   if (isAlibaba && full) {
     return (
       <View
-        className={classnames(
-          prefix,
-          `${prefix}-${taroEnv}`,
-          `${prefix}-view-full`,
-          className,
-        )}
-        style={style}
+        className={classnames(prefix, `${prefix}-view-full`, className)}
+        style={resetStyle(false)}
       >
         {renderContent()}
       </View>
     );
   }
+
   return (
     <ScrollWrapper
       loadFinished={loadFinished}
       className={classnames(
         prefix,
         `${prefix}-${taroEnv}`,
-        { [`${prefix}-scroll-full`]: full },
+        { [`${prefix}-scroll-full`]: !!full },
         className,
       )}
+      style={resetStyle(true)}
       {...rest}
     >
       {renderContent()}

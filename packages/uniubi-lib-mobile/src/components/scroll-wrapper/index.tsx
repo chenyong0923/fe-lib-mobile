@@ -50,15 +50,13 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
       refresherDefaultStyle={'black'}
       refresherTriggered={refreshing}
       enhanced
-      onRefresherPulling={() => {
-        setRefreshing(true);
-      }}
       onRefresherRefresh={() => {
         enablePullRefresh &&
           !refreshing &&
           onRefresh?.()?.finally(() => {
             setRefreshing(false);
           });
+        setRefreshing(true);
       }}
       onScrollToLower={() => {
         enableLoadMore && onLoadMore?.();
