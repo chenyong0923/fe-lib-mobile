@@ -18,8 +18,8 @@ export interface ScrollWrapperProps
   enableEndTip?: boolean;
   loadFinished?: boolean;
   endTip?: string;
-  onRefresh?: () => Promise<void>;
-  onLoadMore?: () => Promise<void>;
+  onRefresh?: () => Promise<any>;
+  onLoadMore?: () => Promise<any>;
   children?: ReactNode;
 }
 

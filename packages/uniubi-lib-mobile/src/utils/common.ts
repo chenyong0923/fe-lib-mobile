@@ -40,3 +40,23 @@ export const rpxToPx = (size: number) => {
  * @returns 是否无效
  */
 export const isInvalid = (val: any) => val === null || val === undefined;
+
+export const getValueByKeys = (
+  keys: string | string[],
+  obj?: { [key: string]: any },
+) => {
+  if (obj) {
+    if (typeof keys === 'string') {
+      return obj[keys];
+    } else {
+      const getValue = (o, k, i) => {
+        if (i < keys.length - 1) {
+          return getValue(o[k], keys[i + 1], ++i);
+        } else {
+          return o[k];
+        }
+      };
+      return getValue(obj, keys[0], 0);
+    }
+  }
+};
