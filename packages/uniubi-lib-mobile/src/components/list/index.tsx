@@ -28,7 +28,7 @@ const List: React.FC<ListProps> = (props) => {
 
   const { onRefresh, onLoadMore, enablePullRefresh, enableLoadMore } = rest;
   const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
-  const loadFinished = list?.length >= total;
+  const loadFinished = !!list?.length && list?.length >= total;
 
   // 加载更多
   useReachBottom(() => {
