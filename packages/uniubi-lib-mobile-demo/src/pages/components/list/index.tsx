@@ -91,7 +91,7 @@ const Page = () => {
           onLoadMore={loadMore}
           list={list}
           total={12}
-          renderHeader={
+          header={
             <Button
               onClick={() => {
                 setFull(!full);

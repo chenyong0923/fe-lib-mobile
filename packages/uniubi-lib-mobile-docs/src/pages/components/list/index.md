@@ -198,7 +198,7 @@ const App = () => {
       onLoadMore={loadMore}
       list={list}
       total={12}
-      renderHeader={
+      header={
         <Button
           onClick={() => {
             setFull(!full);
@@ -227,15 +227,14 @@ export default App;
 | renderItem           | 列表项     | Y    | `(item: any, index: number) => ReactNode`                |    |      |
 | list           | 数据列表     | Y    | `any[]`                |    |      |
 | total           | 数据总数     | N    | `number`                |  `"list.length"`  |      |
-| renderHeader         | 列表头部内容 | N    | `ReactNode`                    |    |      |
-| renderFooter         | 列表底部内容 | N    | `ReactNode`                    |    |      |
+| header         | 列表头部内容 | N    | `ReactNode`                    |    |      |
+| footer         | 列表底部内容 | N    | `ReactNode`                    |    |      |
 | full         | 是否全屏 | N    | `{ customNavHeader: boolean }`                    |    |   传入是否自定义头部customNavHeader   |
 | upperThreshold           | 距顶部多远时（单位px），触发 scrolltoupper 事件     | N    | `number`                |    |      |
 | lowerThreshold         | 距底部/右边多远时（单位px），触发 scrolltolower 事件   | N    | `number`           |    |      |
 | enablePullRefresh          | 是否允许下拉刷新                                       | N    | `boolean`                    |    |      |
 | enableLoadMore       | 是否允许下拉刷新                      | N    | `boolean`                   |  |      |
-| enableEndTip | 是否显示加载结束的tip                                  | N    | `boolean`                   | `true` |      |
-| endTip | 加载结束的tip                                  | N    | `string`                   | `到底了` |      |
+| enableEndTip | 显示加载结束的tip                                  | N    | `false | string`                   | `到底了` |      |
 | onRefresh         | 刷新方法 | N    | `() => Promise<void>`                    |    |      |
 | onLoadMore         | 加载方法 | N    | `() => Promise<void>`                    |    |      |
 | children         | 内容 | N    | `ReactNode`                    |    |      |

@@ -1,9 +1,9 @@
 import { View } from '@tarojs/components';
-import Taro, { usePullDownRefresh, useReachBottom } from '@tarojs/taro';
 import classnames from 'classnames';
 import React, { useMemo } from 'react';
 
 import Empty from '@/components/empty';
+import AlipayFull from '@/components/list/AlipayFull';
 import ScrollWrapper from '@/components/scroll-wrapper';
 import { PREFIX } from '@/constants';
 import { getSystemInfoSync, rpxToPx } from '@/utils/common';
@@ -18,51 +18,20 @@ const List: React.FC<ListProps> = (props) => {
     renderItem,
     list,
     total = list?.length,
-    renderHeader,
-    renderFooter,
+    header,
+    footer,
     full,
     className,
     style = {},
+    onRefresh,
+    onLoadMore,
+    enablePullRefresh,
+    enableLoadMore,
     ...rest
   } = props;
 
-  const { onRefresh, onLoadMore, enablePullRefresh, enableLoadMore } = rest;
   const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
-  const loadFinished = !!list?.length && list?.length >= total;
-
-  // 加载更多
-  useReachBottom(() => {
-    if (isAlibaba && full && enableLoadMore && !loadFinished) {
-      onLoadMore?.();
-    }
-  });
-
-  // 下拉刷新
-  usePullDownRefresh(() => {
-    if (isAlibaba && full && enablePullRefresh) {
-      onRefresh?.()
-        .then(() => {
-          Taro.stopPullDownRefresh();
-        })
-        .catch(() => {
-          Taro.stopPullDownRefresh();
-        });
-    }
-  });
-
-  const renderContent = () => (
-    <View>
-      {renderHeader}
-      <View className={classnames(`${prefix}-content`)}>
-        {list?.length ? (
-          list?.map((item, index) => renderItem(item, index))
-        ) : (
-          <Empty {...emptyProps} />
-        )}
-      </View>
-      {renderFooter}
-    </View>
-  );
+  const allLoaded = !!list?.length && list?.length >= total;
 
   const { customNavHeader } = full || {};
 
@@ -85,32 +54,50 @@ const List: React.FC<ListProps> = (props) => {
     }
   };
 
+  const renderContent = () => (
+    <View className={classnames(`${prefix}-body`)}>
+      <View className={classnames(`${prefix}-body-header`)}>{header}</View>
+      <View className={classnames(`${prefix}-body-content`)}>
+        {list?.length ? (
+          list?.map((item, index) => renderItem(item, index))
+        ) : (
+          <Empty {...emptyProps} />
+        )}
+      </View>
+      <View className={classnames(`${prefix}-body-footer`)}>{footer}</View>
+    </View>
+  );
+
   if (isAlibaba && full) {
     return (
-      <View
+      <AlipayFull
         className={classnames(prefix, `${prefix}-view-full`, className)}
         style={resetStyle(false)}
       >
         {renderContent()}
-      </View>
+      </AlipayFull>
+    );
+  } else {
+    return (
+      <ScrollWrapper
+        allLoaded={allLoaded}
+        className={classnames(
+          prefix,
+          `${prefix}-${taroEnv}`,
+          { [`${prefix}-scroll-full`]: !!full },
+          className,
+        )}
+        style={resetStyle(true)}
+        onRefresh={onRefresh}
+        onLoadMore={onLoadMore}
+        enablePullRefresh={enablePullRefresh}
+        enableLoadMore={enableLoadMore}
+        {...rest}
+      >
+        {renderContent()}
+      </ScrollWrapper>
     );
   }
-
-  return (
-    <ScrollWrapper
-      loadFinished={loadFinished}
-      className={classnames(
-        prefix,
-        `${prefix}-${taroEnv}`,
-        { [`${prefix}-scroll-full`]: !!full },
-        className,
-      )}
-      style={resetStyle(true)}
-      {...rest}
-    >
-      {renderContent()}
-    </ScrollWrapper>
-  );
 };
 
 export default List;

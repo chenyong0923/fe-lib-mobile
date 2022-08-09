@@ -125,8 +125,7 @@ const App = () => {
       enablePullRefresh
       onRefresh={refresh}
       enableLoadMore
-      enableEndTip
-      loadFinished={list?.length === 12}
+      allLoaded={list?.length === 12}
       onLoadMore={loadMore}
     >
       {list?.map((item) => (
@@ -149,9 +148,8 @@ export default App;
 | lowerThreshold         | 距底部/右边多远时（单位px），触发 scrolltolower 事件   | N    | `number`           |    |      |
 | enablePullRefresh          | 是否允许下拉刷新                                       | N    | `boolean`                    |    |      |
 | enableLoadMore       | 是否允许下拉刷新                      | N    | `boolean`                   |  |      |
-| enableEndTip | 是否显示加载结束的tip                                  | N    | `boolean`                   | `true` |      |
-| endTip | 加载结束的tip                                  | N    | `string`                   | `到底了` |      |
-| loadFinished         | 是否完成加载 | N    | `boolean`                    |  `false`  |      |
+| enableEndTip | 显示加载结束的tip                                  | N    | `false | string`                   | `到底了` |      |
+| allLoaded         | 是否全部加载完成（针对分页列表） | N    | `boolean`                    |  `false`  |      |
 | onRefresh         | 刷新方法 | N    | `() => Promise<void>`                    |    |      |
 | onLoadMore         | 加载方法 | N    | `() => Promise<void>`                    |    |      |
 | children         | 内容 | N    | `ReactNode`                    |    |      |

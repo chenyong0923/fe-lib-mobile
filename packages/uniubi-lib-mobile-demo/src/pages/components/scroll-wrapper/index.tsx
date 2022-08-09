@@ -63,8 +63,7 @@ const Page = () => {
           enablePullRefresh
           onRefresh={refresh}
           enableLoadMore
-          enableEndTip
-          loadFinished={list?.length === 12}
+          allLoaded={list?.length === 12}
           onLoadMore={loadMore}
         >
           {list?.map((item) => (

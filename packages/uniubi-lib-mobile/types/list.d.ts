@@ -10,8 +10,8 @@ export interface ListProps
   renderItem: (item: any, index: number) => ReactNode;
   list: any[];
   total?: number;
-  renderHeader?: ReactNode;
-  renderFooter?: ReactNode;
+  header?: ReactNode;
+  footer?: ReactNode;
   full?: { customNavHeader: boolean };
 }
 

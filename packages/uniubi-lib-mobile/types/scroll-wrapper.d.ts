@@ -15,8 +15,8 @@ export interface ScrollWrapperProps
   > {
   enablePullRefresh?: boolean;
   enableLoadMore?: boolean;
-  enableEndTip?: boolean;
-  loadFinished?: boolean;
+  enableEndTip?: false | string;
+  allLoaded?: boolean;
   endTip?: string;
   onRefresh?: () => Promise<any>;
   onLoadMore?: () => Promise<any>;

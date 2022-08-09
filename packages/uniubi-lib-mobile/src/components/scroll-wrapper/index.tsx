@@ -13,13 +13,12 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
     className,
     style,
     children,
-    endTip,
-    enableEndTip = true,
+    enableEndTip = '到底了',
     onRefresh,
     onLoadMore,
     enablePullRefresh,
-    enableLoadMore = true,
-    loadFinished = true,
+    enableLoadMore = false,
+    allLoaded = true,
     enableBackToTop,
     upperThreshold,
     lowerThreshold,
@@ -41,6 +40,15 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
     </View>
   );
 
+  const handleRefresh = () => {
+    if (enablePullRefresh && !refreshing) {
+      setRefreshing(true);
+      onRefresh?.()?.finally(() => {
+        setRefreshing(false);
+      });
+    }
+  };
+
   return (
     <ScrollView
       className={classnames(prefix, `${prefix}-${taroEnv}`, className)}
@@ -50,26 +58,12 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
       refresherDefaultStyle={'black'}
       refresherTriggered={refreshing}
       enhanced
-      onRefresherRefresh={() => {
-        enablePullRefresh &&
-          !refreshing &&
-          onRefresh?.()?.finally(() => {
-            setRefreshing(false);
-          });
-        setRefreshing(true);
-      }}
+      onRefresherRefresh={handleRefresh}
       onScrollToLower={() => {
         enableLoadMore && onLoadMore?.();
       }}
       enableBackToTop={enableBackToTop}
-      onScrollToUpper={() => {
-        if (enablePullRefresh && !isWeapp && !refreshing) {
-          setRefreshing(true);
-          onRefresh?.()?.finally(() => {
-            setRefreshing(false);
-          });
-        }
-      }}
+      onScrollToUpper={isWeapp ? undefined : handleRefresh}
       upperThreshold={upperThreshold}
       lowerThreshold={lowerThreshold}
       scrollWithAnimation={scrollWithAnimation}
@@ -78,11 +72,14 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
     >
       {!isWeapp && enablePullRefresh && renderRefresh()}
       <View className={classnames(`${prefix}-content`)}>{children}</View>
-      {enableLoadMore && !loadFinished && (
-        <View className={`${prefix}-tip`}>加载中...</View>
-      )}
-      {enableEndTip && loadFinished && (
-        <View className={`${prefix}-tip`}>—— {endTip || '到底啦'} ——</View>
+      {(enableLoadMore || enableEndTip) && (
+        <View
+          className={classnames(`${prefix}-tip`, {
+            [`${prefix}-tip-end`]: allLoaded,
+          })}
+        >
+          {allLoaded ? enableEndTip : '加载中...'}
+        </View>
       )}
     </ScrollView>
   );
