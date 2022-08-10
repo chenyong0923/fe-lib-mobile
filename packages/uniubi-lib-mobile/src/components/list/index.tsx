@@ -27,11 +27,13 @@ const List: React.FC<ListProps> = (props) => {
     onLoadMore,
     enablePullRefresh,
     enableLoadMore,
+    enableEndTip,
     ...rest
   } = props;
 
   const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
-  const allLoaded = !!list?.length && list?.length >= total;
+  const isEmpty = !list?.length;
+  const allLoaded = list?.length >= total;
 
   const { customNavHeader } = full || {};
 
@@ -91,7 +93,8 @@ const List: React.FC<ListProps> = (props) => {
         onRefresh={onRefresh}
         onLoadMore={onLoadMore}
         enablePullRefresh={enablePullRefresh}
-        enableLoadMore={enableLoadMore}
+        enableLoadMore={isEmpty ? false : enableLoadMore}
+        enableEndTip={isEmpty ? false : enableEndTip}
         {...rest}
       >
         {renderContent()}

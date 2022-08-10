@@ -9,7 +9,6 @@ export default {
     'pages/components/image/index',
     'pages/components/loading/index',
     'pages/components/list/index',
-    'pages/components/api-list/index',
     'pages/components/modal/index',
     'pages/components/nav-header/index',
     'pages/components/overlay/index',

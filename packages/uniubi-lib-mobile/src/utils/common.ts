@@ -41,7 +41,7 @@ export const rpxToPx = (size: number) => {
  */
 export const isInvalid = (val: any) => val === null || val === undefined;
 
-export const getValueByKeys = (
+export const deepGetValue = (
   keys: string | string[],
   obj?: { [key: string]: any },
 ) => {
@@ -49,14 +49,9 @@ export const getValueByKeys = (
     if (typeof keys === 'string') {
       return obj[keys];
     } else {
-      const getValue = (o, k, i) => {
-        if (i < keys.length - 1) {
-          return getValue(o[k], keys[i + 1], ++i);
-        } else {
-          return o[k];
-        }
-      };
-      return getValue(obj, keys[0], 0);
+      return keys.reduce((pre, next) => {
+        return pre?.[next];
+      }, obj);
     }
   }
 };

@@ -1,7 +1,7 @@
-import { View } from '@tarojs/components';
+import { Input, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import React, { useState } from 'react';
-import { Button, List } from 'uniubi-lib-mobile';
+import { Button, List, usePageList } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -43,6 +43,47 @@ const Page = () => {
       }, 1000);
     });
   };
+  const loadPageSearchApi = async ({ page, pageSize, searchKey }) => {
+    const resp: any = await new Promise((resolve) => {
+      setTimeout(() => {
+        const dataSource: any = [];
+        if (searchKey) {
+          for (let i = 0; i < 30; i++) {
+            const id = (page - 1) * pageSize + i + 1;
+            dataSource.push({ id, name: `id: ${id}` });
+          }
+        } else {
+          for (let i = 0; i < pageSize; i++) {
+            const id = (page - 1) * pageSize + i + 1;
+            dataSource.push({ id, name: `id: ${id}` });
+          }
+        }
+
+        const searchList = searchKey
+          ? dataSource?.filter((item) => item.name.includes(searchKey))
+          : dataSource;
+        resolve({
+          data: {
+            list: searchList,
+            total: searchKey ? searchList?.length : 30,
+          },
+        });
+      }, 1000);
+    });
+    console.log('resp', resp);
+    return resp || {};
+  };
+  const pageList = usePageList({
+    request: loadPageSearchApi,
+    responseListKey: ['data', 'list'],
+    pagination: {
+      pageKey: 'page',
+      pageSizeKey: 'pageSize',
+      pageSize: 10,
+      totalKey: ['data', 'total'],
+    },
+  });
+  console.log('pageList', pageList);
   return (
     <BasicLayout>
       <Section title="基础使用">
@@ -70,8 +111,8 @@ const Page = () => {
       <Section title="下拉加载">
         <List
           enablePullRefresh
+          enableLoadMore
           onRefresh={refresh}
-          enableEndTip
           onLoadMore={loadMore}
           list={list}
           total={12}
@@ -86,8 +127,8 @@ const Page = () => {
         <List
           full={full ? { customNavHeader: false } : undefined}
           enablePullRefresh
+          enableLoadMore
           onRefresh={refresh}
-          enableEndTip
           onLoadMore={loadMore}
           list={list}
           total={12}
@@ -99,6 +140,38 @@ const Page = () => {
             >
               {full ? '关闭全屏' : '开启全屏'}
             </Button>
+          }
+          renderItem={(item) => (
+            <View key={item.id} style={{ height: Taro.pxTransform(160) }}>
+              {item.name}
+            </View>
+          )}
+        />
+      </Section>
+      <Section title="结合usePageList">
+        <List
+          enablePullRefresh
+          enableLoadMore
+          onRefresh={pageList.refresh}
+          onLoadMore={pageList.loadMore}
+          list={pageList.list}
+          total={pageList.total}
+          header={
+            <Input
+              style={{
+                background: '#ffffff',
+                position: 'sticky',
+                top: 0,
+                zIndex: 2,
+              }}
+              placeholder={'请输入'}
+              onInput={(e) => {
+                console.log('123', e.detail.value);
+                pageList.filterFunction({
+                  searchKey: e.detail.value,
+                });
+              }}
+            />
           }
           renderItem={(item) => (
             <View key={item.id} style={{ height: Taro.pxTransform(160) }}>

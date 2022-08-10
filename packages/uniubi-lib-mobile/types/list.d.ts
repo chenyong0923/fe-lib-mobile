@@ -15,6 +15,34 @@ export interface ListProps
   full?: { customNavHeader: boolean };
 }
 
+export interface UsePageListProps {
+  request: (params?: {
+    [key: string]: any;
+  }) => Promise<{ data?: any; [key: string]: any }>;
+  responseListKey?: string | string[];
+  pagination?:
+    | false
+    | {
+        pageKey: string;
+        pageSizeKey: string;
+        totalKey: string | string[];
+        pageSize?: number;
+      };
+  defaultParams?: { [key: string]: any };
+  manual?: boolean;
+}
+
+export interface UserPageListResults {
+  init: () => Promise<any>;
+  refresh: () => Promise<any>;
+  loadMore: () => Promise<any>;
+  list: any[];
+  total: number;
+  filterFunction: (params: { [key: string]: any }) => Promise<any>;
+}
+
+export const usePageList: (params: UsePageListProps) => UserPageListResults;
+
 declare const List: FC<ListProps>;
 
 export default List;
