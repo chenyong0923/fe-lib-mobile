@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import Empty from '@/components/empty';
 import AlipayFull from '@/components/list/AlipayFull';
 import ScrollWrapper from '@/components/scroll-wrapper';
-import { PREFIX } from '@/constants';
+import { NAV_HEADER_HEIGHT, PREFIX } from '@/constants';
 import { getSystemInfoSync, rpxToPx } from '@/utils/common';
 import { ListProps } from '~/types/list';
 
@@ -30,19 +30,23 @@ const List: React.FC<ListProps> = (props) => {
     enableEndTip,
     ...rest
   } = props;
-
-  const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
-  const isEmpty = !list?.length;
-  const allLoaded = list?.length >= total;
-
+  // 是否自定义头部
   const { customNavHeader } = full || {};
-
+  // 支付宝体系
+  const isAlibaba = taroEnv === 'alipay' || taroEnv === 'dd';
+  // statusBar栏高度
   const { statusBarHeight = 0 } = useMemo(() => getSystemInfoSync(), []);
 
+  // 是否数据为空
+  const isEmpty = !list?.length;
+  // 是否数据已经全部加载完成
+  const allLoaded = list?.length >= total;
+
+  // 重写style属性
   const resetStyle = (isScroll: boolean) => {
     if (customNavHeader) {
       const navHeaderHeight =
-        Number(rpxToPx(96)?.split('px')?.[0]) + statusBarHeight;
+        Number(rpxToPx(NAV_HEADER_HEIGHT)?.split('px')?.[0]) + statusBarHeight;
       const scrollStyle: React.CSSProperties = {
         height: `calc(100vh - ${navHeaderHeight}px)`,
         top: `${navHeaderHeight}px`,
@@ -56,6 +60,7 @@ const List: React.FC<ListProps> = (props) => {
     }
   };
 
+  // 滑动内容
   const renderContent = () => (
     <View className={classnames(`${prefix}-body`)}>
       <View className={classnames(`${prefix}-body-header`)}>{header}</View>
@@ -70,6 +75,7 @@ const List: React.FC<ListProps> = (props) => {
     </View>
   );
 
+  // 撑满全屏模式且为支付宝体系返回AlipayFull
   if (isAlibaba && full) {
     return (
       <AlipayFull

@@ -41,6 +41,11 @@ export const rpxToPx = (size: number) => {
  */
 export const isInvalid = (val: any) => val === null || val === undefined;
 
+/**
+ * 获取对象指定keys的值
+ * @param keys 键
+ * @param obj 对象
+ */
 export const deepGetValue = (
   keys: string | string[],
   obj?: { [key: string]: any },
