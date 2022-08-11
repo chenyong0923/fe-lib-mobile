@@ -20,8 +20,8 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
     enableLoadMore = false,
     allLoaded = true,
     enableBackToTop,
-    upperThreshold,
-    lowerThreshold,
+    upperThreshold = 0,
+    lowerThreshold = 50,
     scrollTop,
     scrollWithAnimation,
     scrollIntoView,
@@ -64,7 +64,7 @@ const ScrollWrapper: React.FC<ScrollWrapperProps> = (props) => {
       }}
       enableBackToTop={enableBackToTop}
       onScrollToUpper={isWeapp ? undefined : handleRefresh}
-      upperThreshold={upperThreshold}
+      upperThreshold={isWeapp ? undefined : upperThreshold}
       lowerThreshold={lowerThreshold}
       scrollWithAnimation={scrollWithAnimation}
       scrollIntoView={scrollIntoView}

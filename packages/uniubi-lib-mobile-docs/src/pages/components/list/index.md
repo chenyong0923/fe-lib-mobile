@@ -356,7 +356,7 @@ export default App;
 ## List API
 
 | 参数名              | 说明                                                                                 | 必填 | 类型                                      | 默认值          | 备注                               |
-| ------------------- | ------------------------------------------------------------------------------------ | ---- | ----------------------------------------- | --------------- | ---------------------------------- | --- |
+| ------------------- | ------------------------------------------------------------------------------------ | ---- | ----------------------------------------- | --------------- | ---------------------------------- |
 | emptyProps          | empty 组件参数                                                                       | N    | `EmptyProps`                              |                 |                                    |
 | renderItem          | 列表项                                                                               | Y    | `(item: any, index: number) => ReactNode` |                 |                                    |
 | list                | 数据列表                                                                             | Y    | `any[]`                                   |                 |                                    |
@@ -368,7 +368,7 @@ export default App;
 | lowerThreshold      | 距底部/右边多远时（单位 px），触发 scrolltolower 事件                                | N    | `number`                                  |                 |                                    |
 | enablePullRefresh   | 是否允许下拉刷新                                                                     | N    | `boolean`                                 |                 |                                    |
 | enableLoadMore      | 是否允许下拉刷新                                                                     | N    | `boolean`                                 |                 |                                    |
-| enableEndTip        | 显示加载结束的 tip                                                                   | N    | `false                                    | string`         | `到底了`                           |     |
+| enableEndTip        | 显示加载结束的 tip                                                                   | N    | `false \| string`                         | `到底了`        |                                    |
 | onRefresh           | 刷新方法                                                                             | N    | `() => Promise<void>`                     |                 |                                    |
 | onLoadMore          | 加载方法                                                                             | N    | `() => Promise<void>`                     |                 |                                    |
 | children            | 内容                                                                                 | N    | `ReactNode`                               |                 |                                    |
