@@ -13,4 +13,4 @@ export { default as Popup } from './components/popup';
 export { default as ScrollWrapper } from './components/scroll-wrapper';
 export { default as Toast } from './components/toast';
 // hooks
-export { default as usePageList } from './components/list/usePageList';
+export { default as useList } from './components/list/useList';

@@ -15,7 +15,7 @@ export interface ListProps
   full?: { customNavHeader: boolean };
 }
 
-export interface UsePageListProps {
+export interface UseListProps {
   request: (params?: {
     [key: string]: any;
   }) => Promise<{ data?: any; [key: string]: any }>;
@@ -32,7 +32,7 @@ export interface UsePageListProps {
   manual?: boolean;
 }
 
-export interface UserPageListResults {
+export interface UserListResults {
   init: () => Promise<any>;
   refresh: () => Promise<any>;
   loadMore: () => Promise<any>;
@@ -41,7 +41,7 @@ export interface UserPageListResults {
   filterFunction: (params: { [key: string]: any }) => Promise<any>;
 }
 
-export const usePageList: (params: UsePageListProps) => UserPageListResults;
+export const useList: (params: UseListProps) => UserListResults;
 
 declare const List: FC<ListProps>;
 

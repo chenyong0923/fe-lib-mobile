@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { deepGetValue } from '@/utils/common';
-import { UsePageListProps } from '~/types/list';
+import { UseListProps } from '~/types/list';
 
 interface LoadProps {
   page: number;
@@ -11,7 +11,7 @@ interface LoadProps {
   params?: { [key: string]: any };
 }
 
-const usePageList = (props: UsePageListProps) => {
+const useList = (props: UseListProps) => {
   const {
     manual = false,
     request,
@@ -196,4 +196,4 @@ const usePageList = (props: UsePageListProps) => {
   );
 };
 
-export default usePageList;
+export default useList;

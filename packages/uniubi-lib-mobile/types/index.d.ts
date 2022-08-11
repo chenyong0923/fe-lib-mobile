@@ -5,7 +5,7 @@ export { default as Empty } from './empty';
 export { default as Form } from './form';
 export { default as Image } from './image';
 export { default as List } from './list';
-export { usePageList } from './list';
+export { useList } from './list';
 export { default as Loading } from './loading';
 export { default as Modal } from './modal';
 export { default as NavHeader } from './nav-header';
