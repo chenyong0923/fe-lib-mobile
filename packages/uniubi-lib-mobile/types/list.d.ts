@@ -16,9 +16,7 @@ export interface ListProps
 }
 
 export interface UseListProps {
-  request: (params?: {
-    [key: string]: any;
-  }) => Promise<{ data?: any; [key: string]: any }>;
+  request: (params?: { [key: string]: any }) => Promise<{ [key: string]: any }>;
   responseListKey?: string | string[];
   pagination?:
     | false

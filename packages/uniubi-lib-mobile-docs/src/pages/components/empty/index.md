@@ -21,7 +21,7 @@ const App = () => {
 export default App;
 ```
 
-### 自定义Empty1
+### 自定义 Empty1
 
 ```tsx
 import React from "react";
@@ -41,7 +41,7 @@ const App = () => {
 export default App;
 ```
 
-### 自定义Empty2
+### 自定义 Empty2
 
 ```tsx
 import React from "react";
@@ -54,9 +54,9 @@ const App = () => {
       width={210}
       height={210}
       tip={
-        <View style={{ display: 'flex' }}>
+        <View style={{ display: "flex" }}>
           <View>暂无会议，</View>
-          <View style={{ color: '#2228e0' }}>立即预约</View>
+          <View style={{ color: "#2228e0" }}>立即预约</View>
         </View>
       }
     />
@@ -68,9 +68,9 @@ export default App;
 
 ## API
 
-| 参数名 | 说明 | 必填 | 类型                        | 默认值     | 备注 |
-|-----|--| ---- | --------------------------- | ---------- | ---- |
-| tip |空状态说明 | N    | `string \| React.ReactNode` |    `"暂无数据"`        |
-| paddingTop          | 距离顶部高度 | N    | `number` |       `200`     |      |
+| 参数名     | 说明         | 必填 | 类型                        | 默认值       | 备注 |
+| ---------- | ------------ | ---- | --------------------------- | ------------ | ---- |
+| tip        | 空状态说明   | N    | `string \| React.ReactNode` | `"暂无数据"` |
+| paddingTop | 距离顶部高度 | N    | `number`                    | `200`        |      |
 
-**其余属性同Image组件**
+**其余属性同 Image 组件**
