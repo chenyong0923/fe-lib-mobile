@@ -8,13 +8,20 @@ import { List } from "uniubi-lib-mobile";
 
 ## 使用指南
 
+> [建议 List 组件配合 List.useList 方法使用](#useList)
+
 ### 基本使用
 
 ```tsx
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 
-const data = [
+interface ListItem {
+  id: number;
+  name: string;
+}
+
+const data: ListItem[] = [
   { id: 1, name: "1-1" },
   { id: 2, name: "1-2" },
   { id: 3, name: "1-3" },
@@ -44,7 +51,12 @@ export default App;
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 
-const data = [
+interface ListItem {
+  id: number;
+  name: string;
+}
+
+const data: ListItem[] = [
   { id: 1, name: "1-1" },
   { id: 2, name: "1-2" },
   { id: 3, name: "1-3" },
@@ -54,7 +66,7 @@ const data = [
 ];
 
 const App = () => {
-  const [list, setList] = useState<any[]>(data);
+  const [list, setList] = useState<ListItem[]>(data);
 
   const refresh = async () => {
     await new Promise((resolve) => {
@@ -88,7 +100,12 @@ export default App;
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 
-const data = [
+interface ListItem {
+  id: number;
+  name: string;
+}
+
+const data: ListItem[] = [
   { id: 1, name: "1-1" },
   { id: 2, name: "1-2" },
   { id: 3, name: "1-3" },
@@ -98,7 +115,7 @@ const data = [
 ];
 
 const App = () => {
-  const [list, setList] = useState<any[]>(data);
+  const [list, setList] = useState<ListItem[]>(data);
 
   const refresh = async () => {
     await new Promise((resolve) => {
@@ -150,7 +167,12 @@ export default App;
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 
-const data = [
+interface ListItem {
+  id: number;
+  name: string;
+}
+
+const data: ListItem[] = [
   { id: 1, name: "1-1" },
   { id: 2, name: "1-2" },
   { id: 3, name: "1-3" },
@@ -164,7 +186,7 @@ const data = [
 ];
 
 const App = () => {
-  const [list, setList] = useState<any[]>(data);
+  const [list, setList] = useState<ListItem[]>(data);
   const [full, setFull] = useState<boolean>(false);
   const refresh = async () => {
     await new Promise((resolve) => {
@@ -219,12 +241,19 @@ const App = () => {
 export default App;
 ```
 
+<span id='useList'></span>
+
 ### 使用 useList 进行单页数据加载
 
 ```tsx
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 import Taro from "@tarojs/taro";
+
+interface ListItem {
+  id: number;
+  name: string;
+}
 
 // 模拟请求api方法
 const getSingleListApi = async () => {
@@ -243,10 +272,12 @@ const getSingleListApi = async () => {
   return resp || {};
 };
 const App = () => {
-  const { list, total, refresh, loadMore, filterFunction } = List.useList({
-    request: getSingleListApi,
-    pagination: false,
-  });
+  // 使用useList返回List组件所需的参数
+  const { list, total, refresh, loadMore, filterFunction } =
+    List.useList<ListItem>({
+      request: getSingleListApi,
+      pagination: false,
+    });
   return (
     <List
       enablePullRefresh
@@ -273,6 +304,11 @@ export default App;
 import React from "react";
 import { List } from "uniubi-lib-mobile";
 import Taro from "@tarojs/taro";
+
+interface ListItem {
+  id: number;
+  name: string;
+}
 
 // 模拟请求api方法
 const getPageSearchApi = async ({ page, pageSize, searchKey }) => {
@@ -306,16 +342,17 @@ const getPageSearchApi = async ({ page, pageSize, searchKey }) => {
 };
 
 const App = () => {
-  const { list, total, refresh, loadMore, filterFunction } = List.useList({
-    request: getPageSearchApi,
-    responseListKey: ["data", "list"],
-    pagination: {
-      pageKey: "page",
-      pageSizeKey: "pageSize",
-      pageSize: 10,
-      totalKey: ["data", "total"],
-    },
-  });
+  const { list, total, refresh, loadMore, filterFunction } =
+    List.useList<ListItem>({
+      request: getPageSearchApi,
+      responseListKey: ["data", "list"],
+      pagination: {
+        pageKey: "page",
+        pageSizeKey: "pageSize",
+        pageSize: 10,
+        totalKey: ["data", "total"],
+      },
+    });
   return (
     <List
       enablePullRefresh
@@ -354,34 +391,34 @@ export default App;
 
 ## List API
 
-| 参数名              | 说明                                            | 必填 | 类型                                      | 默认值          | 备注                           |
-| ------------------- |-----------------------------------------------| ---- |-----------------------------------------| --------------- |------------------------------|
-| emptyProps          | empty 组件参数                                    | N    | `EmptyProps`                            |                 |                              |
-| renderItem          | 列表项渲染方法                                       | Y    | `(item: T, index: number) => ReactNode` |                 |                              |
-| list                | 数据列表                                          | Y    | `any[]`                                 |                 |                              |
-| total               | 数据总数                                          | N    | `number`                                |  | 默认值为参数`list`的数据数               |
-| header              | 列表头部内容                                        | N    | `ReactNode`                             |                 |                              |
-| footer              | 列表底部内容                                        | N    | `ReactNode`                             |                 |                              |
-| full                | 是否全屏                                          | N    | `{ customNavHeader: boolean }`          |                 | 传入是否自定义头部 customNavHeader    |
-| upperThreshold      | 距顶部多远时（单位 px），触发 scrolltoupper 事件             | N    | `number`                                |                 |                              |
-| lowerThreshold      | 距底部/右边多远时（单位 px），触发 scrolltolower 事件          | N    | `number`                                |                 |                              |
-| enablePullRefresh   | 是否允许下拉刷新                                      | N    | `boolean`                               |                 |                              |
-| enableLoadMore      | 是否允许上拉加载                                      | N    | `boolean`                               |                 |                              |
-| enableEndTip        | 显示加载结束的 tip                                   | N    | `false \| string`                         | `到底了`                        |                                    |
-| onRefresh           | 刷新方法                                          | N    | `() => Promise<void>`                   |                 |                              |
-| onLoadMore          | 加载方法                                          | N    | `() => Promise<void>`                   |                 |                              |
-| children            | 内容                                            | N    | `ReactNode`                             |                 |                              |
-| scrollTop           | 设置竖向滚动条位置                                     | N    | `number`                                |                 |
-| scrollIntoView      | 值应为某子元素 id（id 不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 | N    | `string`                                |                 |                              |
-| scrollWithAnimation | 在设置滚动条位置时使用动画过渡                               | N    | `boolean`                               |                 |                              |
-| enableBackToTop     | iOS 点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向            | N    | `boolean`                               |                 | @supported:weapp, alipay, rn |
+| 参数名              | 说明                                                                                 | 必填 | 类型                                    | 默认值   | 备注                               |
+| ------------------- | ------------------------------------------------------------------------------------ | ---- | --------------------------------------- | -------- | ---------------------------------- |
+| emptyProps          | empty 组件参数                                                                       | N    | [`EmptyProps`](empty)                   |          |                                    |
+| renderItem          | 列表项渲染方法                                                                       | Y    | `(item: T, index: number) => ReactNode` |          |                                    |
+| list                | 数据列表                                                                             | Y    | `any[]`                                 |          |                                    |
+| total               | 数据总数                                                                             | N    | `number`                                |          | 默认值为参数`list`的数据数         |
+| header              | 列表头部内容                                                                         | N    | `ReactNode`                             |          |                                    |
+| footer              | 列表底部内容                                                                         | N    | `ReactNode`                             |          |                                    |
+| full                | 是否全屏                                                                             | N    | `{ customNavHeader: boolean }`          |          | 传入是否自定义头部 customNavHeader |
+| upperThreshold      | 距顶部多远时（单位 px），触发 scrolltoupper 事件                                     | N    | `number`                                |          |                                    |
+| lowerThreshold      | 距底部/右边多远时（单位 px），触发 scrolltolower 事件                                | N    | `number`                                |          |                                    |
+| enablePullRefresh   | 是否允许下拉刷新                                                                     | N    | `boolean`                               |          |                                    |
+| enableLoadMore      | 是否允许上拉加载                                                                     | N    | `boolean`                               |          |                                    |
+| enableEndTip        | 显示加载结束的 tip                                                                   | N    | `false \| string`                       | `到底了` |                                    |
+| onRefresh           | 刷新方法                                                                             | N    | `() => Promise<void>`                   |          |                                    |
+| onLoadMore          | 加载方法                                                                             | N    | `() => Promise<void>`                   |          |                                    |
+| children            | 内容                                                                                 | N    | `ReactNode`                             |          |                                    |
+| scrollTop           | 设置竖向滚动条位置                                                                   | N    | `number`                                |          |
+| scrollIntoView      | 值应为某子元素 id（id 不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 | N    | `string`                                |          |                                    |
+| scrollWithAnimation | 在设置滚动条位置时使用动画过渡                                                       | N    | `boolean`                               |          |                                    |
+| enableBackToTop     | iOS 点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向                     | N    | `boolean`                               |          | @supported:weapp, alipay, rn       |
 
 ## useList API
 
 | 参数名          | 说明                          | 必填 | 类型                                                                                             | 默认值                                                                                           | 备注 |
 | --------------- | ----------------------------- | ---- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ---- |
-| request         | 请求 Api 方法                 | Y    | `(params?: { [key: string]: any }) => Promise<{ [key: string]: any }>`                           |                                                                                                  |      |
+| request         | 请求 Api 方法                 | Y    | `(params?: Record<string, any>) => Promise<Record<string, any>>`                                 |                                                                                                  |      |
 | responseListKey | 请求 Api 方法放回 List 的 key | N    | `string \| string[]`                                                                             | `"data"`                                                                                         |      |
 | pagination      | 分页参数                      | N    | `false \| {pageKey: string;pageSizeKey: string;totalKey: string \| string[];pageSize?: number;}` | `{pageKey: "index", pageSizeKey:"length",totalKey: ['paginationOutput','total'], pageSize: 10 }` |      |
-| defaultParams   | 请求基础参数                  | N    | `{ [key: string]: any }`                                                                         |                                                                                                  |      |
+| defaultParams   | 请求基础参数                  | N    | `Record<string, any>`                                                                            |                                                                                                  |      |
 | manual          | 手动                          | N    | `boolean`                                                                                        | `true`                                                                                           |      |

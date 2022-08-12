@@ -7,7 +7,7 @@ import AlipayFull from '@/components/list/AlipayFull';
 import ScrollWrapper from '@/components/scroll-wrapper';
 import { NAV_HEADER_HEIGHT, PREFIX } from '@/constants';
 import { getSystemInfoSync, rpxToPx } from '@/utils/common';
-import { ListProps } from '~/types/list';
+import { ListType } from '~/types/list';
 
 import useList from './useList';
 
@@ -16,9 +16,7 @@ export { useList };
 const prefix = `${PREFIX}-list`;
 const taroEnv = process.env.TARO_ENV;
 
-const List = <DataType extends Record<string, any> = any>(
-  props: ListProps<DataType>,
-) => {
+const List: ListType = (props) => {
   const {
     emptyProps,
     renderItem,

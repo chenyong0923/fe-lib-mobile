@@ -52,13 +52,13 @@ const Page = () => {
       }, 1000);
     });
   };
-  const singleList = useList({
+  const singleList = useList<ListItem>({
     request: getSingleListApi,
     responseListKey: 'data',
     pagination: false,
   });
 
-  const pageList = useList({
+  const pageList = useList<ListItem>({
     request: getPageSearchApi,
     responseListKey: ['data', 'list'],
     pagination: {
@@ -109,6 +109,7 @@ const Page = () => {
       </Section>
       <Section title="全屏">
         <List
+          style={{ zIndex: 3 }}
           full={full ? { customNavHeader: false } : undefined}
           enablePullRefresh
           enableLoadMore

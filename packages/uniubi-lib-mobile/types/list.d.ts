@@ -16,7 +16,7 @@ export interface ListProps<T>
 }
 
 export interface UseListProps {
-  request: (params?: { [key: string]: any }) => Promise<{ [key: string]: any }>;
+  request: (params?: Record<string, any>) => Promise<Record<string, any>>;
   responseListKey?: string | string[];
   pagination?:
     | false
@@ -26,23 +26,29 @@ export interface UseListProps {
         totalKey: string | string[];
         pageSize?: number;
       };
-  defaultParams?: { [key: string]: any };
+  defaultParams?: Record<string, any>;
   manual?: boolean;
 }
 
-export interface UserListResults {
+export interface UserListResults<DataType> {
   init: () => Promise<any>;
   refresh: () => Promise<any>;
   loadMore: () => Promise<any>;
-  list: any[];
+  list: DataType[];
   total: number;
-  filterFunction: (params: { [key: string]: any }) => Promise<any>;
+  filterFunction: (params: Record<string, any>) => Promise<any>;
 }
 
-declare const List: (<T extends Record<string, any>>(
-  props: ListProps<T>,
+export type UseListType = <DataType extends Record<string, any> = any>(
+  params: UseListProps,
+) => UserListResults<DataType>;
+
+export type ListType = (<DataType extends Record<string, any> = any>(
+  props: ListProps<DataType>,
 ) => JSX.Element) & {
-  useList: (params: UseListProps) => UserListResults;
+  useList: UseListType;
 };
+
+declare const List: ListType;
 
 export default List;
