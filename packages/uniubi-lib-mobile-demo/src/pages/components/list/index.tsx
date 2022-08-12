@@ -1,14 +1,21 @@
 import { Input, View } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import React, { useState } from 'react';
-import { Button, List, useList } from 'uniubi-lib-mobile';
+import { Button, List } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
 
 import { getPageSearchApi, getSingleListApi } from './request';
 
-const data = [
+const { useList } = List;
+
+interface ListItem {
+  id: number;
+  name: string;
+}
+
+const data: ListItem[] = [
   { id: 1, name: '1-1' },
   { id: 2, name: '1-2' },
   { id: 3, name: '1-3' },
@@ -21,7 +28,7 @@ const data = [
   { id: 10, name: '1-10' },
 ];
 const Page = () => {
-  const [list, setList] = useState<any[]>(data);
+  const [list, setList] = useState<ListItem[]>(data);
   const [full, setFull] = useState<boolean>(false);
   const refresh = async () => {
     await new Promise((resolve) => {

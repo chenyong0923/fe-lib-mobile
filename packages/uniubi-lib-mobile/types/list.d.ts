@@ -1,14 +1,14 @@
-import { CSSProperties, FC, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 import { EmptyProps } from '~/types/empty';
 import { ScrollWrapperProps } from '~/types/scroll-wrapper';
 
-export interface ListProps
-  extends Omit<ScrollWrapperProps, 'loadFinished' | 'style'> {
+export interface ListProps<T>
+  extends Omit<ScrollWrapperProps, 'loadFinished' | 'style' | 'children'> {
   style?: CSSProperties;
   emptyProps?: EmptyProps;
-  renderItem: (item: any, index: number) => ReactNode;
-  list: any[];
+  renderItem: (item: T, index: number) => ReactNode;
+  list: T[];
   total?: number;
   header?: ReactNode;
   footer?: ReactNode;
@@ -39,8 +39,10 @@ export interface UserListResults {
   filterFunction: (params: { [key: string]: any }) => Promise<any>;
 }
 
-export const useList: (params: UseListProps) => UserListResults;
-
-declare const List: FC<ListProps>;
+declare const List: (<T extends Record<string, any>>(
+  props: ListProps<T>,
+) => JSX.Element) & {
+  useList: (params: UseListProps) => UserListResults;
+};
 
 export default List;

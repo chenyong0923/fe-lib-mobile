@@ -166,8 +166,9 @@ const useList = (props: UseListProps) => {
   };
   /**
    * 触发筛选方法
+   * @param {{ [key: string]: any }} filterOut 外部传参
    */
-  const filterFunction = async (filterOut: { [key: string]: any }) => {
+  const filterFunction = async (filterOut: Record<string, any>) => {
     updateLoadParams({
       loadingType: 'filter',
     });

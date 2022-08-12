@@ -9,10 +9,16 @@ import { NAV_HEADER_HEIGHT, PREFIX } from '@/constants';
 import { getSystemInfoSync, rpxToPx } from '@/utils/common';
 import { ListProps } from '~/types/list';
 
+import useList from './useList';
+
+export { useList };
+
 const prefix = `${PREFIX}-list`;
 const taroEnv = process.env.TARO_ENV;
 
-const List: React.FC<ListProps> = (props) => {
+const List = <DataType extends Record<string, any> = any>(
+  props: ListProps<DataType>,
+) => {
   const {
     emptyProps,
     renderItem,
@@ -108,5 +114,7 @@ const List: React.FC<ListProps> = (props) => {
     );
   }
 };
+
+List.useList = useList;
 
 export default List;
