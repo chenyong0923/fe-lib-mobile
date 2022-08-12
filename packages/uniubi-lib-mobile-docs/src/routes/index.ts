@@ -15,6 +15,11 @@ export default [
         name: 'Button 按钮',
       },
       {
+        path: '/empty',
+        component: '@/pages/components/empty',
+        name: 'Empty 空状态',
+      },
+      {
         path: '/form',
         component: '@/pages/components/form',
         name: 'Form 表单',
@@ -35,6 +40,11 @@ export default [
         name: 'Loading 加载',
       },
       {
+        path: '/list',
+        component: '@/pages/components/list',
+        name: 'List 列表组件',
+      },
+      {
         path: '/modal',
         component: '@/pages/components/modal',
         name: 'Modal 弹框',
@@ -53,6 +63,11 @@ export default [
         path: '/popup',
         component: '@/pages/components/popup',
         name: 'Popup 弹出层',
+      },
+      {
+        path: '/scroll-wrapper',
+        component: '@/pages/components/scroll-wrapper',
+        name: 'ScrollWrapper 滚动视图',
       },
       {
         path: '/toast',

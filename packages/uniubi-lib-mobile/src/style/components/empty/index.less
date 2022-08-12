@@ -1,0 +1,14 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-empty {
+  .flex-center();
+  flex-direction: column;
+  width: 100%;
+  &-tip {
+    font-size: 30px;
+    color: @text-color-secondary;
+    text-align: center;
+    margin-top: 10px;
+  }
+}

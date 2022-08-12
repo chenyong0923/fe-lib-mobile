@@ -40,3 +40,23 @@ export const rpxToPx = (size: number) => {
  * @returns 是否无效
  */
 export const isInvalid = (val: any) => val === null || val === undefined;
+
+/**
+ * 获取对象指定keys的值
+ * @param keys 键
+ * @param obj 对象
+ */
+export const deepGetValue = (
+  keys: string | string[],
+  obj?: { [key: string]: any },
+) => {
+  if (obj) {
+    if (typeof keys === 'string') {
+      return obj[keys];
+    } else {
+      return keys.reduce((pre, next) => {
+        return pre?.[next];
+      }, obj);
+    }
+  }
+};
