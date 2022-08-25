@@ -21,6 +21,7 @@ const Tabs = ({
   layout = 'horizontal',
   activeKey,
   onChange,
+  line = true,
   children,
   ...rest
 }: TabsProps) => {
@@ -123,13 +124,15 @@ const Tabs = ({
                 </View>
               );
             })}
-            <View
-              className={`${prefix}-nav-bar`}
-              style={{
-                width: barInfo.width,
-                left: barInfo.left - navInfo.left + navInfo.scrollLeft,
-              }}
-            />
+            {line && (
+              <View
+                className={`${prefix}-nav-bar`}
+                style={{
+                  width: barInfo.width,
+                  left: barInfo.left - navInfo.left + navInfo.scrollLeft,
+                }}
+              />
+            )}
           </View>
         </ScrollView>
         <View className={`${prefix}-content`}>{children}</View>

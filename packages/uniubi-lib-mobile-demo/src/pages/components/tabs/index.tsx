@@ -62,6 +62,22 @@ const Page = () => {
           </Tabs.Pane>
         </Tabs>
       </Section>
+      <Section title="无下划线">
+        <Tabs line={false}>
+          <Tabs.Pane tab="Tab 1" tabKey="1">
+            111
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 2" tabKey="2">
+            222
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 3" tabKey="3">
+            333
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 4" tabKey="4">
+            444
+          </Tabs.Pane>
+        </Tabs>
+      </Section>
     </BasicLayout>
   );
 };

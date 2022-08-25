@@ -9,6 +9,7 @@ export interface TabsProps {
   layout?: 'horizontal' | 'vertical';
   activeKey?: string;
   onChange?: (activeKey: string) => void;
+  line?: boolean;
 }
 
 declare const Tabs: ((props: TabsProps) => JSX.Element) & { Pane: typeof Pane };
