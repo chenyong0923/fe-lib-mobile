@@ -1,6 +1,6 @@
 import { Text, View } from '@tarojs/components';
 import classnames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { PREFIX } from '@/constants';
 import { uuid } from '@/utils/common';
@@ -18,13 +18,14 @@ const MAX_COUNT = 4;
 const Tabs = ({
   className,
   style,
-  children,
+  layout = 'horizontal',
   activeKey,
   onChange,
+  children,
   ...rest
 }: TabsProps) => {
   // 给组件做唯一标识，避免多个组件同时渲染时获取 dom 错误问题
-  const rootName = `${prefix}-${uuid()}`;
+  const rootName = useMemo(() => `${prefix}-${uuid()}`, []);
   // 选中项 key 值
   const [activeTabKey, setActiveTabKey] = useState<string>();
   // 选项卡导航信息
@@ -51,6 +52,11 @@ const Tabs = ({
     });
   }, []);
 
+  // 受控时，当外部 activeKey 变化时要同步组件内部选中 key
+  useEffect(() => {
+    activeKey && setActiveTabKey(activeKey);
+  }, [activeKey]);
+
   useEffect(() => {
     // 获取到选中的tab项后记录高亮线的位置和宽高信息
     queryDom(
@@ -60,6 +66,7 @@ const Tabs = ({
     });
   }, [activeTabKey]);
 
+  // 切换选项卡
   const handleTabChange = (key: string) => {
     !activeKey && setActiveTabKey(key);
     onChange?.(key);
@@ -68,7 +75,12 @@ const Tabs = ({
   return (
     <TabsContext.Provider value={{ activeKey: activeTabKey }}>
       <View
-        className={classnames(prefix, rootName, className)}
+        className={classnames(
+          prefix,
+          `${prefix}-${layout}`,
+          rootName,
+          className,
+        )}
         style={style}
         {...rest}
       >

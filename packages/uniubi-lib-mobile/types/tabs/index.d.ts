@@ -6,6 +6,7 @@ export interface TabsProps {
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
+  layout?: 'horizontal' | 'vertical';
   activeKey?: string;
   onChange?: (activeKey: string) => void;
 }

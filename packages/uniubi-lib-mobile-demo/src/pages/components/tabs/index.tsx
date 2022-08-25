@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
 
 const Page = () => {
+  const [activeKey, setActiveKey] = useState<string>('1');
   return (
     <BasicLayout>
       <Section title="基本用法">
@@ -17,6 +18,27 @@ const Page = () => {
           </Tabs.Pane>
           <Tabs.Pane tab="Tab 3" tabKey="3">
             333
+          </Tabs.Pane>
+        </Tabs>
+      </Section>
+      <Section title="受控用法">
+        <Tabs
+          activeKey={activeKey}
+          onChange={(val) => {
+            setActiveKey(val);
+          }}
+        >
+          <Tabs.Pane tab="Tab 1" tabKey="1">
+            111
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 2" tabKey="2">
+            222
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 3" tabKey="3">
+            333
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 4" tabKey="4">
+            444
           </Tabs.Pane>
         </Tabs>
       </Section>
