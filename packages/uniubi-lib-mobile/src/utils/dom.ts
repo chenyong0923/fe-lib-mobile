@@ -51,3 +51,27 @@ export const queryDomScroll = async (
     }
   });
 };
+
+/**
+ * 获取视图滚动信息
+ * @return 视图滚动值，单位px
+ */
+export const queryViewScroll =
+  async (): Promise<Taro.NodesRef.ScrollOffsetCallbackResult> => {
+    const query = Taro.createSelectorQuery();
+    return new Promise((resolve, reject) => {
+      try {
+        // 必须加一个延时，否则获取不到
+        setTimeout(() => {
+          query
+            .selectViewport()
+            .scrollOffset((res) => {
+              resolve(res);
+            })
+            .exec();
+        }, 0);
+      } catch (err) {
+        reject();
+      }
+    });
+  };

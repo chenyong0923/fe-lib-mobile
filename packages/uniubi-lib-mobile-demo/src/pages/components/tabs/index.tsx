@@ -57,9 +57,6 @@ const Page = () => {
           <Tabs.Pane tab="Tab 3" tabKey="3">
             333
           </Tabs.Pane>
-          <Tabs.Pane tab="Tab 4" tabKey="4">
-            444
-          </Tabs.Pane>
         </Tabs>
       </Section>
       <Section title="无下划线">
@@ -73,7 +70,23 @@ const Page = () => {
           <Tabs.Pane tab="Tab 3" tabKey="3">
             333
           </Tabs.Pane>
+        </Tabs>
+      </Section>
+      <Section title="纵向布局">
+        <Tabs layout="vertical">
+          <Tabs.Pane tab="Tab 1" tabKey="1">
+            111
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 2" tabKey="2">
+            222
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 3" tabKey="3">
+            333
+          </Tabs.Pane>
           <Tabs.Pane tab="Tab 4" tabKey="4">
+            444
+          </Tabs.Pane>
+          <Tabs.Pane tab="Tab 5" tabKey="5">
             444
           </Tabs.Pane>
         </Tabs>

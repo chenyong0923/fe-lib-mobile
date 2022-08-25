@@ -19,7 +19,6 @@
     &-inner {
       position: relative;
       display: flex;
-      background-color: @white;
     }
 
     &-item {
@@ -36,22 +35,64 @@
       }
 
       &-inner {
+        max-width: 100%;
         padding: @spacing-v-lg 0;
         font-size: @font-size-base;
         color: @text-color;
+        .text-ellipsis();
       }
     }
 
     &-bar {
       position: absolute;
-      bottom: 0;
-      height: 4px;
       background-color: @color-primary;
       .transition();
     }
   }
+}
 
-  &-content {
+// 横向布局
+.@{prefix}-tabs-horizontal {
+  .@{prefix}-tabs-nav {
+    &-inner {
+      background-color: @white;
+    }
+
+    &-bar {
+      height: 4px;
+      bottom: 0;
+    }
+  }
+}
+
+// 纵向布局
+.@{prefix}-tabs-vertical {
+  display: flex;
+
+  .@{prefix}-tabs-nav {
+    width: auto;
+
+    &-inner {
+      flex-direction: column;
+      background-color: @background-color-default;
+    }
+
+    &-item {
+      width: 208px;
+
+      &-active {
+        background-color: @white;
+      }
+    }
+
+    &-bar {
+      width: 4px;
+      left: 0;
+    }
+  }
+
+  .@{prefix}-tabs-content {
+    flex: 1;
   }
 }
 
