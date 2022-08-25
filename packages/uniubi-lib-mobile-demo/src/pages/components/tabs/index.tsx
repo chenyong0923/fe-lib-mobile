@@ -61,7 +61,7 @@ const Page = () => {
           </Tabs.Pane>
         </Tabs>
       </Section>
-      <Section title="无下划线">
+      <Section title="无高亮线">
         <Tabs line={false}>
           <Tabs.Pane tab="Tab 1" tabKey="1">
             111
