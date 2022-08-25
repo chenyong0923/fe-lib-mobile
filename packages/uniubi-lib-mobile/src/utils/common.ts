@@ -27,11 +27,21 @@ export function getSystemInfoSync() {
 /**
  * rpx 转 px
  * @param {Number} size rpx 尺寸
+ * @returns px 值
+ */
+export const rpxToPxNumber = (size: number) => {
+  if (!size) return 0;
+  const { windowWidth } = getSystemInfoSync();
+  return size * (windowWidth / 750);
+};
+
+/**
+ * rpx 转 px
+ * @param {Number} size rpx 尺寸
  * @returns px 尺寸
  */
 export const rpxToPx = (size: number) => {
-  const { windowWidth } = getSystemInfoSync();
-  return `${size * (windowWidth / 750)}px`;
+  return `${rpxToPxNumber(size)}px`;
 };
 
 /**
@@ -59,4 +69,32 @@ export const deepGetValue = (
       }, obj);
     }
   }
+};
+
+export const uuid = (len = 16) => {
+  const chars =
+    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+  const id: string[] = [];
+
+  if (len) {
+    for (let i = 0; i < len; i++) {
+      id[i] = chars[0 | (Math.random() * chars.length)];
+    }
+  } else {
+    let r;
+    id[8] = '-';
+    id[13] = '-';
+    id[18] = '-';
+    id[23] = '-';
+    id[14] = '4';
+
+    for (let i = 0; i < 36; i++) {
+      if (!id[i]) {
+        r = 0 | (Math.random() * 16);
+        id[i] = chars[i === 19 ? (r & 0x3) | 0x8 : r];
+      }
+    }
+  }
+
+  return id.join('');
 };
