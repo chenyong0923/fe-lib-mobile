@@ -14,6 +14,7 @@ export default {
     'pages/components/overlay/index',
     'pages/components/popup/index',
     'pages/components/scroll-wrapper/index',
+    'pages/components/tabs/index',
     'pages/components/toast/index',
   ],
   window: {

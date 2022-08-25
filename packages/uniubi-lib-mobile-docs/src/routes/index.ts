@@ -70,6 +70,11 @@ export default [
         name: 'ScrollWrapper 滚动视图',
       },
       {
+        path: '/tabs',
+        component: '@/pages/components/tabs',
+        name: 'Tabs 选项卡',
+      },
+      {
         path: '/toast',
         component: '@/pages/components/toast',
         name: 'Toast 轻提示',

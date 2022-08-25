@@ -1,0 +1,96 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-tabs {
+  &-nav {
+    overflow: auto;
+
+    &-inner {
+      position: relative;
+      display: flex;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 0 @spacing-h-lg;
+      .transition();
+
+      &-active {
+        .@{prefix}-tabs-nav-item-inner {
+          color: @text-color-primary;
+        }
+      }
+
+      &-inner {
+        max-width: 100%;
+        padding: @spacing-v-lg 0;
+        font-size: @font-size-base;
+        color: @text-color;
+        .text-ellipsis();
+      }
+    }
+
+    &-bar {
+      position: absolute;
+      background-color: @color-primary;
+      .transition();
+    }
+  }
+}
+
+// 横向布局
+.@{prefix}-tabs-horizontal {
+  .@{prefix}-tabs-nav {
+    &-inner {
+      background-color: @white;
+    }
+
+    &-bar {
+      height: 4px;
+      bottom: 0;
+    }
+  }
+}
+
+// 纵向布局
+.@{prefix}-tabs-vertical {
+  display: flex;
+
+  .@{prefix}-tabs-nav {
+    width: auto;
+
+    &-inner {
+      flex-direction: column;
+      background-color: @background-color-default;
+    }
+
+    &-item {
+      width: 208px;
+
+      &-active {
+        background-color: @white;
+      }
+    }
+
+    &-bar {
+      width: 4px;
+      left: 0;
+    }
+  }
+
+  .@{prefix}-tabs-content {
+    flex: 1;
+  }
+}
+
+// 面板
+.@{prefix}-tabs-pane {
+  display: none;
+  height: 100%;
+
+  &-active {
+    display: block;
+  }
+}
