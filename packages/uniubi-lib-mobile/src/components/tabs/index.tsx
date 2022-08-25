@@ -1,10 +1,10 @@
-import { Text, View } from '@tarojs/components';
+import { ScrollView, Text, View } from '@tarojs/components';
 import classnames from 'classnames';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { PREFIX } from '@/constants';
 import { uuid } from '@/utils/common';
-import { queryDom } from '@/utils/dom';
+import { queryDom, queryDomScroll } from '@/utils/dom';
 import { TabsProps } from '~/types/tabs';
 
 import TabsContext from './context';
@@ -29,7 +29,10 @@ const Tabs = ({
   // 选中项 key 值
   const [activeTabKey, setActiveTabKey] = useState<string>();
   // 选项卡导航信息
-  const [navInfo, setNavInfo] = useState<{ left: number }>({ left: 0 });
+  const [navInfo, setNavInfo] = useState<{ left: number; scrollLeft: number }>({
+    left: 0,
+    scrollLeft: 0,
+  });
   // 高亮线的信息
   const [barInfo, setBarInfo] = useState<{ width: number; left: number }>({
     width: 0,
@@ -47,8 +50,11 @@ const Tabs = ({
 
   useEffect(() => {
     // 获取到容器信息
-    queryDom(`.${prefix}-nav`).then((res) => {
-      setNavInfo({ left: res?.left ?? 0 });
+    queryDom(`.${rootName} .${prefix}-nav`).then((res) => {
+      setNavInfo((prev) => ({
+        ...prev,
+        left: res?.left ?? 0,
+      }));
     });
   }, []);
 
@@ -63,6 +69,13 @@ const Tabs = ({
       `.${rootName} .${prefix}-nav-item-key${activeTabKey} .${prefix}-nav-item-inner`,
     ).then((res) => {
       setBarInfo({ width: res?.width ?? 0, left: res?.left ?? 0 });
+    });
+    // 获取滚动信息
+    queryDomScroll(`.${rootName} .${prefix}-nav`).then((res) => {
+      setNavInfo((prev) => ({
+        ...prev,
+        scrollLeft: res?.scrollLeft ?? 0,
+      }));
     });
   }, [activeTabKey]);
 
@@ -79,43 +92,46 @@ const Tabs = ({
           prefix,
           `${prefix}-${layout}`,
           rootName,
+          { [`${prefix}-scroll`]: childCount > MAX_COUNT }, // 数量过多时滚动显示
           className,
         )}
         style={style}
         {...rest}
       >
-        <View className={`${prefix}-nav`}>
-          {React.Children.map(children, (child) => {
-            const { tab, tabKey } = (child as any).props;
-            return (
-              <View
-                className={classnames(
-                  `${prefix}-nav-item`,
-                  `${prefix}-nav-item-key${tabKey}`,
-                  {
-                    [`${prefix}-nav-item-active`]: activeTabKey === tabKey,
-                  },
-                )}
-                style={{
-                  width:
-                    childCount <= MAX_COUNT ? `${100 / childCount}%` : 'auto',
-                }}
-                onClick={() => {
-                  handleTabChange(tabKey);
-                }}
-              >
-                <Text className={`${prefix}-nav-item-inner`}>{tab}</Text>
-              </View>
-            );
-          })}
-          <View
-            className={`${prefix}-nav-bar`}
-            style={{
-              width: barInfo.width,
-              left: barInfo.left - navInfo.left,
-            }}
-          />
-        </View>
+        <ScrollView className={`${prefix}-nav`} scrollX>
+          <View className={`${prefix}-nav-inner`}>
+            {React.Children.map(children, (child) => {
+              const { tab, tabKey } = (child as any).props;
+              return (
+                <View
+                  className={classnames(
+                    `${prefix}-nav-item`,
+                    `${prefix}-nav-item-key${tabKey}`,
+                    {
+                      [`${prefix}-nav-item-active`]: activeTabKey === tabKey,
+                    },
+                  )}
+                  style={{
+                    width:
+                      childCount <= MAX_COUNT ? `${100 / childCount}%` : 'auto',
+                  }}
+                  onClick={() => {
+                    handleTabChange(tabKey);
+                  }}
+                >
+                  <Text className={`${prefix}-nav-item-inner`}>{tab}</Text>
+                </View>
+              );
+            })}
+            <View
+              className={`${prefix}-nav-bar`}
+              style={{
+                width: barInfo.width,
+                left: barInfo.left - navInfo.left + navInfo.scrollLeft,
+              }}
+            />
+          </View>
+        </ScrollView>
         <View className={`${prefix}-content`}>{children}</View>
       </View>
     </TabsContext.Provider>
