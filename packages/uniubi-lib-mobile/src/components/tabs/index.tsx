@@ -178,7 +178,6 @@ const Tabs = ({
           prefix,
           `${prefix}-${layout}`,
           rootName,
-          { [`${prefix}-scroll`]: childCount > MAX_COUNT }, // 数量过多时滚动显示
           className,
         )}
         style={style}
@@ -188,6 +187,8 @@ const Tabs = ({
           className={`${prefix}-nav`}
           scrollX={layout === 'horizontal'}
           scrollY={layout === 'vertical'}
+          enhanced
+          showScrollbar={false}
         >
           <View className={`${prefix}-nav-inner`}>
             {React.Children.map(children, (child) => {

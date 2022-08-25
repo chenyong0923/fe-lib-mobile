@@ -4,6 +4,8 @@ import { Tabs } from 'uniubi-lib-mobile';
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
 
+import styles from './index.module.less';
+
 const Page = () => {
   const [activeKey, setActiveKey] = useState<string>('1');
 
@@ -73,7 +75,7 @@ const Page = () => {
         </Tabs>
       </Section>
       <Section title="纵向布局">
-        <Tabs layout="vertical">
+        <Tabs layout="vertical" className={styles['layout-vertical']}>
           <Tabs.Pane tab="Tab 1" tabKey="1">
             111
           </Tabs.Pane>

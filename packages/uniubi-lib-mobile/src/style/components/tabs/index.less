@@ -2,20 +2,9 @@
 @import "../../mixins/index.less";
 
 .@{prefix}-tabs {
-  &-scroll {
-    .@{prefix}-tabs-nav {
-      overflow: auto;
-
-      &::-webkit-scrollbar {
-        display: none;
-        width: 0;
-        height: 0;
-        color: transparent;
-      }
-    }
-  }
-
   &-nav {
+    overflow: auto;
+
     &-inner {
       position: relative;
       display: flex;
@@ -96,8 +85,10 @@
   }
 }
 
+// 面板
 .@{prefix}-tabs-pane {
   display: none;
+  height: 100%;
 
   &-active {
     display: block;
