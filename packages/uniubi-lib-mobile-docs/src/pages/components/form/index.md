@@ -11,9 +11,9 @@ import { Form } from "uniubi-lib-mobile";
 ### 基本使用
 
 ```tsx
-import { View, Input } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import React, { useState } from "react";
-import { Form, Button } from "uniubi-lib-mobile";
+import { Form, Button, Input } from "uniubi-lib-mobile";
 
 const App = () => {
   const [form] = Form.useForm();
@@ -75,9 +75,9 @@ const App = () => {
 ### 快速生成校验规则
 
 ```tsx
-import { View, Input } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import React, { useState } from "react";
-import { Form, Button } from "uniubi-lib-mobile";
+import { Form, Button, Input } from "uniubi-lib-mobile";
 
 const App = () => {
   const [form] = Form.useForm();
@@ -108,9 +108,9 @@ const App = () => {
 ### 多级字段
 
 ```tsx
-import { View, Input } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import React, { useState } from "react";
-import { Form, Button } from "uniubi-lib-mobile";
+import { Form, Button, Input } from "uniubi-lib-mobile";
 
 const App = () => {
   const [form] = Form.useForm();
