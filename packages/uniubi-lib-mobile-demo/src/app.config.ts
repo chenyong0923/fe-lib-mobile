@@ -7,6 +7,7 @@ export default {
     'pages/components/form/index',
     'pages/components/grid/index',
     'pages/components/image/index',
+    'pages/components/input/index',
     'pages/components/loading/index',
     'pages/components/list/index',
     'pages/components/modal/index',

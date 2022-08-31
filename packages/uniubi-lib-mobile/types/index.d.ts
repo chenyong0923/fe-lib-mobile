@@ -4,6 +4,7 @@ export { default as Col } from './col';
 export { default as Empty } from './empty';
 export { default as Form } from './form';
 export { default as Image } from './image';
+export { default as Input } from './input';
 export { default as List } from './list';
 export { default as Loading } from './loading';
 export { default as Modal } from './modal';

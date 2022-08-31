@@ -1,6 +1,5 @@
-import { Input } from '@tarojs/components';
 import React from 'react';
-import { Button, Form } from 'uniubi-lib-mobile';
+import { Button, Form, Input } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';

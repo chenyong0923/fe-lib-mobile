@@ -85,6 +85,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/input/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

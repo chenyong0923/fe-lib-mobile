@@ -35,6 +35,11 @@ export default [
         name: 'Image 图片',
       },
       {
+        path: '/input',
+        component: '@/pages/components/input',
+        name: 'Input 输入框',
+      },
+      {
         path: '/loading',
         component: '@/pages/components/loading',
         name: 'Loading 加载',

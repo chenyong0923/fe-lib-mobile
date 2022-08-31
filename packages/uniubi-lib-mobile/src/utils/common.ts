@@ -3,12 +3,19 @@ import Taro from '@tarojs/taro';
 
 /**
  * 阻止事件穿透
- * @param {ITouchEvent} event touch 事件
+ * @param event touch 事件
  */
 export const noop = (event: ITouchEvent) => {
   event.stopPropagation();
   event.preventDefault();
 };
+
+/**
+ * 判断值是否有效
+ * @param value 输入值
+ * @returns 是否有效
+ */
+export const isNil = (value: any) => value == null;
 
 // 系统信息
 let systemInfo: Taro.getSystemInfoSync.Result;
@@ -26,7 +33,7 @@ export function getSystemInfoSync() {
 
 /**
  * rpx 转 px
- * @param {Number} size rpx 尺寸
+ * @param size rpx 尺寸
  * @returns px 值
  */
 export const rpxToPxNumber = (size: number) => {
@@ -37,7 +44,7 @@ export const rpxToPxNumber = (size: number) => {
 
 /**
  * rpx 转 px
- * @param {Number} size rpx 尺寸
+ * @param size rpx 尺寸
  * @returns px 尺寸
  */
 export const rpxToPx = (size: number) => {
@@ -46,7 +53,7 @@ export const rpxToPx = (size: number) => {
 
 /**
  * 是否为无效值
- * @param {any} val 输入值
+ * @param val 输入值
  * @returns 是否无效
  */
 export const isInvalid = (val: any) => val === null || val === undefined;
@@ -71,6 +78,11 @@ export const deepGetValue = (
   }
 };
 
+/**
+ * 生成 uuid
+ * @param len uuid 长度
+ * @returns uuid
+ */
 export const uuid = (len = 16) => {
   const chars =
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');

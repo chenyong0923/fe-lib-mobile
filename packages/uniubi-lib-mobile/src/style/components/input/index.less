@@ -1,0 +1,56 @@
+@import "../../themes/default.less";
+
+.@{prefix}-input {
+  display: flex;
+  align-items: center;
+  padding: @spacing-v-xs @spacing-h-md;
+
+  &-border {
+    border-bottom: 1px solid @border-color;
+  }
+
+  &-inner {
+    flex: 1;
+    height: 48px;
+    color: @black;
+    font-size: @font-size-lg;
+    background-color: @white;
+
+    &-placeholder {
+      font-size: @font-size-lg;
+      color: @text-color-placeholder;
+    }
+  }
+
+  &-clear,
+  &-prefix,
+  &-suffix,
+  &-visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .iconfont {
+      display: inline-block;
+      font-size: 40px;
+    }
+  }
+
+  &-clear {
+    color: @text-color-icon;
+    cursor: pointer;
+    margin-left: @spacing-h-sm;
+  }
+
+  &-prefix {
+    margin-right: @spacing-h-sm;
+  }
+
+  &-suffix {
+    margin-left: @spacing-h-sm;
+  }
+
+  &-visible {
+    margin-left: @spacing-h-sm;
+  }
+}

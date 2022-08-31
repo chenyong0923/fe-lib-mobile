@@ -17,5 +17,5 @@ export default defineConfig({
   },
   chainWebpack(memo) {
     memo.module.rule('mjs-rule').test(/.m?js/).resolve.set('fullySpecified', false);
-  }
+  },
 });
