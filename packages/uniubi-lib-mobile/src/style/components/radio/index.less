@@ -1,0 +1,140 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-radio {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 @spacing-h-xl;
+
+  // ---- 位置 ---------
+  &-left {
+    .@{prefix}-radio-input {
+      margin-right: @spacing-h-md;
+    }
+  }
+
+  &-right {
+    .@{prefix}-radio-input {
+      margin-left: @spacing-h-md;
+    }
+  }
+  // ------------------
+
+  // ---- 选中 ---------
+  &-checked {
+    .@{prefix}-radio-input {
+      &-outlined {
+        visibility: visible;
+      }
+
+      &-filled {
+        border: 1px solid @color-primary;
+        color: @white;
+        background-color: @background-color-primary;
+
+        .@{prefix}-radio-input-icon {
+          display: block;
+        }
+      }
+    }
+  }
+  // ------------------
+
+  // ---- 禁用 ---------
+  &-disabled {
+    cursor: not-allowed;
+
+    .@{prefix}-radio-input {
+      &-outlined {
+        .@{prefix}-radio-input-icon {
+          color: @text-color-disabled;
+        }
+      }
+
+      &-filled {
+        border: 1px solid @border-color;
+      }
+    }
+
+    &.@{prefix}-radio-checked {
+      .@{prefix}-radio-input {
+        &-filled {
+          background-color: @background-color-disabled;
+        }
+      }
+    }
+
+    .@{prefix}-radio-body-content-label {
+      color: @text-color-disabled;
+    }
+  }
+  // ------------------
+
+  // ---- 左侧选中 icon 区域 ---------
+  &-prefix {
+    padding: @spacing-v-lg 0;
+  }
+  // -------------------------------
+
+  // ---- icon ---------
+  &-input {
+    .flex-center;
+    width: 44px;
+    height: 44px;
+
+    &-outlined {
+      visibility: hidden;
+
+      .@{prefix}-radio-input-icon {
+        font-size: 36px;
+        color: @color-primary;
+      }
+    }
+
+    &-filled {
+      border-radius: @border-radius-round;
+      border: 1px solid @border-color;
+
+      .@{prefix}-radio-input-icon {
+        display: none;
+        font-size: @font-size-sm;
+      }
+    }
+  }
+  // ------------------
+
+  // ---- 文字 ---------
+  &-body {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    padding: @spacing-v-lg 0;
+    border-bottom: 1px solid @border-color;
+
+    &-content {
+      flex: 1;
+
+      &-label {
+        font-size: @font-size-lg;
+        color: @black;
+      }
+
+      &-desc {
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+        margin-top: @spacing-v-xs;
+      }
+    }
+  }
+  // ------------------
+}
+
+.@{prefix}-radio-group {
+  .@{prefix}-radio {
+    &:last-of-type {
+      .@{prefix}-radio-body {
+        border-bottom: none;
+      }
+    }
+  }
+}
