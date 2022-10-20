@@ -13,6 +13,7 @@ export interface RuleOption {
   max?: number;
   required?: boolean;
   pattern?: RegExp;
+  validator?: (value?: any) => boolean;
 }
 
 export interface Rule extends RuleOption {

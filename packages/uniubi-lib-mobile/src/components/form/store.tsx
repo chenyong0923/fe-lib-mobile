@@ -169,12 +169,18 @@ class FormStore {
     const field = this.getField(name);
     if (field?.rules) {
       const result = field.rules.every((rule) => {
-        const ret = this.validate(rule, this.store[name].value);
-        // 当校验不通过时，把当前规则的提示信息存入 store
-        if (!ret) {
-          this.store[name].errorMessage = rule.message;
+        try {
+          const ret = this.validate(rule, this.store[name].value);
+          // 当校验不通过时，把当前规则的提示信息存入 store
+          if (!ret) {
+            this.store[name].errorMessage = rule.message;
+          }
+          return ret;
+        } catch (err: any) {
+          // 捕获自定义校验规则抛出的错误
+          this.store[name].errorMessage = err.message;
+          return false;
         }
-        return ret;
       });
       if (result) {
         this.store[name].status = ValidateResult.Resolved;
@@ -231,7 +237,7 @@ class FormStore {
    * @returns 是否通过校验
    */
   private validate = (rule: Rule, value: any) => {
-    const { min, max, required, pattern } = rule;
+    const { min, max, required, pattern, validator } = rule;
     // 校验必填
     if (required) {
       if (typeof value === 'string') return value !== '';
@@ -252,6 +258,14 @@ class FormStore {
     if (pattern) {
       return pattern.test(value);
     }
+    // 自定义校验规则
+    if (validator && typeof validator === 'function') {
+      let ret = true;
+      // 可能会抛出 error，被 validateField 方法捕获
+      ret = validator(value);
+      return ret;
+    }
+
     return true;
   };
 

@@ -8,6 +8,7 @@ const Page = () => {
   const [form] = Form.useForm();
   const [form2] = Form.useForm();
   const [form3] = Form.useForm();
+  const [form4] = Form.useForm();
 
   return (
     <BasicLayout>
@@ -78,8 +79,34 @@ const Page = () => {
           </Form.Item>
         </Form>
       </Section>
-      <Section title="多级字段">
+
+      <Section title="自定义校验规则">
         <Form form={form3}>
+          <Form.Item
+            label="姓名"
+            name="name"
+            trigger="onInput"
+            validateTrigger="onInput"
+            valueFormat={(e) => e.detail.value}
+            rules={[
+              {
+                validator: (value) => {
+                  if (value === '123') {
+                    throw new Error('出错了');
+                  } else if (value === '1234') {
+                    throw new Error('又错了');
+                  }
+                  return true;
+                },
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Form>
+      </Section>
+      <Section title="多级字段">
+        <Form form={form4}>
           <Form.Item
             label="姓名"
             name="name"
@@ -122,7 +149,7 @@ const Page = () => {
           <Form.Item border={false}>
             <Button
               onClick={() => {
-                form3.setFieldsValue({
+                form4.setFieldsValue({
                   name: 'name',
                   profile: { nickname: 'nickname', flowername: 'flowername' },
                 });
@@ -132,7 +159,7 @@ const Page = () => {
             </Button>
             <Button
               onClick={() => {
-                form3.resetFields();
+                form4.resetFields();
               }}
             >
               resetFields

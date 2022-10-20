@@ -105,6 +105,46 @@ const App = () => {
 };
 ```
 
+### 自定义校验规则
+
+```tsx
+import { View } from "@tarojs/components";
+import React, { useState } from "react";
+import { Form, Button, Input } from "uniubi-lib-mobile";
+
+const App = () => {
+  const [form] = Form.useForm();
+
+  return (
+    <View>
+      <Form form={form}>
+        <Form.Item
+          label="姓名"
+          name="name"
+          trigger="onInput"
+          validateTrigger="onInput"
+          valueFormat={(e) => e.detail.value}
+          rules={[
+            {
+              validator: (value) => {
+                if (value === "123") {
+                  throw new Error("出错了");
+                } else if (value === "1234") {
+                  throw new Error("又错了");
+                }
+                return true;
+              },
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+      </Form>
+    </View>
+  );
+};
+```
+
 ### 多级字段
 
 ```tsx
@@ -221,13 +261,14 @@ const App = () => {
 
 ### Rule
 
-| 参数名   | 说明         | 必填 | 类型      | 默认值 | 备注 |
-| -------- | ------------ | ---- | --------- | ------ | ---- |
-| required | 是否必需     | N    | `boolean` |        |      |
-| min      | 最小值       | N    | `number`  |        |      |
-| max      | 最大值       | N    | `number`  |        |      |
-| pattern  | 正则校验规则 | N    | `RegExp`  |        |      |
-| message  | 错误提示文字 | N    | `string`  |        |      |
+| 参数名    | 说明           | 必填 | 类型                    | 默认值 | 备注                                          |
+| --------- | -------------- | ---- | ----------------------- | ------ | --------------------------------------------- |
+| required  | 是否必需       | N    | `boolean`               |        |                                               |
+| min       | 最小值         | N    | `number`                |        |                                               |
+| max       | 最大值         | N    | `number`                |        |                                               |
+| pattern   | 正则校验规则   | N    | `RegExp`                |        |                                               |
+| validator | 自定义校验方法 | N    | `(val: any) => boolean` |        | 校验出错时要抛出错误 `throw new Error('xxx')` |
+| message   | 错误提示文字   | N    | `string`                |        |                                               |
 
 ### Hooks
 
