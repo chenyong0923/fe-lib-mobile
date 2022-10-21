@@ -138,10 +138,12 @@ class FormStore {
    */
   private setFieldsValue = (values: Record<string, any>) => {
     const path: string[] = [];
+    // 递归赋值
     const setRecursively = (obj: Record<string, any>) => {
       Object.keys(obj).forEach((key) => {
         path.push(key);
-        if (isObj(obj[key])) {
+        // 如果值是对象，且key在store中不存在，那么当作多级字段处理
+        if (isObj(obj[key]) && isInvalid(this.store[key])) {
           setRecursively(obj[key]);
         } else {
           this.setFieldValue(path.join('.'), obj[key]);
