@@ -7,10 +7,10 @@ export interface ModalProps {
   visible?: boolean;
   title?: ReactNode;
   okText?: ReactNode;
-  okBtnProps?: ButtonProps;
+  okButtonProps?: ButtonProps;
   onOk?: () => void;
   cancelText?: ReactNode;
-  cancelBtnProps?: ButtonProps;
+  cancelButtonProps?: ButtonProps;
   onCancel?: () => void;
   onClickOverlay?: () => void;
   closeOnClickOverlay?: boolean;

@@ -18,10 +18,10 @@ const Modal: React.FC<ModalProps> = (props) => {
     visible,
     title,
     okText = '确定',
-    okBtnProps,
+    okButtonProps,
     onOk,
     cancelText = '取消',
-    cancelBtnProps,
+    cancelButtonProps,
     onCancel,
     onClickOverlay,
     closeOnClickOverlay = true,
@@ -67,7 +67,7 @@ const Modal: React.FC<ModalProps> = (props) => {
             block={!roundButton}
             onClick={handleCancel}
             round={roundButton}
-            {...cancelBtnProps}
+            {...cancelButtonProps}
           >
             {cancelText}
           </Button>
@@ -83,7 +83,7 @@ const Modal: React.FC<ModalProps> = (props) => {
             block={!roundButton}
             onClick={handleOk}
             round={roundButton}
-            {...okBtnProps}
+            {...okButtonProps}
           >
             {okText}
           </Button>

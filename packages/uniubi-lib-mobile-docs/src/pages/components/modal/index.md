@@ -120,10 +120,10 @@ const App = () => {
 | title               | 标题               | N    | `ReactNode`   |          |                                                           |
 | children            | 内容               | N    | `ReactNode`   |          |                                                           |
 | okText              | 确定按钮文案       | N    | `string`      | `"确定"` |                                                           |
-| okBtnProps          | 确定按钮属性       | N    | `ButtonProps` |          | 同 [Button Props](/button)                                |
+| okButtonProps       | 确定按钮属性       | N    | `ButtonProps` |          | 同 [Button Props](/button)                                |
 | onOk                | 点击确定按钮事件   | N    | `() => void`  |          |                                                           |
 | cancelText          | 取消按钮文案       | N    | `string`      | `"取消"` |                                                           |
-| cancelBtnProps      | 取消按钮属性       | N    | `ButtonProps` |          | 同 [Button Props](/button)                                |
+| cancelButtonProps   | 取消按钮属性       | N    | `ButtonProps` |          | 同 [Button Props](/button)                                |
 | onCancel            | 点击取消按钮事件   | N    | `() => void`  |          |                                                           |
 | onClickOverlay      | 点击遮照事件       | N    | `() => void`  |          |                                                           |
 | closeOnClickOverlay | 点击遮照关闭弹出层 | N    | `boolean`     | `false`  |                                                           |
