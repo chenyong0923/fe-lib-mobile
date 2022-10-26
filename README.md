@@ -27,4 +27,5 @@
 
 ## 项目发布
 
-进入项目根目录，执行 `lerna publish`，根据修改情况确定版本号，版本号需严格遵循 [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/) 语义化版本规范
+1. 进入项目根目录，执行 `lerna build` 进行打包
+2. 执行 `lerna publish`，根据修改情况确定版本号，版本号需严格遵循 [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/) 语义化版本规范
