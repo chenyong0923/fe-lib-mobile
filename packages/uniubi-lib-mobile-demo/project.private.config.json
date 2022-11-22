@@ -92,6 +92,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/radio/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

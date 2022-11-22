@@ -70,6 +70,11 @@ export default [
         name: 'Popup 弹出层',
       },
       {
+        path: '/radio',
+        component: '@/pages/components/radio',
+        name: 'Radio 单选',
+      },
+      {
         path: '/scroll-wrapper',
         component: '@/pages/components/scroll-wrapper',
         name: 'ScrollWrapper 滚动视图',

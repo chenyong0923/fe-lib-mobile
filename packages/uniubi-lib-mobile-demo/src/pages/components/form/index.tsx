@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input } from 'uniubi-lib-mobile';
+import { Button, Form, Input, Radio } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -18,9 +18,7 @@ const Page = () => {
             label="姓名"
             name="name"
             initialValue="12345"
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入姓名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -28,7 +26,13 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item border={false}>
+          <Form.Item label="性别" name="gender" valueFormat={(e) => e}>
+            <Radio.Group>
+              <Radio value={1}>男</Radio>
+              <Radio value={2}>女</Radio>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item label="按钮" border={false}>
             <Button
               onClick={() => {
                 console.log(form.getFieldsValue());
@@ -66,9 +70,7 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={(e) => e}
             rules={{
               required: true,
               min: 4,
@@ -85,9 +87,7 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={(e) => e}
             rules={[
               {
                 validator: (value) => {
@@ -123,9 +123,7 @@ const Page = () => {
           <Form.Item
             label="昵称"
             name={['profile', 'nickname']}
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入昵称' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -136,9 +134,7 @@ const Page = () => {
           <Form.Item
             label="花名"
             name={['profile', 'flowername']}
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
+            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入花名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -164,6 +160,22 @@ const Page = () => {
             >
               resetFields
             </Button>
+          </Form.Item>
+        </Form>
+      </Section>
+      <Section title="调整布局">
+        <Form form={form} layout="vertical">
+          <Form.Item
+            label="姓名"
+            name="name"
+            initialValue="12345"
+            valueFormat={(e) => e}
+            rules={[
+              { required: true, message: '请输入姓名' },
+              { min: 4, max: 10, message: '请输入4-10个字符' },
+            ]}
+          >
+            <Input />
           </Form.Item>
         </Form>
       </Section>

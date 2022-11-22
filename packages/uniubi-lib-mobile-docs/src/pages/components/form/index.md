@@ -27,13 +27,19 @@ const App = () => {
           initialValue="12345"
           trigger="onInput"
           validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
+          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入姓名" },
             { max: 4, message: "最多4个字符" },
           ]}
         >
           <Input />
+        </Form.Item>
+        <Form.Item label="性别" name="gender" valueFormat={(e) => e}>
+          <Radio.Group>
+            <Radio value={1}>男</Radio>
+            <Radio value={2}>女</Radio>
+          </Radio.Group>
         </Form.Item>
         <Form.Item border={false}>
           <Button
@@ -90,7 +96,7 @@ const App = () => {
           name="name"
           trigger="onInput"
           validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
+          valueFormat={(e) => e}
           rules={{
             required: true,
             min: 4,
@@ -163,7 +169,7 @@ const App = () => {
           name="name"
           trigger="onInput"
           validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
+          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入姓名" },
             { max: 4, message: "最多4个字符" },
@@ -176,7 +182,7 @@ const App = () => {
           name={["profile", "nickname"]}
           trigger="onInput"
           validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
+          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入昵称" },
             { min: 4, max: 10, message: "请输入4-10个字符" },
@@ -189,7 +195,7 @@ const App = () => {
           name={["profile", "flowername"]}
           trigger="onInput"
           validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
+          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入花名" },
             { min: 4, max: 10, message: "请输入4-10个字符" },
@@ -215,6 +221,39 @@ const App = () => {
           >
             resetFields
           </Button>
+        </Form.Item>
+      </Form>
+    </View>
+  );
+};
+```
+
+### 调整布局
+
+```tsx
+import { View } from "@tarojs/components";
+import React, { useState } from "react";
+import { Form, Button, Input } from "uniubi-lib-mobile";
+
+const App = () => {
+  const [form] = Form.useForm();
+
+  return (
+    <View>
+      <Form form={form} layout="vertical">
+        <Form.Item
+          label="姓名"
+          name="name"
+          initialValue="12345"
+          trigger="onInput"
+          validateTrigger="onInput"
+          valueFormat={(e) => e}
+          rules={[
+            { required: true, message: "请输入姓名" },
+            { max: 4, message: "最多4个字符" },
+          ]}
+        >
+          <Input />
         </Form.Item>
       </Form>
     </View>
