@@ -7,6 +7,11 @@
 yarn add uniubi-lib-mobile
 ```
 
+```tsx
+// 在 app.ts 文件中引入样式
+import "uniubi-lib-mobile/dist/style/index.less";
+```
+
 ## 支持情况
 
 支持小程序、H5，部分组件仅支持小程序
