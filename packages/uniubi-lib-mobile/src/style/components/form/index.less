@@ -15,10 +15,10 @@
 
   &-horizontal {
     .@{prefix}-form-item-inner {
-      align-items: center;
     }
 
     .@{prefix}-form-item-label {
+      line-height: 2;
       flex-shrink: 0;
     }
   }
@@ -43,6 +43,7 @@
   }
 
   &-label {
+    display: flex;
     position: relative;
     color: @text-color-secondary;
     font-size: @font-size-lg;

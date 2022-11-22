@@ -32,7 +32,7 @@ const Page = () => {
               <Radio value={2}>女</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item border={false}>
+          <Form.Item label="按钮" border={false}>
             <Button
               onClick={() => {
                 console.log(form.getFieldsValue());
@@ -160,6 +160,22 @@ const Page = () => {
             >
               resetFields
             </Button>
+          </Form.Item>
+        </Form>
+      </Section>
+      <Section title="调整布局">
+        <Form form={form} layout="vertical">
+          <Form.Item
+            label="姓名"
+            name="name"
+            initialValue="12345"
+            valueFormat={(e) => e}
+            rules={[
+              { required: true, message: '请输入姓名' },
+              { min: 4, max: 10, message: '请输入4-10个字符' },
+            ]}
+          >
+            <Input />
           </Form.Item>
         </Form>
       </Section>

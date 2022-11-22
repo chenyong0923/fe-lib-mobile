@@ -3,7 +3,7 @@
 .@{prefix}-input {
   display: flex;
   align-items: center;
-  padding: @spacing-v-xs @spacing-h-md;
+  padding: 0 @spacing-h-md;
 
   &-border {
     border-bottom: 1px solid @border-color;
@@ -11,7 +11,7 @@
 
   &-inner {
     flex: 1;
-    height: 48px;
+    height: 64px;
     color: @black;
     font-size: @font-size-lg;
     background-color: @white;
@@ -19,6 +19,11 @@
     &-placeholder {
       font-size: @font-size-lg;
       color: @text-color-placeholder;
+    }
+
+    // 兼容 h5
+    input {
+      height: 100%;
     }
   }
 

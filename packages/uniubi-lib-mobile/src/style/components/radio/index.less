@@ -4,7 +4,10 @@
 .@{prefix}-radio {
   display: flex;
   align-items: flex-start;
-  padding: 0 @spacing-h-xl;
+
+  & + & {
+    margin-top: @spacing-v-sm;
+  }
 
   // ---- 位置 ---------
   &-left {
@@ -72,7 +75,7 @@
 
   // ---- 左侧选中 icon 区域 ---------
   &-prefix {
-    padding: @spacing-v-lg 0;
+    padding-bottom: @spacing-v-sm;
   }
   // -------------------------------
 
@@ -108,7 +111,7 @@
     flex: 1;
     display: flex;
     align-items: flex-start;
-    padding: @spacing-v-lg 0;
+    padding-bottom: @spacing-v-sm;
     border-bottom: 1px solid @border-color;
 
     &-content {
@@ -130,9 +133,16 @@
 }
 
 .@{prefix}-radio-group {
+  padding: @spacing-v-xs 0;
+
   .@{prefix}-radio {
     &:last-of-type {
+      .@{prefix}-radio-prefix {
+        padding-bottom: 0;
+      }
+
       .@{prefix}-radio-body {
+        padding-bottom: 0;
         border-bottom: none;
       }
     }
