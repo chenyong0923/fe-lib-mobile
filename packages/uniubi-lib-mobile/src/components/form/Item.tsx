@@ -67,7 +67,7 @@ const Item: React.FC<FormItemProps> = ({
     handleFieldRegister();
 
     return () => {
-      dispatch({ type: 'destroyField' }, name);
+      dispatch({ type: 'destroyField' }, namePath);
     };
   }, [onStoreChange]);
 

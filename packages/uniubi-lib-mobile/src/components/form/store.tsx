@@ -75,6 +75,8 @@ class FormStore {
    * @param {FieldEntity} entity 字段实体
    */
   private registerField = (entity: FieldEntity) => {
+    // 如果已存在不再重复注册
+    if (this.fieldEntities.some((item) => item.name === entity.name)) return;
     this.fieldEntities.push(entity);
     const { name, initialValue } = entity;
     if (!name) return;
