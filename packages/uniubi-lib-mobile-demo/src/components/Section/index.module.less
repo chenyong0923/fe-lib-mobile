@@ -1,12 +1,27 @@
 .section {
+  padding: 32px;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+
   & + & {
     margin-top: 32px;
   }
 
   .title {
+    display: flex;
+    align-items: center;
     font-size: 32px;
-    color: #7c7c7c;
+    color: #000000;
     margin-bottom: 16px;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 32px;
+      background-color: #2228e0;
+      margin-right: 16px;
+    }
   }
 
   .body {
