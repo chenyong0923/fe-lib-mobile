@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-import { isInvalid } from '@/utils/common';
+import { isInvalid, merge } from '@/utils/common';
 import { isObj } from '@/utils/validator';
 import { NamePathType } from '~/types/form/common';
 import {
@@ -104,13 +104,16 @@ class FormStore {
     Object.keys(this.store).forEach((field) => {
       const { value } = this.store[field];
       if (field.includes('.')) {
+        // 如果是多级字段
         const fieldPath = field.split('.');
+        // 拼接成完整的对象的值，如 { a: { b: '1' } }
         const val = fieldPath.reverse().reduce((prev, cur) => {
           const obj = {};
           obj[`${cur}`] = prev;
           return obj;
         }, value);
-        ret = { ...ret, ...val };
+        // 对结果进行深合并
+        ret = merge(ret, val);
       } else {
         ret[field] = value;
       }

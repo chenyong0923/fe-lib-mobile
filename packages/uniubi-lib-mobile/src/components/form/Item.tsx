@@ -117,7 +117,7 @@ const Item: React.FC<FormItemProps> = ({
       if (valueFormat) {
         value = await valueFormat(e, namePath, instance as FormInstance);
       } else {
-        value = e.detail;
+        value = e;
       }
       dispatch({ type: 'setFieldValue' }, namePath, value);
       if (_trigger) _trigger(e);
