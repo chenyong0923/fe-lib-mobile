@@ -42,6 +42,7 @@ export interface FormInstance<Values = any> {
 
 export interface FormInnerHooks {
   registerField: (entity: FieldEntity) => void;
+  destroyField: (name: string) => void;
   getFieldStore: (name: string) => StoreField;
   notifyChange: (name: string) => void;
   validate: (rule: Rule, value: any) => boolean;

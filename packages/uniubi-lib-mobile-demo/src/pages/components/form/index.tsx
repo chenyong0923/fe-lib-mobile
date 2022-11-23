@@ -18,7 +18,6 @@ const Page = () => {
             label="姓名"
             name="name"
             initialValue="12345"
-            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入姓名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -26,7 +25,7 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item label="性别" name="gender" valueFormat={(e) => e}>
+          <Form.Item label="性别" name="gender">
             <Radio.Group>
               <Radio value={1}>男</Radio>
               <Radio value={2}>女</Radio>
@@ -70,7 +69,6 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            valueFormat={(e) => e}
             rules={{
               required: true,
               min: 4,
@@ -87,7 +85,6 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            valueFormat={(e) => e}
             rules={[
               {
                 validator: (value) => {
@@ -110,9 +107,6 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            trigger="onInput"
-            validateTrigger="onInput"
-            valueFormat={(e) => e.detail.value}
             rules={[
               { required: true, message: '请输入姓名' },
               { max: 4, message: '最多4个字符' },
@@ -123,7 +117,6 @@ const Page = () => {
           <Form.Item
             label="昵称"
             name={['profile', 'nickname']}
-            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入昵称' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -134,7 +127,6 @@ const Page = () => {
           <Form.Item
             label="花名"
             name={['profile', 'flowername']}
-            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入花名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -143,6 +135,13 @@ const Page = () => {
             <Input />
           </Form.Item>
           <Form.Item border={false}>
+            <Button
+              onClick={() => {
+                console.log(form4.getFieldsValue());
+              }}
+            >
+              Submit
+            </Button>
             <Button
               onClick={() => {
                 form4.setFieldsValue({
@@ -169,7 +168,6 @@ const Page = () => {
             label="姓名"
             name="name"
             initialValue="12345"
-            valueFormat={(e) => e}
             rules={[
               { required: true, message: '请输入姓名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },

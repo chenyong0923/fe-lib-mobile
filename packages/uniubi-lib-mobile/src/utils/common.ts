@@ -1,6 +1,8 @@
 import { ITouchEvent } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 
+import { isObj } from './validator';
+
 /**
  * 阻止事件穿透
  * @param event touch 事件
@@ -109,4 +111,28 @@ export const uuid = (len = 16) => {
   }
 
   return id.join('');
+};
+
+/**
+ * 深合并对象
+ * @param source 对象
+ * @param other 对象
+ * @returns 合并后的对象
+ *  */
+export const merge = (source: object, other: object) => {
+  if (!isObj(source) || !isObj(other)) {
+    return other === undefined ? source : other;
+  }
+  // 合并两个对象的 key，另外要区分数组的初始值为 []
+  return Object.keys({
+    ...source,
+    ...other,
+  }).reduce(
+    (acc, key) => {
+      // 递归合并 value
+      acc[key] = merge(source[key], other[key]);
+      return acc;
+    },
+    Array.isArray(source) ? [] : {},
+  );
 };

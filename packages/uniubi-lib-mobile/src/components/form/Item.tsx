@@ -65,6 +65,10 @@ const Item: React.FC<FormItemProps> = ({
 
   useEffect(() => {
     handleFieldRegister();
+
+    return () => {
+      dispatch({ type: 'destroyField' }, namePath);
+    };
   }, [onStoreChange]);
 
   // 字段是否必需，如果存在 required 字段以 required 为准，如果不存在就看 rules 里面有没有必填规则
@@ -117,7 +121,7 @@ const Item: React.FC<FormItemProps> = ({
       if (valueFormat) {
         value = await valueFormat(e, namePath, instance as FormInstance);
       } else {
-        value = e.detail;
+        value = e;
       }
       dispatch({ type: 'setFieldValue' }, namePath, value);
       if (_trigger) _trigger(e);

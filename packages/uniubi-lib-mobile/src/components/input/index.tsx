@@ -33,9 +33,7 @@ const Input = ({
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isNil(value)) {
-      setInnerValue(formatValue(value));
-    }
+    setInnerValue(formatValue(value));
   }, [value]);
 
   // 输入事件

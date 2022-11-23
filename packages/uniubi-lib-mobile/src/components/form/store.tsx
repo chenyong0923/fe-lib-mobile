@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-import { isInvalid } from '@/utils/common';
+import { isInvalid, merge } from '@/utils/common';
 import { isObj } from '@/utils/validator';
 import { NamePathType } from '~/types/form/common';
 import {
@@ -35,6 +35,7 @@ class FormStore {
 
   getInnerHooks = (): FormInnerHooks => ({
     registerField: this.registerField,
+    destroyField: this.destroyField,
     getFieldStore: this.getFieldStore,
     notifyChange: this.notifyChange,
     validate: this.validate,
@@ -74,6 +75,8 @@ class FormStore {
    * @param {FieldEntity} entity 字段实体
    */
   private registerField = (entity: FieldEntity) => {
+    // 如果已存在不再重复注册
+    if (this.fieldEntities.some((item) => item.name === entity.name)) return;
     this.fieldEntities.push(entity);
     const { name, initialValue } = entity;
     if (!name) return;
@@ -104,13 +107,16 @@ class FormStore {
     Object.keys(this.store).forEach((field) => {
       const { value } = this.store[field];
       if (field.includes('.')) {
+        // 如果是多级字段
         const fieldPath = field.split('.');
+        // 拼接成完整的对象的值，如 { a: { b: '1' } }
         const val = fieldPath.reverse().reduce((prev, cur) => {
           const obj = {};
           obj[`${cur}`] = prev;
           return obj;
         }, value);
-        ret = { ...ret, ...val };
+        // 对结果进行深合并
+        ret = merge(ret, val);
       } else {
         ret[field] = value;
       }
@@ -230,6 +236,17 @@ class FormStore {
     entries.forEach((entity) => {
       this.registerField(entity);
     });
+  };
+
+  /**
+   * Form.Item 组件销毁时溢出字段
+   * @param name 字段名
+   */
+  private destroyField = (name: string) => {
+    this.fieldEntities = this.fieldEntities.filter(
+      (item) => item.name !== name,
+    );
+    delete this.store[name];
   };
 
   /**
