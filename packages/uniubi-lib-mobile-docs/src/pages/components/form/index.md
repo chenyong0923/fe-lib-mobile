@@ -272,20 +272,20 @@ const App = () => {
 
 ### Form.Item
 
-| 参数名          | 说明                        | 必填 | 类型                                                            | 默认值                 | 备注                                                                                   |
-| --------------- | --------------------------- | ---- | --------------------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
-| name            | 字段名                      | N    | `NamePathType`                                                  |                        | `type NamePathType = string \| string[]`                                               |
-| label           | 标签文本                    | N    | `ReactNode`                                                     |                        |                                                                                        |
-| labelWidth      | 标签宽度                    | N    | `number`                                                        | `110`                  | 单位 rpx                                                                               |
-| layout          | 布局                        | N    | `'horizontal' \| 'vertical'`                                    | `'horizontal'`         |                                                                                        |
-| border          | 是否需要下边框              | N    | `boolean`                                                       | `true`                 |                                                                                        |
-| initialValue    | 初始值                      | N    | `any`                                                           |                        | 重置时会回到这个值                                                                     |
-| rules           | 校验规则                    | N    | `Rule[] \| Omit<Rule, 'message'>`                               |                        | 当传入一个对象时，组件会预设一些提示文案，如果不符合需求可采用数组形式自行定制 message |
-| required        | 是否必填                    | N    | `boolean`                                                       | `false`                | 如果这个值为 `true`, rules 中没有必填规则会自动补充                                    |
-| valueKey        | 插入组件控制 value 的字段名 | N    | `'value'`                                                       |                        | 比如说 Input 组件的 value 的字段名就是 `value`                                         |
-| trigger         | 值变化的事件                | N    | `string`                                                        | `onChange`             | 比如 Input 组件是 `onInput`                                                            |
-| validateTrigger | 校验事件                    | N    | `string`                                                        | `onChange`             |                                                                                        |
-| valueFormat     | 格式化值变化                | N    | `(value: any, name: string, formInstance: FormInstance) => any` | 默认取 `e.detail` 的值 | 比如 Input 组件就取 `e.detail.value` 的值                                              |
+| 参数名          | 说明                        | 必填 | 类型                                                            | 默认值         | 备注                                                                                   |
+| --------------- | --------------------------- | ---- | --------------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------- |
+| name            | 字段名                      | N    | `NamePathType`                                                  |                | `type NamePathType = string \| string[]`                                               |
+| label           | 标签文本                    | N    | `ReactNode`                                                     |                |                                                                                        |
+| labelWidth      | 标签宽度                    | N    | `number`                                                        | `110`          | 单位 rpx                                                                               |
+| layout          | 布局                        | N    | `'horizontal' \| 'vertical'`                                    | `'horizontal'` |                                                                                        |
+| border          | 是否需要下边框              | N    | `boolean`                                                       | `true`         |                                                                                        |
+| initialValue    | 初始值                      | N    | `any`                                                           |                | 重置时会回到这个值                                                                     |
+| rules           | 校验规则                    | N    | `Rule[] \| Omit<Rule, 'message'>`                               |                | 当传入一个对象时，组件会预设一些提示文案，如果不符合需求可采用数组形式自行定制 message |
+| required        | 是否必填                    | N    | `boolean`                                                       | `false`        | 如果这个值为 `true`, rules 中没有必填规则会自动补充                                    |
+| valueKey        | 插入组件控制 value 的字段名 | N    | `'value'`                                                       |                | 比如说 Input 组件的 value 的字段名就是 `value`                                         |
+| trigger         | 值变化的事件                | N    | `string`                                                        | `onChange`     | 比如 Input 组件是 `onInput`                                                            |
+| validateTrigger | 校验事件                    | N    | `string`                                                        | `onChange`     |                                                                                        |
+| valueFormat     | 格式化值变化                | N    | `(value: any, name: string, formInstance: FormInstance) => any` |                |                                                                                        |
 
 ### FormInstance
 
