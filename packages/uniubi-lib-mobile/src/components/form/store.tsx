@@ -35,6 +35,7 @@ class FormStore {
 
   getInnerHooks = (): FormInnerHooks => ({
     registerField: this.registerField,
+    destroyField: this.destroyField,
     getFieldStore: this.getFieldStore,
     notifyChange: this.notifyChange,
     validate: this.validate,
@@ -233,6 +234,17 @@ class FormStore {
     entries.forEach((entity) => {
       this.registerField(entity);
     });
+  };
+
+  /**
+   * Form.Item 组件销毁时溢出字段
+   * @param name 字段名
+   */
+  private destroyField = (name: string) => {
+    this.fieldEntities = this.fieldEntities.filter(
+      (item) => item.name !== name,
+    );
+    delete this.store[name];
   };
 
   /**
