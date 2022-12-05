@@ -18414,7 +18414,7 @@
 
 "uniubi-lib-mobile-demo@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile-demo":
   "resolved" "file:packages/uniubi-lib-mobile-demo"
-  "version" "0.9.5"
+  "version" "0.10.0"
   dependencies:
     "@babel/runtime" "^7.7.7"
     "@tarojs/components" "3.4.9"
@@ -18430,7 +18430,7 @@
 
 "uniubi-lib-mobile-docs@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile-docs":
   "resolved" "file:packages/uniubi-lib-mobile-docs"
-  "version" "0.9.5"
+  "version" "0.10.0"
   dependencies:
     "@ant-design/pro-layout" "^6.38.2"
     "antd" "^100.20.0"
@@ -18444,7 +18444,7 @@
 
 "uniubi-lib-mobile@file:../uniubi-lib-mobile", "uniubi-lib-mobile@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile":
   "resolved" "file:packages/uniubi-lib-mobile"
-  "version" "0.9.5"
+  "version" "0.10.0"
   dependencies:
     "@uniubi/icons-taro" "^3.6.0"
     "classnames" "^2.3.1"
