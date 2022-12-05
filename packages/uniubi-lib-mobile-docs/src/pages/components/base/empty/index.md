@@ -3,7 +3,7 @@
 ## 引入
 
 ```tsx
-import { NavHeader } from "uniubi-lib-mobile";
+import { Empty } from "uniubi-lib-mobile";
 ```
 
 ## 使用指南

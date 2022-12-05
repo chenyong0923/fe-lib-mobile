@@ -49,7 +49,7 @@ const BasicLayout: FC<BasicLayoutProps> = ({
       layout="mix"
       headerTheme={MODE}
       navTheme={MODE}
-      siderWidth={180}
+      siderWidth={240}
       headerHeight={56}
       onMenuHeaderClick={() => {
         history.push('/');
