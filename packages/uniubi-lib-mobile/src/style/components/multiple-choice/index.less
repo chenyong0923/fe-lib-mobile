@@ -1,0 +1,74 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-multiple-choice {
+  &-question {
+    font-size: 36px;
+    line-height: 52px;
+    color: @text-color-major;
+  }
+
+  &-options {
+    margin-top: 48px;
+  }
+
+  &-option {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: @text-color;
+    background: #f9f9f9;
+    border-radius: 50px;
+    padding: 22px 84px 22px 48px;
+
+    & + & {
+      margin-top: 32px;
+    }
+
+    &-selected {
+      color: #ffffff;
+      background: @background-color-primary;
+
+      .@{prefix}-multiple-choice-option-icon {
+        display: block;
+      }
+    }
+
+    &-label {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      font-size: 30px;
+      line-height: 46px;
+
+      &-num {
+        width: 40px;
+        flex-shrink: 0;
+      }
+
+      &-text {
+        flex: 1;
+        padding-right: 16px;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      top: 50%;
+      right: 48px;
+      transform: translateY(-50%);
+      display: none;
+      flex-shrink: 0;
+      width: 40px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+}
+
+.@{prefix}-multiple-choice-group {
+  .@{prefix}-multiple-choice + .@{prefix}-multiple-choice {
+    margin-top: 80px;
+  }
+}

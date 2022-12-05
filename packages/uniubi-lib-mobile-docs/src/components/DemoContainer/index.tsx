@@ -11,6 +11,7 @@ const DemoContainer: React.FC = () => {
 
     // demo 路径
     const path = pathname === '/' ? '/index' : `/components${pathname}`;
+    console.log('pathname', pathname, `${prefix}/#/pages${path}/index`);
 
     return `${prefix}/#/pages${path}/index`;
   }, [pathname]);

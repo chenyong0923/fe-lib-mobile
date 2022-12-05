@@ -99,6 +99,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/multiple-choice/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,5 +1,39 @@
 // 组件类名前缀
 export const PREFIX = 'ulm';
+
+// 空状态图片
 export const DEFAULT_EMPTY_URL =
   'https://fe-cloud.uni-ubi.com/image/1636599028966-Group%203.png?x-oss-process=img/q/80';
-export const NAV_HEADER_HEIGHT: number = 96;
+
+// 头部默认高度
+export const NAV_HEADER_HEIGHT = 96;
+
+// 选项排列序号
+export const DEFAULT_SIGNS = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+];

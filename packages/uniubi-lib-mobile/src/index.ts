@@ -8,6 +8,7 @@ export { default as Input } from './components/input';
 export { default as List, useList } from './components/list';
 export { default as Loading } from './components/loading';
 export { default as Modal } from './components/modal';
+export { default as MultipleChoice } from './components/multiple-choice';
 export { default as NavHeader } from './components/nav-header';
 export { default as Overlay } from './components/overlay';
 export { default as Popup } from './components/popup';
