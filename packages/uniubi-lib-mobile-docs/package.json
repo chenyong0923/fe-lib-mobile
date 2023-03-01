@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "uniubi-lib-mobile-docs",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "移动端组件库文档",
   "author": "xuxiu <zhangming@uni-ubi.com>",
   "scripts": {
