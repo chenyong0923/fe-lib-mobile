@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "uniubi-mobile-template",
-  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "uniubi-lib-mobile-demo",
+  "description": "移动端组件库 demo 项目",
   "appid": "wx23065a90b0dc3aec",
   "setting": {
     "urlCheck": true,

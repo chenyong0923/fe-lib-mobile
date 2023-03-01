@@ -49,10 +49,21 @@
 }
 
 // 文字
-.text-ellipsis {
+.text-ellipsis(@line: 1) {
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+
+  & when (@line = 1) {
+    white-space: nowrap;
+  }
+
+  & when (@line > 1) {
+    display: -webkit-box;
+    word-wrap: break-word;
+    white-space: normal;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+  }
 }
 
 .button-border-none {

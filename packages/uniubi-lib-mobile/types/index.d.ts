@@ -15,5 +15,6 @@ export { default as Popup } from './popup';
 export { default as Radio } from './radio';
 export { default as Row } from './row';
 export { default as ScrollWrapper } from './scroll-wrapper';
+export { default as Steps } from './steps';
 export { default as Tabs } from './tabs';
 export { default as Toast } from './toast';

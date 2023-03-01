@@ -11,98 +11,105 @@
         },
         {
           "name": "",
-          "pathName": "pages/components/button/index",
+          "pathName": "pages/components/base/button/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/loading/index",
+          "pathName": "pages/components/base/loading/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/popup/index",
+          "pathName": "pages/components/base/popup/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/overlay/index",
+          "pathName": "pages/components/base/overlay/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/action-sheet/index",
+          "pathName": "pages/components/base/action-sheet/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/image/index",
+          "pathName": "pages/components/base/image/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/grid/index",
+          "pathName": "pages/components/base/grid/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/toast/index",
+          "pathName": "pages/components/base/toast/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/modal/index",
+          "pathName": "pages/components/base/modal/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/form/index",
+          "pathName": "pages/components/base/form/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/tabs/index",
+          "pathName": "pages/components/base/tabs/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/input/index",
+          "pathName": "pages/components/base/input/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/radio/index",
+          "pathName": "pages/components/base/radio/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/components/multiple-choice/index",
+          "pathName": "pages/components/business/multiple-choice/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/steps/index",
           "query": "",
           "launchMode": "default",
           "scene": null

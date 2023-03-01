@@ -85,6 +85,11 @@ export default [
             name: 'ScrollWrapper 滚动视图',
           },
           {
+            path: 'steps',
+            component: '@/pages/components/base/steps',
+            name: 'Steps 步骤条',
+          },
+          {
             path: 'tabs',
             component: '@/pages/components/base/tabs',
             name: 'Tabs 选项卡',

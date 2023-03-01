@@ -17,7 +17,7 @@ export const noop = (event: ITouchEvent) => {
  * @param value 输入值
  * @returns 是否有效
  */
-export const isNil = (value: any) => value == null;
+export const isNil = (value: any) => value === null || value === undefined;
 
 // 系统信息
 let systemInfo: Taro.getSystemInfoSync.Result;
