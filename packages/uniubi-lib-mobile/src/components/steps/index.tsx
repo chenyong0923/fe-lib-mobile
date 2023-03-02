@@ -5,7 +5,7 @@ import React from 'react';
 import { PREFIX } from '@/constants';
 
 import StepsContext from './context';
-import Item from './item';
+import Item from './Item';
 
 import type { StepsProps } from '~/types/steps';
 
