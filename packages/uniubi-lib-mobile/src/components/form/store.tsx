@@ -215,7 +215,7 @@ class FormStore {
     if (errorFields.length) {
       if (pos) {
         const firstField = errorFields[0];
-        Taro.pageScrollTo({ selector: `#${firstField}`, offsetTop: -120 });
+        Taro.pageScrollTo({ selector: `#${firstField}`, scrollTop: -120 });
       }
       return Promise.reject(
         errorFields.map((item) =>

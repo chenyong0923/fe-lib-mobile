@@ -43,7 +43,7 @@ export default {
     }),
     RollupNodeResolve({
       customResolveOptions: {
-        moduleDirectory: 'node_modules',
+        moduleDirectorys: ['node_modules'],
       },
     }),
     RollupCommonjs({
