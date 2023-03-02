@@ -33,17 +33,17 @@ const Input = ({
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    setInnerValue(formatValue(value));
+    if (value !== innerValue) {
+      setInnerValue(formatValue(value));
+    }
   }, [value]);
 
   // 输入事件
   const handleInput: CommonEventFunction<TaroInputProps.inputEventDetail> = (
     e,
   ) => {
+    setInnerValue(e.detail.value);
     onChange?.(e.detail.value);
-    if (isNil(value)) {
-      setInnerValue(e.detail.value);
-    }
   };
 
   // 清除输入框
