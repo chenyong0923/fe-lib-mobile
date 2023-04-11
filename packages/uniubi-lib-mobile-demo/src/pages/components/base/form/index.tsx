@@ -1,3 +1,4 @@
+import { View } from '@tarojs/components';
 import React from 'react';
 import { Button, Form, Input, Radio } from 'uniubi-lib-mobile';
 
@@ -9,6 +10,9 @@ const Page = () => {
   const [form2] = Form.useForm();
   const [form3] = Form.useForm();
   const [form4] = Form.useForm();
+  const [form5] = Form.useForm();
+
+  const name = Form.useWatch('name', form5);
 
   return (
     <BasicLayout>
@@ -79,7 +83,6 @@ const Page = () => {
           </Form.Item>
         </Form>
       </Section>
-
       <Section title="自定义校验规则">
         <Form form={form3}>
           <Form.Item
@@ -175,6 +178,14 @@ const Page = () => {
           >
             <Input />
           </Form.Item>
+        </Form>
+      </Section>
+      <Section title="监听字段">
+        <Form form={form5}>
+          <Form.Item label="姓名" name="name">
+            <Input />
+          </Form.Item>
+          <View>{name}</View>
         </Form>
       </Section>
     </BasicLayout>

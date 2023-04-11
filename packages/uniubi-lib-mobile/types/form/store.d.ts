@@ -1,7 +1,7 @@
-import { NamePathType } from './common';
+import { NamePathType, Value } from './common';
 
 export interface StoreField {
-  value?: any;
+  value?: Value;
   status?: 'resolved' | 'reject';
   errorMessage?: string;
 }
@@ -13,7 +13,7 @@ export interface RuleOption {
   max?: number;
   required?: boolean;
   pattern?: RegExp;
-  validator?: (value?: any) => boolean;
+  validator?: (value?: Value) => boolean;
 }
 
 export interface Rule extends RuleOption {
@@ -33,9 +33,9 @@ export interface FieldEntity {
 export interface FormInstance<Values = any> {
   getFieldValue: (namePath: NamePathType) => any;
   getFieldsValue: () => Values;
-  setFieldValue: (name: NamePathType, value: any) => void;
-  setFieldsValue: (values: Record<string, any>) => void;
-  validateFields: (pos?: boolean) => Promise<Record<string, any>>;
+  setFieldValue: (name: NamePathType, value: Value) => void;
+  setFieldsValue: (values: Values) => void;
+  validateFields: (pos?: boolean) => Promise<Values>;
   resetFields: () => void;
   dispatch: (params: { type: string }, ...arg: any[]) => any;
 }
@@ -45,7 +45,8 @@ export interface FormInnerHooks {
   destroyField: (name: string) => void;
   getFieldStore: (name: string) => StoreField;
   notifyChange: (name: string) => void;
-  validate: (rule: Rule, value: any) => boolean;
+  validate: (rule: Rule, value: Value) => boolean;
   createRules: (label: string, rule: RuleOption) => Rule[];
-  getName: (name: NamePathType) => string;
+  registerWatch: (callback: Function) => () => void;
+  notifyWatch: (namePath: NamePathType) => void;
 }

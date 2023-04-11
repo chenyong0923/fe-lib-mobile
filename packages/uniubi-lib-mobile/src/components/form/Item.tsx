@@ -12,10 +12,17 @@ import React, {
 import { PREFIX } from '@/constants';
 import { rpxToPx } from '@/utils/common';
 import { isObj } from '@/utils/validator';
-import { FormItemProps } from '~/types/form/item';
-import { FormInstance, Rule, RuleOption, StoreField } from '~/types/form/store';
 
 import FormContext from './context';
+import { getName } from './utils';
+
+import type { FormItemProps } from '~/types/form/item';
+import type {
+  FormInstance,
+  Rule,
+  RuleOption,
+  StoreField,
+} from '~/types/form/store';
 
 const prefix = `${PREFIX}-form-item`;
 
@@ -41,7 +48,7 @@ const Item: React.FC<FormItemProps> = ({
   const [, forceUpdate] = useState({});
 
   // 字段完整路径
-  const namePath: string = dispatch({ type: 'getName' }, name);
+  const namePath = name ? getName(name) : undefined;
 
   // 字段信息仓库，包含字段的值、校验状态、错误提示文字
   const store: StoreField = dispatch({ type: 'getFieldStore' }, namePath);

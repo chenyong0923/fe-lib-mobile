@@ -3,11 +3,13 @@ import classnames from 'classnames';
 import React from 'react';
 
 import { PREFIX } from '@/constants';
-import { FormProps } from '~/types/form';
 
 import FormContext from './context';
 import Item from './Item';
 import useForm from './useForm';
+import useWatch from './useWatch';
+
+import type { FormProps } from '~/types/form';
 
 const prefix = `${PREFIX}-form`;
 
@@ -31,5 +33,6 @@ const Form = ({
 
 Form.Item = Item;
 Form.useForm = useForm;
+Form.useWatch = useWatch;
 
 export default Form;

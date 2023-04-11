@@ -4,6 +4,7 @@ import { LayoutType } from './common';
 import Item from './item';
 import { FormInstance } from './store';
 import useForm from './useForm';
+import useWatch from './useWatch';
 
 export interface FormProps {
   className?: string;
@@ -20,6 +21,7 @@ type InternalFormType = typeof InternalForm;
 interface IForm extends InternalFormType {
   Item: typeof Item;
   useForm: typeof useForm;
+  useWatch: typeof useWatch;
 }
 
 declare const Form: IForm;

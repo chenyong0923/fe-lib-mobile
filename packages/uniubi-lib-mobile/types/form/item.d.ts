@@ -1,6 +1,6 @@
 import { CSSProperties, FC, ReactNode } from 'react';
 
-import { LayoutType, NamePathType } from './common';
+import { LayoutType, NamePathType, Value } from './common';
 import { FormInstance, Rule, RuleOption } from './store';
 
 export interface FormItemProps {
@@ -17,7 +17,7 @@ export interface FormItemProps {
   valueKey?: string;
   trigger?: string;
   validateTrigger?: string;
-  valueFormat?: (value: any, name: string, formInstance: FormInstance) => any;
+  valueFormat?: (value: Value, name: string, formInstance: FormInstance) => any;
 }
 
 declare const FormItem: FC<FormItemProps>;

@@ -2,8 +2,12 @@ import Taro from '@tarojs/taro';
 
 import { isInvalid, merge } from '@/utils/common';
 import { isObj } from '@/utils/validator';
-import { NamePathType } from '~/types/form/common';
-import {
+
+import { ValidateResult } from './constants';
+import { getName } from './utils';
+
+import type { NamePathType, Values } from '~/types/form/common';
+import type {
   FieldEntity,
   FormInnerHooks,
   FormInstance,
@@ -12,15 +16,15 @@ import {
   Store,
 } from '~/types/form/store';
 
-import { ValidateResult } from './constants';
-
 class FormStore {
   private store: Store;
   private fieldEntities: FieldEntity[];
+  private watchList: Function[];
 
   constructor() {
     this.store = {};
     this.fieldEntities = [];
+    this.watchList = [];
   }
 
   getForm = (): FormInstance => ({
@@ -40,7 +44,8 @@ class FormStore {
     notifyChange: this.notifyChange,
     validate: this.validate,
     createRules: this.createRules,
-    getName: this.getName,
+    registerWatch: this.registerWatch,
+    notifyWatch: this.notifyWatch,
   });
 
   private dispatch = (action: { type: string }, ...arg: any[]) => {
@@ -58,7 +63,7 @@ class FormStore {
    * @returns 字段信息
    */
   private getFieldStore = (name: string) => {
-    return { ...this.store[name] };
+    return this.store[name];
   };
 
   /**
@@ -94,7 +99,7 @@ class FormStore {
    * @returns 字段的值
    */
   private getFieldValue = (namePath: NamePathType) => {
-    const name = this.getName(namePath);
+    const name = getName(namePath);
     return this.store[name]?.value;
   };
 
@@ -103,7 +108,7 @@ class FormStore {
    * @returns 表单键值对
    */
   private getFieldsValue = () => {
-    let ret = {};
+    let ret: Values = {};
     Object.keys(this.store).forEach((field) => {
       const { value } = this.store[field];
       if (field.includes('.')) {
@@ -130,7 +135,7 @@ class FormStore {
    * @returns
    */
   private setFieldValue = (namePath: NamePathType, value: any) => {
-    const name = this.getName(namePath);
+    const name = getName(namePath);
     if (name in this.store) {
       this.store[name].value = value;
       this.validateField(name);
@@ -167,6 +172,8 @@ class FormStore {
   private notifyChange = (name: string) => {
     const field = this.getField(name);
     if (field) field.controller?.changeValue();
+    // 通知监听者
+    this.notifyWatch(name);
   };
 
   /**
@@ -324,13 +331,30 @@ class FormStore {
   };
 
   /**
-   * 根据字段路径返回格式化后字段名
-   * @param {NamePathType} name 字段路径
-   * @returns 字段名
+   * 对字段进行监听
+   * @param callback 监听触发的回调事件
+   * @returns 取消监听函数
    */
-  private getName = (namePath: NamePathType) => {
-    if (Array.isArray(namePath)) return namePath.join('.');
-    return namePath;
+  private registerWatch = (callback: Function) => {
+    this.watchList.push(callback);
+    // 返回一个函数，用于取消监听
+    return () => {
+      this.watchList = this.watchList.filter((fn) => fn !== callback);
+    };
+  };
+
+  /**
+   * 通知监听者
+   * @param namePath 字段名
+   */
+  private notifyWatch = (namePath: NamePathType) => {
+    if (this.watchList.length) {
+      const value = this.getFieldValue(namePath);
+      const values = this.getFieldsValue();
+      this.watchList.forEach((callback) => {
+        callback(namePath, value, values);
+      });
+    }
   };
 }
 

@@ -261,6 +261,30 @@ const App = () => {
 };
 ```
 
+### 监听字段
+
+```tsx
+import { View } from "@tarojs/components";
+import React, { useState } from "react";
+import { Form, Button, Input } from "uniubi-lib-mobile";
+
+const App = () => {
+  const [form] = Form.useForm();
+  const name = Form.useWatch("name", form);
+
+  return (
+    <View>
+      <Form form={form}>
+        <Form.Item label="姓名" name="name">
+          <Input />
+        </Form.Item>
+        <View>{name}</View>
+      </Form>
+    </View>
+  );
+};
+```
+
 ## API
 
 ### Form
@@ -316,3 +340,9 @@ const App = () => {
 `type Form.useForm = (): [FormInstance]`
 
 创建 Form 实例，用于管理所有数据状态。
+
+#### Form.useWatch()
+
+`type Form.useWatch = (namePath: NamePathType, form: FormInstance) => Value`
+
+监听字段值的变化。

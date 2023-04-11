@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IFormContext } from '~/types/form/context';
+import type { IFormContext } from '~/types/form/context';
 
 const defaultValue: IFormContext = {
   layout: 'horizontal',
