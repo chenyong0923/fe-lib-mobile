@@ -271,7 +271,7 @@ class FormStore {
     }
     // 校验长度或大小
     if (max || min) {
-      const val = typeof value === 'number' ? value : value.length;
+      const val = typeof value === 'number' ? value : value?.length ?? 0;
       if (max && min) {
         return val >= min && val <= max;
       } else if (max && isInvalid(min)) {
