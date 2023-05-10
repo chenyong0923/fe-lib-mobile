@@ -1,5 +1,5 @@
-import { ButtonProps as TaroButtonProps } from '@tarojs/components';
-import { FC } from 'react';
+import type { ButtonProps as TaroButtonProps } from '@tarojs/components';
+import type { FC } from 'react';
 
 export interface ButtonProps extends TaroButtonProps {
   type?: 'default' | 'primary' | 'secondary' | 'link' | 'text';

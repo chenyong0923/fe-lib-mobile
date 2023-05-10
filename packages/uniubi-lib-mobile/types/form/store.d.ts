@@ -1,4 +1,4 @@
-import { NamePathType, Value } from './common';
+import type { NamePathType, Value } from './common';
 
 export interface StoreField {
   value?: Value;

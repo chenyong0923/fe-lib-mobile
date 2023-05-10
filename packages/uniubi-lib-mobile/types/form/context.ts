@@ -1,5 +1,5 @@
-import { LayoutType } from './common';
-import { FormInstance } from './store';
+import type { LayoutType } from './common';
+import type { FormInstance } from './store';
 
 export interface IFormContext {
   layout: LayoutType;

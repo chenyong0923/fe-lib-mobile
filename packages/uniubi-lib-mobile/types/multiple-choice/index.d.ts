@@ -1,5 +1,6 @@
-import { BaseProps, ValueType } from './common';
 import Group from './group';
+
+import type { BaseProps, ValueType } from './common';
 
 interface Option {
   label: string;

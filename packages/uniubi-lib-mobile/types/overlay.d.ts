@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface OverlayProps {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  children?: ReactNode;
   visible?: boolean;
   onClick?: (e: ITouchEvent) => void;
   onClosed?: () => void;

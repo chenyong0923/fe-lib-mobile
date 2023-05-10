@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface ColProps {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  children?: ReactNode;
   span?: number;
   offset?: number;
 }

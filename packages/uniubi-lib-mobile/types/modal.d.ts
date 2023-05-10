@@ -4,6 +4,7 @@ import type { CSSProperties, FC, ReactNode } from 'react';
 export interface ModalProps {
   className?: string;
   style?: CSSProperties;
+  children?: ReactNode;
   visible?: boolean;
   title?: ReactNode;
   okText?: ReactNode;

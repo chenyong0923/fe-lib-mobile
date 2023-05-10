@@ -1,10 +1,10 @@
-import { CSSProperties, FC, ReactNode } from 'react';
-
-import { LayoutType } from './common';
 import Item from './item';
-import { FormInstance } from './store';
 import useForm from './useForm';
 import useWatch from './useWatch';
+
+import type { LayoutType } from './common';
+import type { FormInstance } from './store';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface FormProps {
   className?: string;

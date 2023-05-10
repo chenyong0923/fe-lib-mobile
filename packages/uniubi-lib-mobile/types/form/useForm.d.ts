@@ -1,4 +1,4 @@
-import { FormInstance } from './store';
+import type { FormInstance } from './store';
 
 function useForm<Values = any>(form?: FormInstance): [FormInstance<Values>];
 

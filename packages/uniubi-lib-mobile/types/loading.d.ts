@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface LoadingProps {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  children?: ReactNode;
   type?: 'default' | 'primary';
-  text?: string | React.ReactNode;
+  text?: string | ReactNode;
   block?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
 declare const Loading: FC<LoadingProps>;

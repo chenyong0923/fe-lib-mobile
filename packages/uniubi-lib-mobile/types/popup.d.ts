@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface PopupProps {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  children?: ReactNode;
   visible?: boolean;
   position?: 'top' | 'bottom' | 'left' | 'right' | 'center';
   overlay?: boolean;

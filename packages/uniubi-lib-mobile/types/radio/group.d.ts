@@ -1,8 +1,9 @@
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface RadioGroupProps {
   className?: string;
   style?: CSSProperties;
+  children?: ReactNode;
   value?: any;
   onChange?: (value: any) => void;
   disabled?: boolean;
