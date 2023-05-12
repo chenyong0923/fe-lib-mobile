@@ -13,7 +13,7 @@ import { Form } from "uniubi-lib-mobile";
 ```tsx
 import { View } from "@tarojs/components";
 import React, { useState } from "react";
-import { Form, Button, Input } from "uniubi-lib-mobile";
+import { Form, Button, Input, Radio, Checkbox } from "uniubi-lib-mobile";
 
 const App = () => {
   const [form] = Form.useForm();
@@ -40,6 +40,14 @@ const App = () => {
             <Radio value={1}>男</Radio>
             <Radio value={2}>女</Radio>
           </Radio.Group>
+        </Form.Item>
+        <Form.Item label="爱好" name="hobby">
+          <Checkbox.Group>
+            <Checkbox value="sing">唱</Checkbox>
+            <Checkbox value="dance">跳</Checkbox>
+            <Checkbox value="rap">Rap</Checkbox>
+            <Checkbox value="basketball">篮球</Checkbox>
+          </Checkbox.Group>
         </Form.Item>
         <Form.Item border={false}>
           <Button

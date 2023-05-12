@@ -113,6 +113,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/checkbox/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 export interface RowProps {
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
+  children?: ReactNode;
   gutter?: number | [number, number];
   justify?:
     | 'start'

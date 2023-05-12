@@ -20,6 +20,11 @@ export default [
             name: 'Button 按钮',
           },
           {
+            path: 'checkbox',
+            component: '@/pages/components/base/checkbox',
+            name: 'Checkbox 多选',
+          },
+          {
             path: 'empty',
             component: '@/pages/components/base/empty',
             name: 'Empty 空状态',

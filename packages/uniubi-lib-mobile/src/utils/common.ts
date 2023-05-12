@@ -1,13 +1,14 @@
-import { ITouchEvent } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 
 import { isObj } from './validator';
+
+import type { CommonEventFunction } from '@tarojs/components';
 
 /**
  * 阻止事件穿透
  * @param event touch 事件
  */
-export const noop = (event: ITouchEvent) => {
+export const noop: CommonEventFunction = (event) => {
   event.stopPropagation();
   event.preventDefault();
 };

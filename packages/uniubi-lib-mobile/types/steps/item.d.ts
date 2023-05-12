@@ -3,6 +3,7 @@ import type { CSSProperties, FC, ReactNode } from 'react';
 export interface StepsItemProps {
   className?: string;
   style?: CSSProperties;
+  children?: ReactNode;
   index?: number;
   title?: ReactNode;
   description?: ReactNode;

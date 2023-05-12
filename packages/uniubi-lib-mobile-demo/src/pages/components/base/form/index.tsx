@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components';
 import React from 'react';
-import { Button, Form, Input, Radio } from 'uniubi-lib-mobile';
+import { Button, Checkbox, Form, Input, Radio } from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -34,6 +34,14 @@ const Page = () => {
               <Radio value={1}>男</Radio>
               <Radio value={2}>女</Radio>
             </Radio.Group>
+          </Form.Item>
+          <Form.Item label="爱好" name="hobby">
+            <Checkbox.Group>
+              <Checkbox value="sing">唱</Checkbox>
+              <Checkbox value="dance">跳</Checkbox>
+              <Checkbox value="rap">Rap</Checkbox>
+              <Checkbox value="basketball">篮球</Checkbox>
+            </Checkbox.Group>
           </Form.Item>
           <Form.Item label="按钮" border={false}>
             <Button

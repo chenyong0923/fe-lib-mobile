@@ -1,5 +1,6 @@
 export { default as ActionSheet } from './action-sheet';
 export { default as Button } from './button';
+export { default as Checkbox } from './checkbox';
 export { default as Col } from './col';
 export { default as Empty } from './empty';
 export { default as Form } from './form';

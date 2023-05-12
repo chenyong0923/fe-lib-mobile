@@ -21,6 +21,16 @@ const config = {
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
   },
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      enable: false,
+      force: true,
+    },
+  },
+  cache: {
+    enable: true,
+  },
   mini: {
     postcss: {
       pxtransform: {
@@ -61,6 +71,7 @@ const config = {
         },
       },
     },
+    esnextModules: ['uniubi-lib-mobile'],
     devServer: {
       open: false,
     },
@@ -70,12 +81,6 @@ const config = {
 module.exports = function (merge) {
   if (process.env.CUSTOM_ENV === 'dev') {
     return merge({}, config, require('./dev'));
-  } else if (process.env.CUSTOM_ENV === 'test') {
-    return merge({}, config, require('./test'));
-  } else if (process.env.CUSTOM_ENV === 'release') {
-    return merge({}, config, require('./release'));
-  } else if (process.env.CUSTOM_ENV === 'pre') {
-    return merge({}, config, require('./pre'));
   }
   return merge({}, config, require('./prod'));
 };
