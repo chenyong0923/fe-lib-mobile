@@ -58,6 +58,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    useHtmlComponents: true,
     postcss: {
       autoprefixer: {
         enable: true,
