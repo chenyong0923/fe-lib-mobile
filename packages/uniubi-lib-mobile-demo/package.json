@@ -29,7 +29,6 @@
     "@tarojs/react": "3.6.6",
     "@tarojs/runtime": "3.6.6",
     "@tarojs/taro": "3.6.6",
-    "@tarojs/webpack-runner": "^3.6.6",
     "@tarojs/webpack5-runner": "3.6.6",
     "@uniubi/icons-taro": "^3.50.0",
     "classnames": "^2.3.1",
