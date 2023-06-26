@@ -20,6 +20,7 @@ export default {
     'pages/components/base/scroll-wrapper/index',
     'pages/components/base/steps/index',
     'pages/components/base/tabs/index',
+    'pages/components/base/tag/index',
     'pages/components/base/toast/index',
     // 业务组件
     'pages/components/business/multiple-choice/index',

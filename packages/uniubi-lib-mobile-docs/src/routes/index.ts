@@ -100,6 +100,11 @@ export default [
             name: 'Tabs 选项卡',
           },
           {
+            path: 'tag',
+            component: '@/pages/components/base/tag',
+            name: 'Tag 标签',
+          },
+          {
             path: 'toast',
             component: '@/pages/components/base/toast',
             name: 'Toast 轻提示',

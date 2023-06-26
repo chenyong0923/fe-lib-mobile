@@ -2820,7 +2820,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stencil/core@^2.18.1":
+"@stencil/core@^2.18.1", "@stencil/core@^2.22.2":
   version "2.22.3"
   resolved "http://npm.uniubi.com/@stencil%2fcore/-/core-2.22.3.tgz#83987e20bba855c450f6d6780e3a20192603f13f"
   integrity sha512-kmVA0M/HojwsfkeHsifvHVIYe4l5tin7J5+DLgtl8h6WWfiMClND5K3ifCXXI2ETDNKiEk21p6jql3Fx9o2rng==
@@ -2927,6 +2927,18 @@
     memoize-one "^6.0.0"
     postcss "^8.4.18"
 
+"@tarojs/components-advanced@3.6.6":
+  version "3.6.6"
+  resolved "http://npm.uniubi.com/@tarojs%2fcomponents-advanced/-/components-advanced-3.6.6.tgz#b08b50b075d44ff7cb5cb5470b7b91d8d9ef4ac1"
+  integrity sha512-cAJniZi8iB3d1VinqQ8qrLHc4jo7DmLZQsDnM5qdtn0wS4zdv+mhGw9gl3NscGCe2xhnmLwI1M1sy0K4an8a7w==
+  dependencies:
+    "@tarojs/components" "3.6.6"
+    "@tarojs/runtime" "3.6.6"
+    "@tarojs/shared" "3.6.6"
+    "@tarojs/taro" "3.6.6"
+    memoize-one "^6.0.0"
+    postcss "^8.4.18"
+
 "@tarojs/components-react@3.6.6":
   version "3.6.6"
   resolved "http://npm.uniubi.com/@tarojs%2fcomponents-react/-/components-react-3.6.6.tgz#74a51e6ccc9ba37c9a476118919969ce6f9c9848"
@@ -2941,7 +2953,7 @@
     swiper "6.8.0"
     weui "^1.1.2"
 
-"@tarojs/components@3.6.2", "@tarojs/components@3.6.6":
+"@tarojs/components@3.6.2":
   version "3.6.2"
   resolved "http://npm.uniubi.com/@tarojs%2fcomponents/-/components-3.6.2.tgz#78dcc665ceeaf127fdd8051a1663f9d4b81d6afe"
   integrity sha512-AgabrAILlrjUrhAC/FpW9kXbs3XuThwzKYiVZh3EPbdEDu4/8eHJIP4M+Gohu1MhTlhrFlQyLDZIhz6x/vmjFw==
@@ -2950,6 +2962,22 @@
     "@tarojs/components-advanced" "3.6.2"
     "@tarojs/router" "3.6.2"
     "@tarojs/taro" "3.6.2"
+    classnames "^2.2.5"
+    hls.js "^1.1.5"
+    intersection-observer "^0.7.0"
+    resolve-pathname "^3.0.0"
+    swiper "6.8.0"
+    weui "^1.1.2"
+
+"@tarojs/components@3.6.6":
+  version "3.6.6"
+  resolved "http://npm.uniubi.com/@tarojs%2fcomponents/-/components-3.6.6.tgz#aa7070d99f8eac9f960eacb163c02fdf5a9a7fdc"
+  integrity sha512-GWxFtKeiTNajkIyNjyrkEyvrtqOIcrdWSF46A5pCbtmpjdsloN6NX9ms4fwvSjoyci8VZ+sBimnviIqTpBfL+w==
+  dependencies:
+    "@stencil/core" "^2.22.2"
+    "@tarojs/components-advanced" "3.6.6"
+    "@tarojs/router" "3.6.6"
+    "@tarojs/taro" "3.6.6"
     classnames "^2.2.5"
     hls.js "^1.1.5"
     intersection-observer "^0.7.0"
@@ -3128,13 +3156,22 @@
     "@tarojs/service" "3.6.6"
     "@tarojs/shared" "3.6.6"
 
-"@tarojs/react@3.6.2", "@tarojs/react@3.6.6":
+"@tarojs/react@3.6.2":
   version "3.6.2"
   resolved "http://npm.uniubi.com/@tarojs%2freact/-/react-3.6.2.tgz#e8343799a13b5959dee04dd1dd2b24839ba8b47a"
   integrity sha512-kj6bhQajCnSOtZeuo4lxTnwJJffe73mUEc9Jjqa3gWMziN1OV1sEIxIbGggzbjhd/guS5XNUjKSZX64Dn6Nkxg==
   dependencies:
     "@tarojs/runtime" "3.6.2"
     "@tarojs/shared" "3.6.2"
+    react-reconciler "0.27.0"
+
+"@tarojs/react@3.6.6":
+  version "3.6.6"
+  resolved "http://npm.uniubi.com/@tarojs%2freact/-/react-3.6.6.tgz#a71e4c50e75a1578c627d408ebbed77d5bbf8dbc"
+  integrity sha512-FX+hXFmIdwfiRBSTYcWyjRA4T6hjybIu0FZ43HZfddZhVbzYWvED4nv6NI5CJhh+PRhpjMc2JsH3RyXiitMVXA==
+  dependencies:
+    "@tarojs/runtime" "3.6.6"
+    "@tarojs/shared" "3.6.6"
     react-reconciler "0.27.0"
 
 "@tarojs/router@3.6.2":
@@ -3736,7 +3773,14 @@
   resolved "http://npm.uniubi.com/@types%2frange-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha1-zWZ7z90CUhOq+3ylkVqTJZCs3Nw=
 
-"@types/react-dom@^16.9.8", "@types/react-dom@^18.2.0", "@types/react-dom@^18.2.4":
+"@types/react-dom@^16.9.8":
+  version "16.9.19"
+  resolved "http://npm.uniubi.com/@types%2freact-dom/-/react-dom-16.9.19.tgz#6a139c26b02dec533a7fa131f084561babb10a8f"
+  integrity sha512-xC8D280Bf6p0zguJ8g62jcEOKZiUbx9sIe6O3tT/lKfR87A7A6g65q13z6D5QUMIa/6yFPkNhqjF5z/VVZEYqQ==
+  dependencies:
+    "@types/react" "^16"
+
+"@types/react-dom@^18.2.4":
   version "18.2.4"
   resolved "http://npm.uniubi.com/@types%2freact-dom/-/react-dom-18.2.4.tgz#13f25bfbf4e404d26f62ac6e406591451acba9e0"
   integrity sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==
@@ -3819,10 +3863,19 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.43", "@types/react@^18.2.0", "@types/react@^18.2.6":
+"@types/react@*", "@types/react@^18.2.6":
   version "18.2.6"
   resolved "http://npm.uniubi.com/@types%2freact/-/react-18.2.6.tgz#5cd53ee0d30ffc193b159d3516c8c8ad2f19d571"
   integrity sha512-wRZClXn//zxCFW+ye/D2qY65UsYP1Fpex2YXorHc8awoNamkMZSvBxwxdYVInsHOZZd2Ppq8isnSzJL5Mpf8OA==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^16", "@types/react@^16.9.43":
+  version "16.14.43"
+  resolved "http://npm.uniubi.com/@types%2freact/-/react-16.14.43.tgz#bc6e7a0e99826809591d38ddf1193955de32c446"
+  integrity sha512-7zdjv7jvoLLQg1tTvpQsm+hyNUMT2mPlNV1+d0I8fbGhkJl82spopMyBlu4wb1dviZAxpGdk5eHu/muacknnfw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4454,10 +4507,10 @@
     "@umijs/babel-preset-umi" "3.5.40"
     "@umijs/deps" "3.5.40"
 
-"@uniubi/icons-taro@^3.0.0", "@uniubi/icons-taro@^3.6.0":
-  version "3.35.0"
-  resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-3.35.0.tgz"
-  integrity sha512-Fq4Z5OjpgnVDw0lsgNemeOICfjjyUjbzbImdf107m7J5meEFS8WDYQT+gnO62dtuvN3KA/xmAd6LcdYNjeNlZw==
+"@uniubi/icons-taro@^3.50.0":
+  version "3.50.0"
+  resolved "http://npm.uniubi.com/@uniubi%2ficons-taro/-/icons-taro-3.50.0.tgz#2b2bdf3583203fd083670515f0037a1c9e9afd9d"
+  integrity sha512-1GLyzyNVt8xJTCG/r85ybWXDo9rObNQJgNKeOiu27OhwVzHBUCKgCi02tR9pLHcKIsPWTi2hwZH/NX891KU5fA==
   dependencies:
     fs "^0.0.1-security"
     iconfont-parser "^1.0.0"

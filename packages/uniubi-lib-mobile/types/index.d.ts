@@ -18,4 +18,5 @@ export { default as Row } from './row';
 export { default as ScrollWrapper } from './scroll-wrapper';
 export { default as Steps } from './steps';
 export { default as Tabs } from './tabs';
+export { default as Tag } from './tag';
 export { default as Toast } from './toast';
