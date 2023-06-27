@@ -23,7 +23,6 @@
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.6.6",
     "@tarojs/helper": "3.6.6",
-    "@tarojs/mini-runner": "^3.6.6",
     "@tarojs/plugin-framework-react": "3.6.6",
     "@tarojs/plugin-platform-h5": "3.6.6",
     "@tarojs/react": "3.6.6",
