@@ -16,7 +16,7 @@ export const queryDom = async (
         query
           .select(flag)
           .boundingClientRect((res) => {
-            resolve(res);
+            resolve(res as Taro.NodesRef.BoundingClientRectCallbackResult);
           })
           .exec();
       }, 0);

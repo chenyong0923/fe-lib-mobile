@@ -21,13 +21,7 @@ const config = {
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
   },
-  compiler: {
-    type: 'webpack5',
-    prebundle: {
-      enable: false,
-      force: true,
-    },
-  },
+  compiler: 'webpack5',
   cache: {
     enable: true,
   },
