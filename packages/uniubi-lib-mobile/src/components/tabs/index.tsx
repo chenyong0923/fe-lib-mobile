@@ -30,7 +30,10 @@ const Tabs = ({
   // 给组件做唯一标识，避免多个组件同时渲染时获取 dom 错误问题
   const rootName = useMemo(() => `${prefix}-${uuid()}`, []);
   // 选中项 key 值
-  const [activeTabKey, setActiveTabKey] = useState<string>();
+  const [activeTabKey, setActiveTabKey] = useState<string>(
+    // 把第一个tab项作为默认选中项
+    (React.Children.toArray(children)?.[0] as any)?.props?.tabKey,
+  );
   // 视图窗口滚动信息
   const [viewInfo, setViewInfo] = useState<{ scrollTop: number }>({
     scrollTop: 0,
@@ -61,13 +64,6 @@ const Tabs = ({
   });
   // 选项卡的数量
   const childCount = React.Children.count(children);
-
-  useEffect(() => {
-    // 把第一个tab项作为默认选中项
-    const defaultActiveKey = (React.Children.toArray(children)?.[0] as any)
-      ?.props?.tabKey;
-    setActiveTabKey(defaultActiveKey);
-  }, []);
 
   useEffect(() => {
     // 获取到容器信息
@@ -149,6 +145,12 @@ const Tabs = ({
         />
       );
     } else if (layout === 'vertical') {
+      // const index = React.Children.toArray(children).findIndex(
+      //   (item) => (item as any).props.tabKey === activeTabKey,
+      // );
+      console.log('barInfo', barInfo);
+      console.log('navInfo', navInfo);
+      console.log('viewInfo', viewInfo);
       return (
         <View
           className={`${prefix}-nav-bar`}
