@@ -37,3 +37,10 @@ export const DEFAULT_SIGNS = [
   'Y',
   'Z',
 ];
+
+// 日期格式化
+export const FORMAT_YEAR = 'YYYY';
+export const FORMAT_MONTH = 'YYYY-MM';
+export const FORMAT_DATE = 'YYYY-MM-DD';
+export const FORMAT_TIME = 'HH:mm:ss';
+export const FORMAT_DATETIME = 'YYYY-MM-DD HH:mm:ss';

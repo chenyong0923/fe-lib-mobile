@@ -3,11 +3,12 @@ import { CloseOutlined } from '@uniubi/icons-taro';
 import classnames from 'classnames';
 import React, { useMemo } from 'react';
 
+import { PREFIX } from '@/constants';
 import { hexToRgb } from '@/utils/color';
 
 import { TagProps } from '../../../types/tag';
 
-const prefixCls = 'ulm-tag';
+const prefixCls = `${PREFIX}-tag`;
 
 const Tag = ({
   className,

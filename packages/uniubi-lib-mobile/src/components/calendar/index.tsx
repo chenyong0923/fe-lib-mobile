@@ -1,17 +1,27 @@
-import { View } from '@tarojs/components';
-import classnames from 'classnames';
+import dayjs, { type Dayjs } from 'dayjs';
 import React from 'react';
 
-import { CalendarProps } from '../../../types/calendar';
+import BaseCalendar from './BaseCalendar';
+import Range from './Range';
 
-const prefixCls = 'ulm-calendar';
+import type { CalendarProps } from '../../../types/calendar';
+import type { ValueType } from '../../../types/calendar/base';
 
-const Calendar = ({ className, style }: CalendarProps) => {
-  return (
-    <View className={classnames(prefixCls, className)} style={style}>
-      Calendar
-    </View>
-  );
+const Calendar = ({ value, onChange, onSelect, ...rest }: CalendarProps) => {
+  const selected: ValueType = [
+    dayjs(value).startOf('day'),
+    dayjs(value).endOf('day'),
+  ];
+
+  // 选中日期
+  const handelSelect = (date: Dayjs) => {
+    onChange?.(date);
+    onSelect?.(date);
+  };
+
+  return <BaseCalendar value={selected} onSelect={handelSelect} {...rest} />;
 };
+
+Calendar.Range = Range;
 
 export default Calendar;

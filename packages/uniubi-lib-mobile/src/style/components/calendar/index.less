@@ -2,4 +2,56 @@
 @import "../../mixins/index.less";
 
 .@{prefix}-calendar {
+  &-header {
+    .flex-center;
+    gap: @spacing-h-xl;
+    padding: @spacing-v-lg 0;
+
+    &-title {
+      font-size: @font-size-lg;
+      font-weight: @font-weight-bold;
+      color: @text-color;
+    }
+  }
+
+  &-main {
+    &-header,
+    &-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: @spacing-v-md;
+    }
+
+    &-header {
+      margin-bottom: @spacing-v-md;
+
+      .@{prefix}-calendar-main-cell {
+        color: @text-color-placeholder;
+      }
+    }
+
+    &-cell {
+      .flex-center;
+      padding: @spacing-v-xs 0;
+
+      &-gray,
+      &-disabled {
+        color: @text-color-placeholder;
+      }
+
+      &-selected {
+        .@{prefix}-calendar-main-cell-inner {
+          color: @white;
+          background-color: @background-color-primary;
+        }
+      }
+
+      &-inner {
+        .flex-center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+    }
+  }
 }

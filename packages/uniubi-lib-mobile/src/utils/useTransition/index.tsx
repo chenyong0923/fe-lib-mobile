@@ -1,5 +1,7 @@
 import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 
+import { PREFIX } from '@/constants';
+
 import * as stylesUtils from './styles';
 
 export { stylesUtils };
@@ -17,10 +19,10 @@ interface TransitionProps {
 }
 
 const getClassNames = (name: string) => ({
-  enter: `ulm-${name}-enter ulm-${name}-enter-active enter-class enter-active-class`, // 开始执行进入动画时的类名
-  'enter-to': `ulm-${name}-enter-to ulm-${name}-enter-active enter-to-class enter-active-class`, // 进入动画执行完成时的类名
-  leave: `ulm-${name}-leave ulm-${name}-leave-active leave-class leave-active-class`, // 开始执行离开动画时的类名
-  'leave-to': `ulm-${name}-leave-to ulm-${name}-leave-active leave-to-class leave-active-class`, // 离开动画执行完成时的类名
+  enter: `${PREFIX}-${name}-enter ${PREFIX}-${name}-enter-active enter-class enter-active-class`, // 开始执行进入动画时的类名
+  'enter-to': `${PREFIX}-${name}-enter-to ${PREFIX}-${name}-enter-active enter-to-class enter-active-class`, // 进入动画执行完成时的类名
+  leave: `${PREFIX}-${name}-leave ${PREFIX}-${name}-leave-active leave-class leave-active-class`, // 开始执行离开动画时的类名
+  'leave-to': `${PREFIX}-${name}-leave-to ${PREFIX}-${name}-leave-active leave-to-class leave-active-class`, // 离开动画执行完成时的类名
 });
 
 const useTransition = ({
