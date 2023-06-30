@@ -9,7 +9,10 @@ import BasicLayout from '@/layouts/BasicLayout';
 const Page = () => {
   const [value, setValue] = useState<Dayjs>(dayjs());
   const [value2, setValue2] = useState<Dayjs>(dayjs());
-  const [range, setRange] = useState<[Dayjs, Dayjs]>([] as any);
+  const [range, setRange] = useState<[Dayjs, Dayjs]>([
+    dayjs().subtract(1, 'day'),
+    dayjs().add(1, 'day'),
+  ]);
 
   return (
     <BasicLayout>

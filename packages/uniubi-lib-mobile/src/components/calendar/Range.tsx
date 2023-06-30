@@ -11,10 +11,13 @@ const CalendarRange = ({
   onChange,
   ...rest
 }: CalendarRangeProps) => {
+  // 选择的开始时间，只要存在，则说明在选择中
   const [startTime, setStartTime] = useState<Dayjs>();
 
+  // 选中的日期
   const selected: ValueType = useMemo(() => {
     let ret: ValueType;
+    // 如果内部开始时间存在，说明在选择中，此时选中的日期为开始时间当天
     if (startTime) {
       ret = [startTime.startOf('day'), startTime.endOf('day')];
     } else {
@@ -30,6 +33,7 @@ const CalendarRange = ({
         (a, b) => a.valueOf() - b.valueOf(),
       ) as ValueType;
       onChange?.(v);
+      // 清空开始时间表示选择已完成
       setStartTime(undefined);
     } else {
       setStartTime(date);

@@ -32,7 +32,7 @@
 
     &-cell {
       .flex-center;
-      padding: @spacing-v-xs 0;
+      // padding: @spacing-v-xs 0;
 
       &-gray,
       &-disabled {
@@ -40,9 +40,46 @@
       }
 
       &-selected {
+        position: relative;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 50%;
+          height: 100%;
+          background-color: rgba(color(@color-primary), 0.1);
+          z-index: -1;
+        }
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+
         .@{prefix}-calendar-main-cell-inner {
-          color: @white;
-          background-color: @background-color-primary;
+          color: @color-primary;
+        }
+
+        &-start,
+        &-end {
+          .@{prefix}-calendar-main-cell-inner {
+            color: @white;
+            background-color: @background-color-primary;
+          }
+        }
+
+        &-start::before {
+          content: none;
+        }
+
+        &-end::after {
+          content: none;
         }
       }
 

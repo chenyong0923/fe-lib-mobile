@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 
 /**
  * 根据月份生成日历数据
@@ -27,4 +27,30 @@ export const generateDate = (month: string) => {
     dayjs(month).add(1, 'month').startOf('month').add(index, 'day'),
   );
   return [...prevMonthDate, ...currentMonthDate, ...nextMonthDate];
+};
+
+/**
+ * 判断日期是否相同
+ * @param d1 日期1
+ * @param d2 日期2
+ * @param t 比较的类型
+ * @returns 是否相同
+ */
+export const isSameDate = (
+  d1: Dayjs,
+  d2: Dayjs,
+  t: 'day' | 'month' | 'year' = 'day',
+) => {
+  if (!d1 || !d2) return false;
+  if (t === 'day') {
+    return (
+      d1.isSame(d2, 'year') && d1.isSame(d2, 'month') && d1.isSame(d2, 'day')
+    );
+  } else if (t === 'month') {
+    return d1.isSame(d2, 'year') && d1.isSame(d2, 'month');
+  } else if (t === 'year') {
+    return d1.isSame(d2, 'year');
+  } else {
+    return undefined as never;
+  }
 };

@@ -13,7 +13,7 @@ import React, { useMemo, useState } from 'react';
 import { FORMAT_DATE, FORMAT_MONTH, PREFIX } from '@/constants';
 
 import { WEEK_MAP } from './contants';
-import { generateDate } from './utils';
+import { generateDate, isSameDate } from './utils';
 
 import type { BaseCalendarProps } from '../../../types/calendar/base';
 
@@ -148,6 +148,14 @@ const BaseCalendar = ({
                 // 如果没有最小值和最大值，则置灰非当前月份的日期
                 [`${prefixCls}-main-cell-gray`]: isGray(date),
                 [`${prefixCls}-main-cell-selected`]: isSelected(date),
+                [`${prefixCls}-main-cell-selected-start`]: isSameDate(
+                  date,
+                  value?.[0],
+                ),
+                [`${prefixCls}-main-cell-selected-end`]: isSameDate(
+                  date,
+                  value?.[1],
+                ),
                 [`${prefixCls}-main-cell-disabled`]: !isInRange(date),
               })}
               key={date.format(FORMAT_DATE)}
