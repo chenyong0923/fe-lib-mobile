@@ -1,10 +1,12 @@
-import type { BaseCalendarProps, ValueType } from './base';
-import type { FC } from 'react';
+import type { BaseCalendarProps, ValueRange } from './base';
 
-export interface CalendarRangeProps extends BaseCalendarProps {
-  onChange?: (value: ValueType) => void;
+export interface CalendarRangeProps<T extends CalendarType = 'day'>
+  extends BaseCalendarProps<T> {
+  onChange?: (value: ValueRange<T>) => void;
 }
 
-declare const CalendarRange: FC<CalendarRangeProps>;
+declare const CalendarRange: <T extends CalendarType = 'day'>(
+  props: CalendarRangeProps<T>,
+) => JSX.Element;
 
 export default CalendarRange;

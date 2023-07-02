@@ -1,25 +1,42 @@
-import dayjs, { type Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import React from 'react';
 
 import BaseCalendar from './BaseCalendar';
 import Range from './Range';
 
 import type { CalendarProps } from '../../../types/calendar';
-import type { ValueType } from '../../../types/calendar/base';
+import type {
+  CalendarType,
+  ValueRange,
+  ValueType,
+} from '../../../types/calendar/base';
 
-const Calendar = ({ value, onChange, onSelect, ...rest }: CalendarProps) => {
-  const selected: ValueType = [
-    dayjs(value).startOf('day'),
-    dayjs(value).endOf('day'),
-  ];
+const Calendar = <T extends CalendarType = 'day'>({
+  type = 'day' as T,
+  value,
+  onChange,
+  onSelect,
+  ...rest
+}: CalendarProps<T>) => {
+  const selected = [
+    dayjs(value).startOf(type),
+    dayjs(value).endOf(type),
+  ] as ValueRange<T>;
 
   // 选中日期
-  const handelSelect = (date: Dayjs) => {
+  const handleSelect = (date: ValueType<T>) => {
     onChange?.(date);
     onSelect?.(date);
   };
 
-  return <BaseCalendar value={selected} onSelect={handelSelect} {...rest} />;
+  return (
+    <BaseCalendar
+      type={type}
+      value={selected}
+      onSelect={handleSelect}
+      {...rest}
+    />
+  );
 };
 
 Calendar.Range = Range;

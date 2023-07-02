@@ -1,9 +1,97 @@
 @import "../../themes/default.less";
 @import "../../mixins/index.less";
 
-@inner-size: 60px;
+@year-cell-inner-size: 120px;
+@month-cell-inner-size: 120px;
+@day-cell-inner-size: 60px;
 
 .@{prefix}-calendar {
+  &-year {
+    .@{prefix}-calendar-main-body {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .@{prefix}-calendar-main-cell-selected {
+      .@{prefix}-calendar-main-cell-inner {
+        color: @white;
+        background-color: @background-color-primary;
+      }
+    }
+
+    .@{prefix}-calendar-main-cell-inner {
+      width: 100%;
+      height: @year-cell-inner-size;
+    }
+  }
+
+  &-month {
+    .@{prefix}-calendar-main-body {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .@{prefix}-calendar-main-cell-selected {
+      .@{prefix}-calendar-main-cell-inner {
+        color: @white;
+        background-color: @background-color-primary;
+      }
+    }
+
+    .@{prefix}-calendar-main-cell-inner {
+      width: 100%;
+      height: @month-cell-inner-size;
+    }
+  }
+
+  &-day {
+    .@{prefix}-calendar-main-body {
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .@{prefix}-calendar-main-cell-inner {
+      width: @day-cell-inner-size;
+      height: @day-cell-inner-size;
+      border-radius: 50%;
+    }
+
+    .@{prefix}-calendar-main-cell-selected {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50%;
+        height: @day-cell-inner-size;
+        background-color: rgba(color(@color-primary), 0.1);
+        z-index: -1;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+
+      &-start,
+      &-end {
+        .@{prefix}-calendar-main-cell-inner {
+          color: @white;
+          background-color: @background-color-primary;
+        }
+      }
+
+      &-start::before {
+        content: none;
+      }
+
+      &-end::after {
+        content: none;
+      }
+    }
+  }
+
   &-header {
     .flex-center;
     gap: @spacing-h-xl;
@@ -14,17 +102,22 @@
       font-weight: @font-weight-bold;
       color: @text-color;
     }
+
+    &-color {
+      font-size: @font-size-lg;
+      color: @text-color-icon;
+    }
   }
 
   &-main {
     &-header,
     &-body {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
       row-gap: @spacing-v-md;
     }
 
     &-header {
+      grid-template-columns: repeat(7, 1fr);
       margin-bottom: @spacing-v-md;
 
       .@{prefix}-calendar-main-cell {
@@ -51,49 +144,10 @@
         .@{prefix}-calendar-main-cell-inner {
           color: @color-primary;
         }
-
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 50%;
-          height: @inner-size;
-          background-color: rgba(color(@color-primary), 0.1);
-          z-index: -1;
-        }
-
-        &::before {
-          left: 0;
-        }
-
-        &::after {
-          right: 0;
-        }
-
-        &-start,
-        &-end {
-          .@{prefix}-calendar-main-cell-inner {
-            color: @white;
-            background-color: @background-color-primary;
-          }
-        }
-
-        &-start::before {
-          content: none;
-        }
-
-        &-end::after {
-          content: none;
-        }
       }
 
       &-inner {
         .flex-center;
-        width: @inner-size;
-        height: @inner-size;
-        border-radius: 50%;
       }
 
       &-custom {

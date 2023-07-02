@@ -1,5 +1,7 @@
 import dayjs, { type Dayjs } from 'dayjs';
 
+import type { CalendarType } from '../../../types/calendar/base';
+
 /**
  * 根据月份生成日历数据
  * @param month 需要生成日历的月份
@@ -42,13 +44,15 @@ export const generateMonth = (year: number) => {
 
 /**
  * 生成年份日历数据
- * @param num 需要生成日历的年份数量
+ * @param num 与当前年份的页数差值
  * @returns 年份日历数据
  */
 export const generateYear = (num: number) => {
-  return Array.from({ length: num }).map((_, index) =>
-    dayjs().year(dayjs().year() - index),
-  );
+  // 单页16条数据
+  const size = 16;
+  return Array.from({ length: size })
+    .map((_, index) => dayjs().year(dayjs().year() + num * size - index))
+    .reverse();
 };
 
 /**
@@ -58,11 +62,7 @@ export const generateYear = (num: number) => {
  * @param t 比较的类型
  * @returns 是否相同
  */
-export const isSameDate = (
-  d1: Dayjs,
-  d2: Dayjs,
-  t: 'day' | 'month' | 'year' = 'day',
-) => {
+export const isSameDate = (d1: Dayjs, d2: Dayjs, t: CalendarType = 'day') => {
   if (!d1 || !d2) return false;
   if (t === 'day') {
     return (

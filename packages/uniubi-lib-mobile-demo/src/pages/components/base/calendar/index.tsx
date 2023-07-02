@@ -13,6 +13,8 @@ const Page = () => {
     dayjs().subtract(1, 'day'),
     dayjs().add(1, 'day'),
   ]);
+  const [value3, setValue3] = useState<string>('2023-06');
+  const [value4, setValue4] = useState<string>('2023');
 
   return (
     <BasicLayout>
@@ -53,6 +55,22 @@ const Page = () => {
               return <Text>今</Text>;
             }
             return null;
+          }}
+        />
+      </Section>
+      <Section title="不同类型">
+        <Calendar
+          type="month"
+          value={value3}
+          onChange={(date) => {
+            setValue3(date);
+          }}
+        />
+        <Calendar
+          type="year"
+          value={value4}
+          onChange={(date) => {
+            setValue4(date);
           }}
         />
       </Section>
