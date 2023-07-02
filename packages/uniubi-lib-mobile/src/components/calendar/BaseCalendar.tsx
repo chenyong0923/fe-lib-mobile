@@ -77,13 +77,15 @@ const BaseCalendar = ({
     setCurrentDate(date);
   };
 
-  // 渲染日期
+  // 渲染日期自定义内容
   const renderDate = (date: Dayjs) => {
-    if (typeof dateRender === 'function') {
-      return dateRender(date);
+    if (typeof dateRender !== 'function') {
+      return null;
     }
     return (
-      <View className={`${prefixCls}-main-cell-inner`}>{date.date()}</View>
+      <View className={`${prefixCls}-main-cell-custom`}>
+        {dateRender(date)}
+      </View>
     );
   };
 
@@ -163,6 +165,10 @@ const BaseCalendar = ({
                 handelSelect(date);
               }}
             >
+              <View className={`${prefixCls}-main-cell-inner`}>
+                {date.date()}
+              </View>
+              {/* 自定义渲染内容 */}
               {renderDate(date)}
             </View>
           ))}

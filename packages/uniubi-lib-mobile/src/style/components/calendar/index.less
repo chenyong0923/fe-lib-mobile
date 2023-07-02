@@ -1,6 +1,8 @@
 @import "../../themes/default.less";
 @import "../../mixins/index.less";
 
+@inner-size: 60px;
+
 .@{prefix}-calendar {
   &-header {
     .flex-center;
@@ -31,8 +33,12 @@
     }
 
     &-cell {
-      .flex-center;
-      // padding: @spacing-v-xs 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: @spacing-v-xs;
+      min-width: 0;
 
       &-gray,
       &-disabled {
@@ -42,6 +48,10 @@
       &-selected {
         position: relative;
 
+        .@{prefix}-calendar-main-cell-inner {
+          color: @color-primary;
+        }
+
         &::before,
         &::after {
           content: "";
@@ -49,7 +59,7 @@
           top: 50%;
           transform: translateY(-50%);
           width: 50%;
-          height: 100%;
+          height: @inner-size;
           background-color: rgba(color(@color-primary), 0.1);
           z-index: -1;
         }
@@ -60,10 +70,6 @@
 
         &::after {
           right: 0;
-        }
-
-        .@{prefix}-calendar-main-cell-inner {
-          color: @color-primary;
         }
 
         &-start,
@@ -85,9 +91,13 @@
 
       &-inner {
         .flex-center;
-        width: 60px;
-        height: 60px;
+        width: @inner-size;
+        height: @inner-size;
         border-radius: 50%;
+      }
+
+      &-custom {
+        .flex-center;
       }
     }
   }

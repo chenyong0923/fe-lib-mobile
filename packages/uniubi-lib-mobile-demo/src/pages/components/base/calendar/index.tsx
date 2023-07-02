@@ -46,6 +46,16 @@ const Page = () => {
           }}
         />
       </Section>
+      <Section title="渲染自定义内容">
+        <Calendar
+          dateRender={(date) => {
+            if (date.valueOf() === dayjs().startOf('day').valueOf()) {
+              return <Text>今</Text>;
+            }
+            return null;
+          }}
+        />
+      </Section>
     </BasicLayout>
   );
 };

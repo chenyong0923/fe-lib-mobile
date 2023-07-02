@@ -30,6 +30,28 @@ export const generateDate = (month: string) => {
 };
 
 /**
+ * 根据年份生成月份日历数据
+ * @param year 需要生成日历的年份
+ * @returns 月份日历数据
+ */
+export const generateMonth = (year: number) => {
+  return Array.from({ length: 12 }).map((_, index) =>
+    dayjs().year(year).month(index),
+  );
+};
+
+/**
+ * 生成年份日历数据
+ * @param num 需要生成日历的年份数量
+ * @returns 年份日历数据
+ */
+export const generateYear = (num: number) => {
+  return Array.from({ length: num }).map((_, index) =>
+    dayjs().year(dayjs().year() - index),
+  );
+};
+
+/**
  * 判断日期是否相同
  * @param d1 日期1
  * @param d2 日期2
