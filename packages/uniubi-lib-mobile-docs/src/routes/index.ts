@@ -20,6 +20,11 @@ export default [
             name: 'Button 按钮',
           },
           {
+            path: 'calendar',
+            component: '@/pages/components/base/calendar',
+            name: 'Calendar 日历',
+          },
+          {
             path: 'checkbox',
             component: '@/pages/components/base/checkbox',
             name: 'Checkbox 多选',

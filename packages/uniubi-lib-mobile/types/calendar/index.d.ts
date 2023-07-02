@@ -4,7 +4,6 @@ import type { BaseCalendarProps, CalendarType, ValueType } from './base';
 
 export interface CalendarProps<T extends CalendarType = 'day'>
   extends BaseCalendarProps<T> {
-  defaultValue?: ValueType<T>;
   value?: ValueType<T>;
   onChange?: (value: ValueType<T>) => void;
 }
