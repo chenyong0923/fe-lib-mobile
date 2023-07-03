@@ -30,6 +30,11 @@ export default [
             name: 'Checkbox 多选',
           },
           {
+            path: 'descriptions',
+            component: '@/pages/components/base/descriptions',
+            name: 'Descriptions 描述列表',
+          },
+          {
             path: 'empty',
             component: '@/pages/components/base/empty',
             name: 'Empty 空状态',

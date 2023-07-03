@@ -3,6 +3,7 @@ export { default as Button } from './button';
 export { default as Calendar } from './calendar';
 export { default as Checkbox } from './checkbox';
 export { default as Col } from './col';
+export { default as Descriptions } from './descriptions';
 export { default as Empty } from './empty';
 export { default as Form } from './form';
 export { default as Image } from './image';

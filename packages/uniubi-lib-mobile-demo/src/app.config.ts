@@ -6,6 +6,7 @@ export default {
     'pages/components/base/button/index',
     'pages/components/base/calendar/index',
     'pages/components/base/checkbox/index',
+    'pages/components/base/descriptions/index',
     'pages/components/base/empty/index',
     'pages/components/base/form/index',
     'pages/components/base/grid/index',

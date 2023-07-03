@@ -1,0 +1,50 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-descriptions {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-gap: @spacing-v-sm @spacing-h-md;
+
+  &-horizontal {
+  }
+
+  &-vertical {
+    .@{prefix}-descriptions-item {
+      flex-direction: column;
+
+      &-label,
+      &-content {
+        width: 100%;
+      }
+    }
+  }
+
+  &-with-colon {
+    .@{prefix}-descriptions-item-label::after {
+      content: ":";
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: @spacing-h-md;
+
+    &-label,
+    &-content {
+      font-size: @font-size-base;
+      font-weight: @font-weight-normal;
+    }
+
+    &-label {
+      flex-shrink: 0;
+      color: @text-color-label;
+    }
+
+    &-content {
+      flex: 1;
+      color: @text-color-major;
+    }
+  }
+}
