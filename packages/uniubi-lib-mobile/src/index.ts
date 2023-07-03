@@ -17,6 +17,7 @@ export { default as Overlay } from './components/overlay';
 export { default as Popup } from './components/popup';
 export { default as Radio } from './components/radio';
 export { default as ScrollWrapper } from './components/scroll-wrapper';
+export { default as Space } from './components/space';
 export { default as Steps } from './components/steps';
 export { default as Tabs } from './components/tabs';
 export { default as Tag } from './components/tag';

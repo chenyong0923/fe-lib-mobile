@@ -100,6 +100,11 @@ export default [
             name: 'ScrollWrapper 滚动视图',
           },
           {
+            path: 'space',
+            component: '@/pages/components/base/space',
+            name: 'Space 间距',
+          },
+          {
             path: 'steps',
             component: '@/pages/components/base/steps',
             name: 'Steps 步骤条',

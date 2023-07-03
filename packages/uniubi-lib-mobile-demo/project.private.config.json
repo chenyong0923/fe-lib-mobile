@@ -141,6 +141,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/space/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
