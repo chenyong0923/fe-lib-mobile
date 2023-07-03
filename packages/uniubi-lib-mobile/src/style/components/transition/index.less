@@ -1,79 +1,81 @@
-.ulm-transition {
+@import "../../themes/default.less";
+
+.@{prefix}-transition {
   transition-timing-function: ease;
 }
 
-.ulm-fade-enter-active,
-.ulm-fade-leave-active {
+.@{prefix}-fade-enter-active,
+.@{prefix}-fade-leave-active {
   transition-property: opacity;
 }
 
-.ulm-fade-enter,
-.ulm-fade-leave-to {
+.@{prefix}-fade-enter,
+.@{prefix}-fade-leave-to {
   opacity: 0;
 }
 
-.ulm-fade-up-enter-active,
-.ulm-fade-up-leave-active,
-.ulm-fade-down-enter-active,
-.ulm-fade-down-leave-active,
-.ulm-fade-left-enter-active,
-.ulm-fade-left-leave-active,
-.ulm-fade-right-enter-active,
-.ulm-fade-right-leave-active {
+.@{prefix}-fade-up-enter-active,
+.@{prefix}-fade-up-leave-active,
+.@{prefix}-fade-down-enter-active,
+.@{prefix}-fade-down-leave-active,
+.@{prefix}-fade-left-enter-active,
+.@{prefix}-fade-left-leave-active,
+.@{prefix}-fade-right-enter-active,
+.@{prefix}-fade-right-leave-active {
   transition-property: opacity, transform;
 }
 
-.ulm-fade-up-enter,
-.ulm-fade-up-leave-to {
+.@{prefix}-fade-up-enter,
+.@{prefix}-fade-up-leave-to {
   transform: translate3d(0, 100%, 0);
   opacity: 0;
 }
 
-.ulm-fade-down-enter,
-.ulm-fade-down-leave-to {
+.@{prefix}-fade-down-enter,
+.@{prefix}-fade-down-leave-to {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
 }
 
-.ulm-fade-left-enter,
-.ulm-fade-left-leave-to {
+.@{prefix}-fade-left-enter,
+.@{prefix}-fade-left-leave-to {
   transform: translate3d(-100%, 0, 0);
   opacity: 0;
 }
 
-.ulm-fade-right-enter,
-.ulm-fade-right-leave-to {
+.@{prefix}-fade-right-enter,
+.@{prefix}-fade-right-leave-to {
   transform: translate3d(100%, 0, 0);
   opacity: 0;
 }
 
-.ulm-slide-top-enter-active,
-.ulm-slide-top-leave-active,
-.ulm-slide-bottom-enter-active,
-.ulm-slide-bottom-leave-active,
-.ulm-slide-left-enter-active,
-.ulm-slide-left-leave-active,
-.ulm-slide-right-enter-active,
-.ulm-slide-right-leave-active {
+.@{prefix}-slide-top-enter-active,
+.@{prefix}-slide-top-leave-active,
+.@{prefix}-slide-bottom-enter-active,
+.@{prefix}-slide-bottom-leave-active,
+.@{prefix}-slide-left-enter-active,
+.@{prefix}-slide-left-leave-active,
+.@{prefix}-slide-right-enter-active,
+.@{prefix}-slide-right-leave-active {
   transition-property: transform;
 }
 
-.ulm-slide-top-enter,
-.ulm-slide-top-leave-to {
+.@{prefix}-slide-top-enter,
+.@{prefix}-slide-top-leave-to {
   transform: translate(-50%, -100%);
 }
 
-.ulm-slide-bottom-enter,
-.ulm-slide-bottom-leave-to {
+.@{prefix}-slide-bottom-enter,
+.@{prefix}-slide-bottom-leave-to {
   transform: translate(-50%, 100%);
 }
 
-.ulm-slide-left-enter,
-.ulm-slide-left-leave-to {
+.@{prefix}-slide-left-enter,
+.@{prefix}-slide-left-leave-to {
   transform: translate(-100%, -50%);
 }
 
-.ulm-slide-right-enter,
-.ulm-slide-right-leave-to {
+.@{prefix}-slide-right-enter,
+.@{prefix}-slide-right-leave-to {
   transform: translate(100%, -50%);
 }

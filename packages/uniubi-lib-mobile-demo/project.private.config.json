@@ -127,6 +127,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/calendar/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

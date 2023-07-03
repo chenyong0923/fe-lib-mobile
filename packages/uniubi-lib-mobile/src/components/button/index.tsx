@@ -7,10 +7,12 @@ import {
 import classnames from 'classnames';
 import React from 'react';
 
+import { PREFIX } from '@/constants';
+
 import { ButtonProps } from '../../../types/button';
 import Loading from '../loading';
 
-const prefix = 'ulm-button';
+const prefix = `${PREFIX}-button`;
 
 const Button: React.FC<ButtonProps> = ({
   className,
