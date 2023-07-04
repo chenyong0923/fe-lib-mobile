@@ -64,6 +64,25 @@ const Page = () => {
           </Descriptions.Item>
         </Descriptions>
       </Section>
+      <Section title="设置 label 样式">
+        <Descriptions labelStyle={{ width: 60, textAlign: 'right' }}>
+          <Descriptions.Item label="姓名" span={12}>
+            张三
+          </Descriptions.Item>
+          <Descriptions.Item label="年龄" span={12}>
+            20
+          </Descriptions.Item>
+          <Descriptions.Item label="性别" span={12}>
+            男
+          </Descriptions.Item>
+          <Descriptions.Item label="爱好" span={12}>
+            女
+          </Descriptions.Item>
+          <Descriptions.Item label="邮箱">
+            zhangsan@uni-ubi.com
+          </Descriptions.Item>
+        </Descriptions>
+      </Section>
     </BasicLayout>
   );
 };

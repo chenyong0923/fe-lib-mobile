@@ -9,6 +9,7 @@ export interface DescriptionsProps {
   style?: CSSProperties;
   children?: ReactNode;
   layout?: LayoutType;
+  labelStyle?: CSSProperties;
   colon?: boolean;
 }
 

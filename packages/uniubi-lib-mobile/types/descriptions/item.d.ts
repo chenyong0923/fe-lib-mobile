@@ -5,6 +5,7 @@ export interface DescriptionsItemProps {
   style?: CSSProperties;
   children?: ReactNode;
   label: ReactNode;
+  labelStyle?: CSSProperties;
   span?: number;
 }
 

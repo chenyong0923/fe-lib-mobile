@@ -13,6 +13,7 @@ const DescriptionsItem = ({
   style,
   children,
   label,
+  labelStyle,
   span = 24,
 }: DescriptionsItemProps) => {
   return (
@@ -23,7 +24,9 @@ const DescriptionsItem = ({
         ...style,
       }}
     >
-      <View className={`${prefixCls}-label`}>{label}</View>
+      <View className={`${prefixCls}-label`} style={labelStyle}>
+        {label}
+      </View>
       <View className={`${prefixCls}-content`}>{children}</View>
     </View>
   );
