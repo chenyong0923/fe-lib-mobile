@@ -21,6 +21,11 @@
       line-height: 2;
       flex-shrink: 0;
     }
+
+    .@{prefix}-form-item-content {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &-vertical {
@@ -61,6 +66,12 @@
 
   &-content {
     flex: 1;
+    min-height: 64px;
+
+    &-box {
+      width: 100%;
+      vertical-align: top;
+    }
   }
 
   &-error {

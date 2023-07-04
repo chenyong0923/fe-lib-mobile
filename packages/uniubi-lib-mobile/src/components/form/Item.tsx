@@ -177,7 +177,7 @@ const Item: React.FC<FormItemProps> = ({
           {label}
         </View>
         <View className={`${prefix}-content`}>
-          <View>{renderChildren}</View>
+          <View className={`${prefix}-content-box`}>{renderChildren}</View>
         </View>
       </View>
       <View className={`${prefix}-error`}>{store?.errorMessage}</View>
