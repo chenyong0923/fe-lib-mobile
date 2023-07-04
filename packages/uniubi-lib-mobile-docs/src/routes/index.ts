@@ -110,6 +110,11 @@ export default [
             name: 'Steps 步骤条',
           },
           {
+            path: 'switch',
+            component: '@/pages/components/base/switch',
+            name: 'Switch 开关',
+          },
+          {
             path: 'tabs',
             component: '@/pages/components/base/tabs',
             name: 'Tabs 选项卡',

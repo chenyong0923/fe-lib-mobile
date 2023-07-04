@@ -22,6 +22,7 @@ export default {
     'pages/components/base/scroll-wrapper/index',
     'pages/components/base/space/index',
     'pages/components/base/steps/index',
+    'pages/components/base/switch/index',
     'pages/components/base/tabs/index',
     'pages/components/base/tag/index',
     'pages/components/base/toast/index',

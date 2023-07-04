@@ -148,6 +148,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/switch/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

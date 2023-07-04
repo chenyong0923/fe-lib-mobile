@@ -19,6 +19,7 @@ export { default as Radio } from './components/radio';
 export { default as ScrollWrapper } from './components/scroll-wrapper';
 export { default as Space } from './components/space';
 export { default as Steps } from './components/steps';
+export { default as Switch } from './components/switch';
 export { default as Tabs } from './components/tabs';
 export { default as Tag } from './components/tag';
 export { default as Toast } from './components/toast';

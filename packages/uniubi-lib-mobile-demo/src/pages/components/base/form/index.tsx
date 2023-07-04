@@ -1,6 +1,13 @@
 import { View } from '@tarojs/components';
 import React from 'react';
-import { Button, Checkbox, Form, Input, Radio } from 'uniubi-lib-mobile';
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Radio,
+  Switch,
+} from 'uniubi-lib-mobile';
 
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -21,7 +28,7 @@ const Page = () => {
           <Form.Item
             label="姓名"
             name="name"
-            initialValue="12345"
+            initialValue="kunkun"
             rules={[
               { required: true, message: '请输入姓名' },
               { min: 4, max: 10, message: '请输入4-10个字符' },
@@ -42,6 +49,9 @@ const Page = () => {
               <Checkbox value="rap">Rap</Checkbox>
               <Checkbox value="basketball">篮球</Checkbox>
             </Checkbox.Group>
+          </Form.Item>
+          <Form.Item label="打call" name="isCall">
+            <Switch />
           </Form.Item>
           <Form.Item label="按钮" border={false}>
             <Button
