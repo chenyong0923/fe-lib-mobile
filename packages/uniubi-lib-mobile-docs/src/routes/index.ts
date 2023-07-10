@@ -125,6 +125,11 @@ export default [
             name: 'Tag 标签',
           },
           {
+            path: 'timeline',
+            component: '@/pages/components/base/timeline',
+            name: 'Timeline 时间轴',
+          },
+          {
             path: 'toast',
             component: '@/pages/components/base/toast',
             name: 'Toast 轻提示',
