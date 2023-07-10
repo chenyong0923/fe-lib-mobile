@@ -31,6 +31,7 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
   value = [] as any,
   min,
   max,
+  slot,
   onSelect,
   dateRender,
 }: BaseCalendarProps<T>) => {
@@ -202,6 +203,7 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
           />
         )}
       </View>
+      {slot ? <View className={`${prefixCls}-slot`}>{slot}</View> : null}
       <View className={`${prefixCls}-main`}>
         {type === 'day' && (
           <View className={`${prefixCls}-main-header`}>

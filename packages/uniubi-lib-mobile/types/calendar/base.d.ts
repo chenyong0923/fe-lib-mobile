@@ -20,6 +20,7 @@ export interface BaseCalendarProps<T extends CalendarType = 'day'> {
   value?: ValueRange<T>;
   min?: Dayjs;
   max?: Dayjs;
+  slot?: ReactNode;
   onSelect?: (value: ValueType<T>) => void;
   dateRender?: (date: Dayjs) => ReactNode;
 }

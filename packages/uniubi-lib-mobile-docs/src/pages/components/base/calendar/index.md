@@ -152,15 +152,16 @@ const App = () => {
 type ValueType = Dayjs | string;
 ```
 
-| 参数名     | 说明             | 必填 | 类型                         | 默认值  | 备注                                                                             |
-| ---------- | ---------------- | ---- | ---------------------------- | ------- | -------------------------------------------------------------------------------- |
-| type       | 日历类型         | N    | `'year' \| 'month' \| 'day'` | `'day'` |                                                                                  |
-| value      | 选中值           | N    | `ValueType`                  |         | 根据 `type` 进行推断，`type` 为 `day` 时 `value` 类型为 `Dayjs`，否则为 `string` |
-| min        | 可选的最小日期   | N    | `Dayjs`                      |         |                                                                                  |
-| max        | 可选的最大日期   | N    | `Dayjs`                      |         |                                                                                  |
-| onSelect   | 选中日期回调事件 | N    | `(value: ValueType) => void` |         |                                                                                  |
-| onChange   | 值改变回调事件   | N    | `(value: ValueType) => void` |         |                                                                                  |
-| dateRender | 自定义渲染内容   | N    | `(date: Dayjs) => ReactNode` |         |                                                                                  |
+| 参数名     | 说明                     | 必填 | 类型                         | 默认值  | 备注                                                                             |
+| ---------- | ------------------------ | ---- | ---------------------------- | ------- | -------------------------------------------------------------------------------- |
+| type       | 日历类型                 | N    | `'year' \| 'month' \| 'day'` | `'day'` |                                                                                  |
+| value      | 选中值                   | N    | `ValueType`                  |         | 根据 `type` 进行推断，`type` 为 `day` 时 `value` 类型为 `Dayjs`，否则为 `string` |
+| min        | 可选的最小日期           | N    | `Dayjs`                      |         |                                                                                  |
+| max        | 可选的最大日期           | N    | `Dayjs`                      |         |                                                                                  |
+| slot       | 头部与日历主体之间的插槽 | N    | `ReactNode`                  |         |                                                                                  |
+| onSelect   | 选中日期回调事件         | N    | `(value: ValueType) => void` |         |                                                                                  |
+| onChange   | 值改变回调事件           | N    | `(value: ValueType) => void` |         |                                                                                  |
+| dateRender | 自定义渲染内容           | N    | `(date: Dayjs) => ReactNode` |         |                                                                                  |
 
 ### Calendar.Range
 
