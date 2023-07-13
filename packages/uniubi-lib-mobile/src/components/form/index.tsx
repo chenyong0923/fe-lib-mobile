@@ -6,6 +6,7 @@ import { PREFIX } from '@/constants';
 
 import FormContext from './context';
 import Item from './Item';
+import List from './List';
 import useForm from './useForm';
 import useWatch from './useWatch';
 
@@ -32,6 +33,7 @@ const Form = ({
 };
 
 Form.Item = Item;
+Form.List = List;
 Form.useForm = useForm;
 Form.useWatch = useWatch;
 

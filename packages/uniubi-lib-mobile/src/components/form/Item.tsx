@@ -14,6 +14,7 @@ import { rpxToPx } from '@/utils/common';
 import { isObj } from '@/utils/validator';
 
 import FormContext from './context';
+// import FormListContext from './listContext';
 import { getName } from './utils';
 
 import type { FormItemProps } from '~/types/form/item';
@@ -26,11 +27,11 @@ import type {
 
 const prefix = `${PREFIX}-form-item`;
 
-const Item: React.FC<FormItemProps> = ({
+const Item = ({
   className,
   style,
   children,
-  name,
+  name: namePath,
   label,
   labelWidth = 110,
   layout,
@@ -41,17 +42,19 @@ const Item: React.FC<FormItemProps> = ({
   valueKey = 'value',
   trigger = 'onChange',
   validateTrigger = 'onChange',
+  // isListField = false,
   valueFormat,
-}) => {
+}: FormItemProps) => {
   const { layout: formLayout, instance } = useContext(FormContext);
+  // const { name: listNamePath } = useContext(FormListContext);
   const { dispatch } = instance as FormInstance;
   const [, forceUpdate] = useState({});
 
   // 字段完整路径
-  const namePath = name ? getName(name) : undefined;
+  const name = namePath ? getName(namePath) : undefined;
 
   // 字段信息仓库，包含字段的值、校验状态、错误提示文字
-  const store: StoreField = dispatch({ type: 'getFieldStore' }, namePath);
+  const store: StoreField = dispatch({ type: 'getFieldStore' }, name);
 
   const onStoreChange = useMemo(() => {
     const _onStoreChange = {
@@ -74,7 +77,7 @@ const Item: React.FC<FormItemProps> = ({
     handleFieldRegister();
 
     return () => {
-      dispatch({ type: 'destroyField' }, namePath);
+      dispatch({ type: 'destroyField' }, name);
     };
   }, [onStoreChange]);
 
@@ -88,7 +91,7 @@ const Item: React.FC<FormItemProps> = ({
 
   // 将 Item 信息注册到 store 中
   const handleFieldRegister = () => {
-    if (!namePath) return;
+    if (!name) return;
 
     let innerRules: Rule[] = [];
     if (isObj(rules)) {
@@ -108,7 +111,7 @@ const Item: React.FC<FormItemProps> = ({
     dispatch(
       { type: 'registerField' },
       {
-        name: namePath,
+        name,
         label,
         initialValue,
         rules: innerRules,
@@ -120,17 +123,17 @@ const Item: React.FC<FormItemProps> = ({
   // 使组件受控
   const getControlled = (child: any) => {
     const props = { ...child.props };
-    if (!namePath) return props;
+    if (!name) return props;
     // 处理组件值改变的事件
     const _trigger = props[trigger];
     const handleChange = async (e: any) => {
       let value = null;
       if (valueFormat) {
-        value = await valueFormat(e, namePath, instance as FormInstance);
+        value = await valueFormat(e, name, instance as FormInstance);
       } else {
         value = e;
       }
-      dispatch({ type: 'setFieldValue' }, namePath, value);
+      dispatch({ type: 'setFieldValue' }, name, value);
       if (_trigger) _trigger(e);
     };
     props[trigger] = handleChange;
@@ -141,10 +144,10 @@ const Item: React.FC<FormItemProps> = ({
           await handleChange(e);
         }
 
-        dispatch({ type: 'validateField' }, namePath);
+        dispatch({ type: 'validateField' }, name);
       };
     }
-    props[valueKey] = dispatch({ type: 'getFieldValue' }, namePath);
+    props[valueKey] = dispatch({ type: 'getFieldValue' }, name);
 
     return props;
   };
@@ -161,7 +164,7 @@ const Item: React.FC<FormItemProps> = ({
         className,
       )}
       style={style}
-      id={namePath}
+      id={name}
     >
       <View
         className={classnames(`${prefix}-inner`, {

@@ -86,7 +86,7 @@ class FormStore {
     const { name, initialValue } = entity;
     if (!name) return;
     this.store[name] = {
-      value: initialValue,
+      value: this.store[name]?.value ?? initialValue,
       status: ValidateResult.Resolved,
       errorMessage: undefined,
     };
@@ -105,9 +105,10 @@ class FormStore {
 
   /**
    * 获取所有字段的值
+   * @param mergeListKeys 是否合并列表字段的值
    * @returns 表单键值对
    */
-  private getFieldsValue = () => {
+  private _getFieldsValue = (mergeListKeys = true) => {
     let ret: Values = {};
     Object.keys(this.store).forEach((field) => {
       const { value } = this.store[field];
@@ -126,7 +127,33 @@ class FormStore {
         ret[field] = value;
       }
     });
+    if (mergeListKeys) {
+      const retAfterMerge = {};
+      Object.keys(ret).forEach((key) => {
+        if (retAfterMerge[key]) {
+          return;
+        }
+        if (key.includes('_')) {
+          const [prefix, index] = key.split('_');
+          if (!retAfterMerge[prefix]) {
+            retAfterMerge[prefix] = [];
+          }
+          retAfterMerge[prefix][index] = ret[key];
+          return;
+        }
+        retAfterMerge[key] = ret[key];
+      });
+      return retAfterMerge;
+    }
     return ret;
+  };
+
+  /**
+   * 获取所有字段的值
+   * @returns 表单键值对
+   */
+  private getFieldsValue = () => {
+    return this._getFieldsValue(true);
   };
 
   /**
@@ -139,6 +166,25 @@ class FormStore {
     if (name in this.store) {
       this.store[name].value = value;
       this.validateField(name);
+      // 处理 List 数据
+      if (Array.isArray(value)) {
+        value.forEach((item, index) => {
+          if (isObj(item)) {
+            Object.keys(item).forEach((key) => {
+              const listFieldName = `${name}_${index}.${key}`;
+              if (!isObj(this.store[listFieldName])) {
+                this.store[listFieldName] = {
+                  value: item[key],
+                  status: ValidateResult.Resolved,
+                  errorMessage: undefined,
+                };
+              } else {
+                this.store[listFieldName].value = item[key];
+              }
+            });
+          }
+        });
+      }
     }
   };
 
@@ -350,7 +396,7 @@ class FormStore {
   private notifyWatch = (namePath: NamePathType) => {
     if (this.watchList.length) {
       const value = this.getFieldValue(namePath);
-      const values = this.getFieldsValue();
+      const values = this._getFieldsValue(false);
       this.watchList.forEach((callback) => {
         callback(namePath, value, values);
       });

@@ -293,6 +293,90 @@ const App = () => {
 };
 ```
 
+### 列表用法
+
+```tsx
+import { View } from "@tarojs/components";
+import React from "react";
+import { Form, Button, Input } from "uniubi-lib-mobile";
+
+const App = () => {
+  const [form] = Form.useForm();
+
+  return (
+    <View>
+      <Form form={form}>
+        <Form.Item label="姓名" name="name" initialValue="kunkun">
+          <Input />
+        </Form.Item>
+        <Form.List name="group">
+          {(fields, { add, remove }) => {
+            return (
+              <View>
+                {fields.map((field) => (
+                  <Fragment>
+                    <Form.Item
+                      {...field}
+                      label="粉丝"
+                      name={[field.name, "fans"]}
+                      rules={[{ required: true, message: "请输入粉丝" }]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      {...field}
+                      label="年龄"
+                      name={[field.name, "age"]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </Fragment>
+                ))}
+                <Button
+                  onClick={() => {
+                    add({ fans: undefined, age: undefined });
+                  }}
+                >
+                  add
+                </Button>
+                <Button
+                  onClick={() => {
+                    remove(0);
+                  }}
+                >
+                  remove first
+                </Button>
+              </View>
+            );
+          }}
+        </Form.List>
+        <Form.Item label="按钮" border={false}>
+          <Button
+            onClick={() => {
+              console.log(form.getFieldsValue());
+            }}
+          >
+            Submit
+          </Button>
+          <Button
+            onClick={() => {
+              form.setFieldsValue({
+                group: [
+                  { fans: "ikun", age: 22 },
+                  { fans: "小黑子", age: 20 },
+                ],
+              });
+            }}
+          >
+            setFieldsValue
+          </Button>
+        </Form.Item>
+      </Form>
+    </View>
+  );
+};
+```
+
 ## API
 
 ### Form
@@ -318,6 +402,27 @@ const App = () => {
 | trigger         | 值变化的事件                | N    | `string`                                                        | `onChange`     | 比如 Input 组件是 `onInput`                                                            |
 | validateTrigger | 校验事件                    | N    | `string`                                                        | `onChange`     |                                                                                        |
 | valueFormat     | 格式化值变化                | N    | `(value: any, name: string, formInstance: FormInstance) => any` |                |                                                                                        |
+
+### Form.List
+
+| 参数名   | 说明     | 必填 | 类型                                                             | 默认值 | 备注       |
+| -------- | -------- | ---- | ---------------------------------------------------------------- | ------ | ---------- |
+| children | 表单布局 | N    | `(fields: ListField[], operations: ListOperations) => ReactNode` |        | 类型见下方 |
+| name     | 字段名   | N    | `NamePathType`                                                   |        |            |
+
+```ts
+interface ListField {
+  name: string; // 这个返回的是 Form.List 的 name 加索引，如 group_0
+  key: number;
+  isListField: boolean; // 这个必须要传给 Form.Item
+}
+
+interface ListOperations {
+  add: (defaultValue?: Value, index?: number) => void;
+  remove: (index: number) => void;
+  move: (from: number, to: number) => void;
+}
+```
 
 ### FormInstance
 

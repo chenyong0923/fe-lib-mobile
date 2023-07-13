@@ -17,6 +17,7 @@ export interface FormItemProps {
   valueKey?: string;
   trigger?: string;
   validateTrigger?: string;
+  isListField?: boolean;
   valueFormat?: (value: Value, name: string, formInstance: FormInstance) => any;
 }
 

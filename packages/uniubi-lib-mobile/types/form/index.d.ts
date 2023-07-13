@@ -1,4 +1,5 @@
 import Item from './item';
+import List from './list';
 import useForm from './useForm';
 import useWatch from './useWatch';
 
@@ -20,6 +21,7 @@ type InternalFormType = typeof InternalForm;
 
 interface IForm extends InternalFormType {
   Item: typeof Item;
+  List: typeof List;
   useForm: typeof useForm;
   useWatch: typeof useWatch;
 }

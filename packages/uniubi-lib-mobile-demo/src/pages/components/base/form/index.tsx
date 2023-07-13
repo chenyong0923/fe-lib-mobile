@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components';
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Button,
   Checkbox,
@@ -18,6 +18,7 @@ const Page = () => {
   const [form3] = Form.useForm();
   const [form4] = Form.useForm();
   const [form5] = Form.useForm();
+  const [form6] = Form.useForm();
 
   const name = Form.useWatch('name', form5);
 
@@ -184,7 +185,7 @@ const Page = () => {
         </Form>
       </Section>
       <Section title="调整布局">
-        <Form form={form} layout="vertical">
+        <Form layout="vertical">
           <Form.Item
             label="姓名"
             name="name"
@@ -204,6 +205,75 @@ const Page = () => {
             <Input />
           </Form.Item>
           <View>{name}</View>
+        </Form>
+      </Section>
+      <Section title="列表">
+        <Form form={form6}>
+          <Form.Item label="姓名" name="name" initialValue="kunkun">
+            <Input />
+          </Form.Item>
+          <Form.List name="group">
+            {(fields, { add, remove }) => {
+              return (
+                <View>
+                  {fields.map((field) => (
+                    <Fragment>
+                      <Form.Item
+                        {...field}
+                        label="粉丝"
+                        name={[field.name, 'fans']}
+                        rules={[{ required: true, message: '请输入粉丝' }]}
+                      >
+                        <Input />
+                      </Form.Item>
+                      <Form.Item
+                        {...field}
+                        label="年龄"
+                        name={[field.name, 'age']}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Fragment>
+                  ))}
+                  <Button
+                    onClick={() => {
+                      add({ fans: undefined, age: undefined });
+                    }}
+                  >
+                    add
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      remove(0);
+                    }}
+                  >
+                    remove first
+                  </Button>
+                </View>
+              );
+            }}
+          </Form.List>
+          <Form.Item label="按钮" border={false}>
+            <Button
+              onClick={() => {
+                console.log(form6.getFieldsValue());
+              }}
+            >
+              Submit
+            </Button>
+            <Button
+              onClick={() => {
+                form6.setFieldsValue({
+                  group: [
+                    { fans: 'ikun', age: 22 },
+                    { fans: '小黑子', age: 20 },
+                  ],
+                });
+              }}
+            >
+              setFieldsValue
+            </Button>
+          </Form.Item>
         </Form>
       </Section>
     </BasicLayout>

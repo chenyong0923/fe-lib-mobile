@@ -13,6 +13,10 @@
     margin-top: @spacing-v-sm;
   }
 
+  & + .@{prefix}-form-list {
+    margin-top: @spacing-v-sm;
+  }
+
   &-horizontal {
     .@{prefix}-form-item-inner {
     }
@@ -78,5 +82,11 @@
     padding: 0 @spacing-h-lg;
     font-size: @font-size-sm;
     color: @text-color-danger;
+  }
+}
+
+.@{prefix}-form-list {
+  & + .@{prefix}-form-item {
+    margin-top: @spacing-v-sm;
   }
 }
