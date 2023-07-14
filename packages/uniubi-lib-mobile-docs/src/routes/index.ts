@@ -85,6 +85,11 @@ export default [
             name: 'Overlay 遮照',
           },
           {
+            path: 'picker',
+            component: '@/pages/components/base/picker',
+            name: 'Picker 选择器',
+          },
+          {
             path: 'popup',
             component: '@/pages/components/base/popup',
             name: 'Popup 弹出层',

@@ -14,6 +14,7 @@ export { default as Modal } from './components/modal';
 export { default as MultipleChoice } from './components/multiple-choice';
 export { default as NavHeader } from './components/nav-header';
 export { default as Overlay } from './components/overlay';
+export { default as Picker } from './components/picker';
 export { default as Popup } from './components/popup';
 export { default as Radio } from './components/radio';
 export { default as ScrollWrapper } from './components/scroll-wrapper';

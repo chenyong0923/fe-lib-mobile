@@ -162,6 +162,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/picker/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

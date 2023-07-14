@@ -17,6 +17,7 @@ export default {
     'pages/components/base/modal/index',
     'pages/components/base/nav-header/index',
     'pages/components/base/overlay/index',
+    'pages/components/base/picker/index',
     'pages/components/base/popup/index',
     'pages/components/base/radio/index',
     'pages/components/base/scroll-wrapper/index',
