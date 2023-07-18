@@ -135,6 +135,11 @@ export default [
             name: 'Tag 标签',
           },
           {
+            path: 'time-picker',
+            component: '@/pages/components/base/time-picker',
+            name: 'TimePicker 时间选择器',
+          },
+          {
             path: 'timeline',
             component: '@/pages/components/base/timeline',
             name: 'Timeline 时间轴',

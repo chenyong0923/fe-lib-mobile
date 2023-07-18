@@ -62,9 +62,11 @@ const App = () => {
       <DatePicker
         type="year"
         value={selected}
+        onChange={(v) => {
+          setSelected(v);
+        }}
         onOk={(v) => {
           console.log("selected", v);
-          setSelected(v);
         }}
       >
         <View>年选择器</View>

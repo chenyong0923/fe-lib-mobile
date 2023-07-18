@@ -27,6 +27,7 @@ export default {
     'pages/components/base/switch/index',
     'pages/components/base/tabs/index',
     'pages/components/base/tag/index',
+    'pages/components/base/time-picker/index',
     'pages/components/base/timeline/index',
     'pages/components/base/toast/index',
     // 业务组件

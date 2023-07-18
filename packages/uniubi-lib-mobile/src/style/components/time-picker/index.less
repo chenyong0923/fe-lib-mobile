@@ -1,0 +1,24 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-time-picker {
+}
+
+.@{prefix}-time-picker-range {
+  &-tabs {
+    .@{prefix}-tabs-nav {
+      position: relative;
+
+      // 这里不用 border-bottom 是因为用 border-bottom 后 scroll-view 组件高度消失
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: @border-color;
+      }
+    }
+  }
+}

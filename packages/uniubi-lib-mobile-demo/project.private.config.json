@@ -176,6 +176,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/time-picker/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

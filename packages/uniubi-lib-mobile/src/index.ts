@@ -24,5 +24,6 @@ export { default as Steps } from './components/steps';
 export { default as Switch } from './components/switch';
 export { default as Tabs } from './components/tabs';
 export { default as Tag } from './components/tag';
+export { default as TimePicker } from './components/time-picker';
 export { default as Timeline } from './components/timeline';
 export { default as Toast } from './components/toast';
