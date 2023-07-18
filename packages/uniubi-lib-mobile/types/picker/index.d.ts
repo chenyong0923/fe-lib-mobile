@@ -1,12 +1,6 @@
+import type { Option, ValueType } from './panel';
 import type { PickerViewProps } from '@tarojs/components';
 import type { CSSProperties, ReactNode } from 'react';
-
-export type ValueType = string | number;
-
-export interface Option<T extends ValueType> {
-  label: string;
-  value: T;
-}
 
 export interface PickerProps<T extends ValueType> {
   className?: string;
@@ -15,7 +9,6 @@ export interface PickerProps<T extends ValueType> {
   visible?: boolean;
   title?: ReactNode;
   options: Array<Array<Option<T>>>;
-  defaultValue?: T[];
   value?: T[];
   indicatorClass?: PickerViewProps['indicatorClass'];
   indicatorStyle?: PickerViewProps['indicatorStyle'];

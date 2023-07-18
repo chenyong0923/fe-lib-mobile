@@ -17,7 +17,7 @@ const prefix = `${PREFIX}-tabs`;
 // 选项卡平均排列的最大数量，超出该数量后进行滚动
 const MAX_COUNT = 4;
 
-const Tabs = ({
+const Tabs = <T extends string>({
   className,
   style,
   layout = 'horizontal',
@@ -25,8 +25,9 @@ const Tabs = ({
   onChange,
   line = true,
   children,
+  autoNavItemWidth = true,
   ...rest
-}: TabsProps) => {
+}: TabsProps<T>) => {
   // 给组件做唯一标识，避免多个组件同时渲染时获取 dom 错误问题
   const rootName = useMemo(() => `${prefix}-${uuid()}`, []);
   // 选中项 key 值
@@ -145,12 +146,6 @@ const Tabs = ({
         />
       );
     } else if (layout === 'vertical') {
-      // const index = React.Children.toArray(children).findIndex(
-      //   (item) => (item as any).props.tabKey === activeTabKey,
-      // );
-      console.log('barInfo', barInfo);
-      console.log('navInfo', navInfo);
-      console.log('viewInfo', viewInfo);
       return (
         <View
           className={`${prefix}-nav-bar`}
@@ -168,7 +163,7 @@ const Tabs = ({
   };
 
   // 切换选项卡
-  const handleTabChange = (key: string) => {
+  const handleTabChange = (key: T) => {
     !activeKey && setActiveTabKey(key);
     onChange?.(key);
   };
@@ -197,7 +192,7 @@ const Tabs = ({
               const { tab, tabKey } = (child as any).props;
               const itemStyle: CSSProperties = {};
               // 水平布局时需要设置宽度
-              if (layout === 'horizontal') {
+              if (layout === 'horizontal' && autoNavItemWidth) {
                 itemStyle.width =
                   childCount <= MAX_COUNT ? `${100 / childCount}%` : 'auto';
               }

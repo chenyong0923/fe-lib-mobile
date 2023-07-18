@@ -110,12 +110,14 @@ const App = () => {
 | visible         | 是否显示                                                                           | N    | `boolean`                         |        |          |
 | title           | 标题                                                                               | N    | `ReactNode`                       |        |          |
 | options         | 选项                                                                               | Y    | `Array<Array<Option<ValueType>>>` |        | 二维数组 |
+| defaultValue    | 默认选中项                                                                         | N    | `ValueType`                       |        |          |
 | value           | 选中项                                                                             | N    | `ValueType`                       |        |          |
 | indicatorClass  | 设置选择器中间选中框的类名                                                         | N    | `string`                          |        |          |
 | indicatorStyle  | 设置选择器中间选中框的样式                                                         | N    | `string`                          |        |          |
 | maskClass       | 设置蒙层的类名                                                                     | N    | `string`                          |        |          |
 | maskStyle       | 设置蒙层的样式                                                                     | N    | `string`                          |        |          |
 | immediateChange | 是否在手指松开时立即触发 change 事件。若不开启则会在滚动动画结束后触发 change 事件 | N    | `boolean`                         | `true` |          |
+| onChange        | 选中值改变回调事件                                                                 | N    | `(value: ValueType[]) => void`    |        |          |
 | onOk            | 点击确定回调事件                                                                   | N    | `(value: ValueType[]) => void`    |        |          |
 | onCancel        | 点击取消回调事件                                                                   | N    | `() => void`                      |        |          |
 | onPickStart     | 当滚动选择开始时候触发事件                                                         | N    | `CommonEventFunction`             |        |          |

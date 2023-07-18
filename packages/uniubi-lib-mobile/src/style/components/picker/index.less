@@ -2,34 +2,36 @@
 @import "../../mixins/index.less";
 
 .@{prefix}-picker {
-  &-popup {
-    &-header {
-      .flex-between-center;
-      height: 96px;
-      background-color: @white;
-      border-bottom: 1px solid @border-color;
+}
 
-      &-title {
-        flex: 1;
-        text-align: center;
-        .text-ellipsis;
-      }
+.@{prefix}-picker-header {
+  .flex-between-center;
+  height: 96px;
+  background-color: @white;
+  border-bottom: 1px solid @border-color;
 
-      &-btn {
-        flex-shrink: 0;
-      }
-    }
+  &-title {
+    flex: 1;
+    font-size: @font-size-lg;
+    color: @text-color-major;
+    text-align: center;
+    .text-ellipsis;
+  }
 
-    &-body {
-      width: 100vw;
-      height: 600px;
-      background-color: @white;
+  &-btn {
+    font-size: @font-size-lg;
+    flex-shrink: 0;
+  }
+}
 
-      &-column {
-        &-item {
-          .flex-center;
-        }
-      }
+.@{prefix}-picker-panel {
+  width: 100vw;
+  height: 600px;
+  background-color: @white;
+
+  &-column {
+    &-item {
+      .flex-center;
     }
   }
 }

@@ -30,6 +30,11 @@ export default [
             name: 'Checkbox 多选',
           },
           {
+            path: 'date-picker',
+            component: '@/pages/components/base/date-picker',
+            name: 'DatePicker 日期选择器',
+          },
+          {
             path: 'descriptions',
             component: '@/pages/components/base/descriptions',
             name: 'Descriptions 描述列表',

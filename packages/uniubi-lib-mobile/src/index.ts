@@ -2,6 +2,7 @@ export { default as ActionSheet } from './components/action-sheet';
 export { default as Button } from './components/button';
 export { default as Calendar } from './components/calendar';
 export { default as Checkbox } from './components/checkbox';
+export { default as DatePicker } from './components/date-picker';
 export { default as Descriptions } from './components/descriptions';
 export { default as Empty } from './components/empty';
 export { default as Form } from './components/form';
