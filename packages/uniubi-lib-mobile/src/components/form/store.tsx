@@ -167,6 +167,15 @@ class FormStore {
       this.store[name].value = value;
       this.validateField(name);
       // 处理 List 数据
+      if (name.includes('_')) {
+        // 将 List 里某一项数据的值修改后，同步修改 List 中对应的值
+        const [prefix, field] = name.split('.');
+        const [prefixName, index] = prefix.split('_');
+        const list = this.getFieldValue(prefixName);
+        if (Array.isArray(list)) {
+          list[index][field] = value;
+        }
+      }
       if (Array.isArray(value)) {
         value.forEach((item, index) => {
           if (isObj(item)) {
