@@ -126,10 +126,10 @@ const Item = ({
     if (!name) return props;
     // 处理组件值改变的事件
     const _trigger = props[trigger];
-    const handleChange = async (e: any) => {
+    const handleChange = (e: any) => {
       let value = null;
       if (valueFormat) {
-        value = await valueFormat(e, name, instance as FormInstance);
+        value = valueFormat(e, name, instance as FormInstance);
       } else {
         value = e;
       }
@@ -139,9 +139,9 @@ const Item = ({
     props[trigger] = handleChange;
     // 进行校验
     if (required || rules) {
-      props[validateTrigger] = async (e: any) => {
+      props[validateTrigger] = (e: any) => {
         if (validateTrigger === trigger) {
-          await handleChange(e);
+          handleChange(e);
         }
 
         dispatch({ type: 'validateField' }, name);

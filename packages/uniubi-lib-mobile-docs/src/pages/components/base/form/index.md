@@ -102,9 +102,6 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="name"
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e}
           rules={{
             required: true,
             min: 4,
@@ -135,9 +132,6 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="name"
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e.detail.value}
           rules={[
             {
               validator: (value) => {
@@ -175,9 +169,6 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="name"
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入姓名" },
             { max: 4, message: "最多4个字符" },
@@ -188,9 +179,6 @@ const App = () => {
         <Form.Item
           label="昵称"
           name={["profile", "nickname"]}
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入昵称" },
             { min: 4, max: 10, message: "请输入4-10个字符" },
@@ -201,9 +189,6 @@ const App = () => {
         <Form.Item
           label="花名"
           name={["profile", "flowername"]}
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入花名" },
             { min: 4, max: 10, message: "请输入4-10个字符" },
@@ -253,9 +238,6 @@ const App = () => {
           label="姓名"
           name="name"
           initialValue="12345"
-          trigger="onInput"
-          validateTrigger="onInput"
-          valueFormat={(e) => e}
           rules={[
             { required: true, message: "请输入姓名" },
             { max: 4, message: "最多4个字符" },
