@@ -33,6 +33,7 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
   max,
   slot,
   onSelect,
+  onToggle,
   dateRender,
 }: BaseCalendarProps<T>) => {
   // 当前显示的日期
@@ -150,8 +151,10 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
               `${prefixCls}-header-icon-prev-year`,
             )}
             onClick={() => {
+              const d = dayjs(currentDate).subtract(1, 'year');
               // 向前一年
-              setCurrentDate((prev) => dayjs(prev).subtract(1, 'year'));
+              setCurrentDate(d);
+              onToggle?.(d);
             }}
           />
         )}
@@ -162,13 +165,18 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
           )}
           onClick={() => {
             if (type === 'day') {
+              const d = dayjs(currentDate).subtract(1, 'month');
               // 向前一个月
-              setCurrentDate((prev) => dayjs(prev).subtract(1, 'month'));
+              setCurrentDate(d);
+              onToggle?.(d);
             } else if (type === 'month') {
+              const d = dayjs(currentDate).subtract(1, 'year');
               // 向前一年
-              setCurrentDate((prev) => dayjs(prev).subtract(1, 'year'));
+              setCurrentDate(d);
+              onToggle?.(d);
             } else if (type === 'year') {
               setIndex((prev) => prev - 1);
+              onToggle?.();
             }
           }}
         />
@@ -180,13 +188,18 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
           )}
           onClick={() => {
             if (type === 'day') {
+              const d = dayjs(currentDate).add(1, 'month');
               // 向后一个月
-              setCurrentDate((prev) => dayjs(prev).add(1, 'month'));
+              setCurrentDate(d);
+              onToggle?.(d);
             } else if (type === 'month') {
+              const d = dayjs(currentDate).add(1, 'year');
               // 向后一年
-              setCurrentDate((prev) => dayjs(prev).add(1, 'year'));
+              setCurrentDate(d);
+              onToggle?.(d);
             } else if (type === 'year') {
               setIndex((prev) => prev + 1);
+              onToggle?.();
             }
           }}
         />
@@ -197,8 +210,10 @@ const BaseCalendar = <T extends CalendarType = 'day'>({
               `${prefixCls}-header-icon-next-year`,
             )}
             onClick={() => {
+              const d = dayjs(currentDate).add(1, 'year');
               // 向后一年
-              setCurrentDate((prev) => dayjs(prev).add(1, 'year'));
+              setCurrentDate(d);
+              onToggle?.(d);
             }}
           />
         )}

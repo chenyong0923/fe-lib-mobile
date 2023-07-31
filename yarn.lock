@@ -17834,7 +17834,7 @@ unist-util-visit@^4.0.0:
     unist-util-visit-parents "^5.1.1"
 
 "uniubi-lib-mobile-demo@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile-demo":
-  version "0.21.1"
+  version "0.21.2"
   resolved "file:packages/uniubi-lib-mobile-demo"
   dependencies:
     "@babel/runtime" "^7.7.7"
@@ -17851,10 +17851,10 @@ unist-util-visit@^4.0.0:
     dayjs "^1.11.8"
     react "^18.2.0"
     react-dom "^18.2.0"
-    uniubi-lib-mobile "^0.21.0"
+    uniubi-lib-mobile "^0.21.1"
 
 "uniubi-lib-mobile-docs@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile-docs":
-  version "0.21.0"
+  version "0.21.2"
   resolved "file:packages/uniubi-lib-mobile-docs"
   dependencies:
     "@ant-design/pro-layout" "^6.38.2"
@@ -17867,8 +17867,8 @@ unist-util-visit@^4.0.0:
     remark-gfm "^3.0.1"
     umi "^3.5.23"
 
-uniubi-lib-mobile@^0.21.1, "uniubi-lib-mobile@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile":
-  version "0.21.1"
+uniubi-lib-mobile@^0.21.2, "uniubi-lib-mobile@file:/Users/zhangming/Desktop/uni-ubi/projects/uniubi-lib-mobile/packages/uniubi-lib-mobile":
+  version "0.21.2"
   resolved "file:packages/uniubi-lib-mobile"
   dependencies:
     "@uniubi/icons-taro" "^3.50.0"

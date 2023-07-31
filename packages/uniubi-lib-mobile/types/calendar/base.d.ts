@@ -22,6 +22,7 @@ export interface BaseCalendarProps<T extends CalendarType = 'day'> {
   max?: Dayjs;
   slot?: ReactNode;
   onSelect?: (value: ValueType<T>) => void;
+  onToggle?: (date?: Dayjs) => void;
   dateRender?: (date: Dayjs) => ReactNode;
 }
 

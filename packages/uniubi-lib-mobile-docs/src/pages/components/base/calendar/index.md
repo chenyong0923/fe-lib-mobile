@@ -160,6 +160,7 @@ type ValueType = Dayjs | string;
 | max        | 可选的最大日期           | N    | `Dayjs`                      |         |                                                                                  |
 | slot       | 头部与日历主体之间的插槽 | N    | `ReactNode`                  |         |                                                                                  |
 | onSelect   | 选中日期回调事件         | N    | `(value: ValueType) => void` |         |                                                                                  |
+| onToggle   | 头部切换年/月时回调事件  | N    | `(date?: Dayjs) => void`     |         | 当类型为年选择器时，回调参数为空                                                 |
 | onChange   | 值改变回调事件           | N    | `(value: ValueType) => void` |         |                                                                                  |
 | dateRender | 自定义渲染内容           | N    | `(date: Dayjs) => ReactNode` |         |                                                                                  |
 
