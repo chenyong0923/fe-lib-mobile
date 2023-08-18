@@ -14,7 +14,7 @@ export const generateDate = (month: string) => {
     dayjs(month).date(index + 1),
   );
   // 当前月第一天是星期几
-  const dayOfFirstDay = currentMonthDate.at(0)!.day();
+  const dayOfFirstDay = currentMonthDate[0]!.day();
   // 需要补充上个月的天数
   const prevMonthDate = Array.from({ length: dayOfFirstDay }).map((_, index) =>
     dayjs(month)
