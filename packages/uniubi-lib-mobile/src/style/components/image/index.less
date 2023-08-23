@@ -15,6 +15,11 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    // 兼容 h5
+    > img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &-loading,
@@ -29,6 +34,12 @@
     &-image {
       width: 50%;
       height: 50%;
+
+      // 兼容 h5
+      > img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

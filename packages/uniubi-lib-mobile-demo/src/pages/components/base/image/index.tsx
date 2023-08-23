@@ -6,11 +6,17 @@ import { Image } from 'uniubi-lib-mobile';
 import Section from '@/components/Section';
 import BasicLayout from '@/layouts/BasicLayout';
 
+import type { FC, PropsWithChildren } from 'react';
+import type { ImageProps } from 'uniubi-lib-mobile/types/image';
+
 const src =
   'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp';
 const src2 = 'https://img.yzcdn.cn/vant/cat.jpeg';
 
-const Box: React.FC<{ title?: string }> = ({ title, children }) => (
+const Box: FC<PropsWithChildren<{ title?: string }>> = ({
+  title,
+  children,
+}) => (
   <View style={{ display: 'inline-block', margin: '0 8px 8px 0' }}>
     <View>{children}</View>
     {title && (
@@ -22,7 +28,11 @@ const Box: React.FC<{ title?: string }> = ({ title, children }) => (
 );
 
 const Page = () => {
-  const modes = ['scaleToFill', 'aspectFit', 'aspectFill'];
+  const modes: Array<ImageProps['mode']> = [
+    'scaleToFill',
+    'aspectFit',
+    'aspectFill',
+  ];
 
   return (
     <BasicLayout>
