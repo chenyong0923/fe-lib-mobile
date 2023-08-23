@@ -110,6 +110,11 @@ export default [
             name: 'ScrollWrapper 滚动视图',
           },
           {
+            path: 'search-bar',
+            component: '@/pages/components/base/search-bar',
+            name: 'SearchBar 搜索框',
+          },
+          {
             path: 'space',
             component: '@/pages/components/base/space',
             name: 'Space 间距',

@@ -19,6 +19,7 @@ export { default as Picker } from './components/picker';
 export { default as Popup } from './components/popup';
 export { default as Radio } from './components/radio';
 export { default as ScrollWrapper } from './components/scroll-wrapper';
+export { default as SearchBar } from './components/search-bar';
 export { default as Space } from './components/space';
 export { default as Steps } from './components/steps';
 export { default as Switch } from './components/switch';

@@ -183,6 +183,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/base/search-bar/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

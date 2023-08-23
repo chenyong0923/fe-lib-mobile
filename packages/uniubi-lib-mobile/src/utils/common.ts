@@ -137,3 +137,19 @@ export const merge = (source: object, other: object) => {
     Array.isArray(source) ? [] : {},
   );
 };
+
+/**
+ * 防抖函数
+ * @param fn 回调函数
+ * @param wait 防抖等待时间
+ * @returns 新函数
+ */
+export const debounce = (fn: Function, wait: number) => {
+  let timer: NodeJS.Timeout;
+  return (...args: any[]) => {
+    timer && clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, wait);
+  };
+};

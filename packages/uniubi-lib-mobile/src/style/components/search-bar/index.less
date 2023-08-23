@@ -1,0 +1,30 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-search-bar {
+  display: flex;
+
+  &-circle {
+    .ulm-search-bar-input {
+      border-radius: @border-radius-max;
+    }
+  }
+
+  &-input {
+    flex: 1;
+    padding: 0 @spacing-h-lg;
+    background-color: @background-color-default;
+    border-radius: 8px;
+
+    .ulm-input-inner {
+      background-color: @background-color-default;
+    }
+  }
+
+  &-btn {
+    flex-grow: 0;
+    height: auto;
+    font-size: @font-size-lg;
+    padding: 0;
+  }
+}

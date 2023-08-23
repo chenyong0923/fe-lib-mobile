@@ -22,6 +22,7 @@ export default {
     'pages/components/base/popup/index',
     'pages/components/base/radio/index',
     'pages/components/base/scroll-wrapper/index',
+    'pages/components/base/search-bar/index',
     'pages/components/base/space/index',
     'pages/components/base/steps/index',
     'pages/components/base/switch/index',
