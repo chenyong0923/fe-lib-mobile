@@ -9,7 +9,7 @@
   }
 
   &:hover,
-  &:not([disabled]):active {
+  &:not(.@{prefix}-button-disabled):active {
     color: fade(@color, 80%);
 
     & when (@background = transparent) {
@@ -38,7 +38,7 @@
 }
 
 .button-disabled(@color; @background; @border) {
-  &[disabled] {
+  &.@{prefix}-button-disabled {
     &,
     &:hover,
     &:active {

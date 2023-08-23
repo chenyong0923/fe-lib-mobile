@@ -47,10 +47,12 @@ const Button: React.FC<ButtonProps> = ({
         { [`${prefix}-danger`]: danger },
         { [`${prefix}-block`]: block },
         { [`${prefix}-round`]: round },
+        { [`${prefix}-disabled`]: disabled },
         { [`${prefix}-loading`]: loading },
         className,
       )}
-      disabled={disabled}
+      // disabled 为 false 时，不传 disabled 属性，否则 h5 会被渲染成 disabled="false"
+      disabled={disabled || undefined}
       onClick={handleClick}
       {...rest}
     >
