@@ -6,6 +6,7 @@ export { default as Col } from './col';
 export { default as DatePicker } from './date-picker';
 export { default as Descriptions } from './descriptions';
 export { default as Empty } from './empty';
+export { default as FilePreview } from './file-preview';
 export { default as Form } from './form';
 export { default as Image } from './image';
 export { default as Input } from './input';

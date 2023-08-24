@@ -5,6 +5,7 @@ export { default as Checkbox } from './components/checkbox';
 export { default as DatePicker } from './components/date-picker';
 export { default as Descriptions } from './components/descriptions';
 export { default as Empty } from './components/empty';
+export { default as FilePreview } from './components/file-preview';
 export { default as Form } from './components/form';
 export { Col, Row } from './components/grid';
 export { default as Image } from './components/image';

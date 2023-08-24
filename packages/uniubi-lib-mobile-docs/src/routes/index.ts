@@ -162,6 +162,11 @@ export default [
         name: '业务组件',
         routes: [
           {
+            path: 'file-preview',
+            component: '@/pages/components/business/file-preview',
+            name: 'FilePreview 文件预览',
+          },
+          {
             path: 'multiple-choice',
             component: '@/pages/components/business/multiple-choice',
             name: 'MultipleChoice 选择题',

@@ -32,6 +32,7 @@ export default {
     'pages/components/base/timeline/index',
     'pages/components/base/toast/index',
     // 业务组件
+    'pages/components/business/file-preview/index',
     'pages/components/business/multiple-choice/index',
     'pages/components/business/verification-code-button/index',
   ],
