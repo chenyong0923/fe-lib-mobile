@@ -190,6 +190,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/components/business/verification-code-button/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

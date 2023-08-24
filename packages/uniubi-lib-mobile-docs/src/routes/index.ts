@@ -166,6 +166,11 @@ export default [
             component: '@/pages/components/business/multiple-choice',
             name: 'MultipleChoice 选择题',
           },
+          {
+            path: 'verification-code-button',
+            component: '@/pages/components/business/verification-code-button',
+            name: 'VerificationCodeButton 验证码按钮',
+          },
         ],
       },
     ],

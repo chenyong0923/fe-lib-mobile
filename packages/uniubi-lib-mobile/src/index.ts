@@ -28,3 +28,4 @@ export { default as Tag } from './components/tag';
 export { default as TimePicker } from './components/time-picker';
 export { default as Timeline } from './components/timeline';
 export { default as Toast } from './components/toast';
+export { default as VerificationCodeButton } from './components/verification-code-button';

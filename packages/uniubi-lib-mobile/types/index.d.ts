@@ -29,3 +29,4 @@ export { default as Tag } from './tag';
 export { default as TimePicker } from './time-picker';
 export { default as Timeline } from './timeline';
 export { default as Toast } from './toast';
+export { default as VerificationCodeButton } from './verification-code-button';

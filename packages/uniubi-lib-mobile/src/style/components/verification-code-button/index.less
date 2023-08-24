@@ -1,0 +1,21 @@
+@import "../../themes/default.less";
+@import "../../mixins/index.less";
+
+.@{prefix}-verification-code-button {
+  display: inline-flex;
+  align-items: center;
+  gap: @spacing-h-sm;
+  font-size: @font-size-lg;
+  color: @text-color-primary;
+
+  &-disabled {
+    color: fade(@text-color-primary, 80%);
+  }
+
+  &-loading {
+    .ulm-loading-spin {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
