@@ -1,6 +1,6 @@
 import { ScrollView, Text, View } from '@tarojs/components';
 import classnames from 'classnames';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { isValidElement, useEffect, useMemo, useState } from 'react';
 
 import { PREFIX } from '@/constants';
 import { uuid } from '@/utils/common';
@@ -64,7 +64,9 @@ const Tabs = <T extends string>({
     top: 0,
   });
   // 选项卡的数量
-  const childCount = React.Children.count(children);
+  const childCount = React.Children.toArray(children).filter((item) =>
+    isValidElement(item),
+  ).length;
 
   useEffect(() => {
     // 获取到容器信息
@@ -89,6 +91,18 @@ const Tabs = <T extends string>({
   }, [activeKey]);
 
   useEffect(() => {
+    setDomInfo();
+  }, [activeTabKey]);
+
+  useEffect(() => {
+    // children 数量发生变化时，需要重新计算高亮线的位置和宽高信息，因为有0.3秒的动画，所以延迟执行
+    setTimeout(() => {
+      setDomInfo();
+    }, 300);
+  }, [childCount]);
+
+  // 设置相关 dom 信息
+  const setDomInfo = () => {
     // 获取到选中的tab项后记录高亮线的位置和宽高信息
     queryDom(
       `.${rootName} .${prefix}-nav-item-key${activeTabKey} .${prefix}-nav-item-inner`,
@@ -130,7 +144,7 @@ const Tabs = <T extends string>({
         }));
       }
     });
-  }, [activeTabKey]);
+  };
 
   // 渲染高亮线
   const renderLine = () => {
@@ -189,6 +203,7 @@ const Tabs = <T extends string>({
         >
           <View className={`${prefix}-nav-inner`}>
             {React.Children.map(children, (child) => {
+              if (!isValidElement(child)) return null;
               const { tab, tabKey } = (child as any).props;
               const itemStyle: CSSProperties = {};
               // 水平布局时需要设置宽度
